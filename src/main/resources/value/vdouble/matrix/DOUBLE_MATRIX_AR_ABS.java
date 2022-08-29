@@ -3,7 +3,7 @@ package org.djunits.value.vdouble.matrix;
 import java.util.List;
 import java.util.SortedMap;
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
 import org.djunits.value.vdouble.matrix.base.AbstractDoubleMatrixRelWithAbs;

@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 
 import org.djunits.Throw;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
 import org.djunits.unit.si.SIDimensions;

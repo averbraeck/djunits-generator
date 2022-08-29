@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import org.djunits.value.Relative;
 import org.djunits.value.util.ValueUtil;
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import org.djunits.Throw;
 import org.djunits.unit.*;
