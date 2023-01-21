@@ -149,8 +149,8 @@ public class %TypeAbs% extends AbstractDoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%,
 
     /**
      * Returns a %TypeAbs% representation of a textual representation of a value with a unit. The String representation that can be
-     * parsed is the double value in the unit, followed by the official abbreviation of the unit. Spaces are allowed, but not
-     * required, between the value and the unit.
+     * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
+     * but not required, between the value and the unit.
      * @param text String; the textual representation to parse into a %TypeAbs%
      * @return %TypeAbs%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
@@ -160,24 +160,30 @@ public class %TypeAbs% extends AbstractDoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%,
     {
         Throw.whenNull(text, "Error parsing %TypeAbs%: text to parse is null");
         Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing %TypeAbs%: empty text to parse");
-        Matcher matcher = ValueUtil.NUMBER_PATTERN.matcher(text);
-        if (matcher.find())
+        try
         {
-            int index = matcher.end();
+            NumberFormat formatter = NumberFormat.getInstance();
+            int index = 0;
+            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
+                index++;
             String unitString = text.substring(index).trim();
             String valueString = text.substring(0, index).trim();
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
-            if (unit != null)
-            {
-                double d = Double.parseDouble(valueString);
-                return new %TypeAbs%(d, unit);
-            }
-        }
-        throw new IllegalArgumentException("Error parsing %TypeAbs% from " + text);
+            if (unit == null)
+                throw new IllegalArgumentException("Unit " + unitString + " not found");
+            double d = formatter.parse(valueString).doubleValue();
+            return new %TypeAbs%(d, unit);
+	    }
+	    catch (Exception exception)
+	    {
+	        throw new IllegalArgumentException(
+	                "Error parsing %TypeAbs% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+	                exception);
+	    }
     }
 
     /**
-     * Returns a %TypeAbs% based on a value and the textual representation of the unit.
+     * Returns a %TypeAbs% based on a value and the textual representation of the unit, which can be localized.
      * @param value double; the value to use
      * @param unitString String; the textual representation of the unit
      * @return %TypeAbs%; the Scalar representation of the value in its unit
