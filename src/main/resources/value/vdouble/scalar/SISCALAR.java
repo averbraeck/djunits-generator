@@ -2,6 +2,8 @@ package org.djunits.value.vdouble.scalar;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 
 import org.djunits.Throw;
@@ -164,27 +166,26 @@ public class SIScalar extends AbstractDoubleScalarRel<SIUnit, SIScalar>
     {
         Throw.whenNull(text, "Error parsing SIScalar: unitString is null");
         Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty unitString");
-        Matcher matcher = ValueUtil.NUMBER_PATTERN.matcher(text);
-        if (matcher.find())
+        try
         {
-            int index = matcher.end();
-            try
-            {
-                String unitString = text.substring(index).trim();
-                String valueString = text.substring(0, index).trim();
-                SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
-                if (unit != null)
-                {
-                    double d = Double.parseDouble(valueString);
-                    return new SIScalar(d, unit);
-                }
-            }
-            catch (Exception exception)
-            {
-                throw new IllegalArgumentException("Error parsing SIScalar from " + text, exception);
-            }
+            NumberFormat formatter = NumberFormat.getInstance();
+            int index = 0;
+            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
+                index++;
+            String unitString = text.substring(index).trim();
+            String valueString = text.substring(0, index).trim();
+            SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
+            if (unit == null)
+                throw new IllegalArgumentException("Unit " + unitString + " for SIScalar not found");
+            double d = formatter.parse(valueString).doubleValue();
+            return new SIScalar(d, unit);
         }
-        throw new IllegalArgumentException("Error parsing SIScalar from " + text);
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing SIScalar from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
     }
 
     /**

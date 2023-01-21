@@ -1,5 +1,7 @@
 package org.djunits.value.vfloat.scalar;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 
 import jakarta.annotation.Generated;
@@ -161,29 +163,28 @@ public class FloatSIScalar extends AbstractFloatScalarRel<SIUnit, FloatSIScalar>
      */
     public static FloatSIScalar valueOf(final String text)
     {
-        Throw.whenNull(text, "Error parsing FloatSIScalar: unitString is null");
-        Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing FloatSIScalar: empty unitString");
-        Matcher matcher = ValueUtil.NUMBER_PATTERN.matcher(text);
-        if (matcher.find())
+        Throw.whenNull(text, "Error parsing SIScalar: unitString is null");
+        Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty unitString");
+        try
         {
-            int index = matcher.end();
-            try
-            {
-                String unitString = text.substring(index).trim();
-                String valueString = text.substring(0, index).trim();
-                SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
-                if (unit != null)
-                {
-                    float d = Float.parseFloat(valueString);
-                    return new FloatSIScalar(d, unit);
-                }
-            }
-            catch (Exception exception)
-            {
-                throw new IllegalArgumentException("Error parsing FloatSIScalar from " + text, exception);
-            }
+            NumberFormat formatter = NumberFormat.getInstance();
+            int index = 0;
+            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
+                index++;
+            String unitString = text.substring(index).trim();
+            String valueString = text.substring(0, index).trim();
+            SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
+            if (unit == null)
+                throw new IllegalArgumentException("Unit " + unitString + " for FloatSIScalar not found");
+            float f = formatter.parse(valueString).floatValue();
+            return new FloatSIScalar(f, unit);
         }
-        throw new IllegalArgumentException("Error parsing FloatSIScalar from " + text);
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing FloatSIScalar from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
     }
 
     /**
