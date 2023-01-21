@@ -213,6 +213,13 @@ public class FloatSIScalar extends AbstractFloatScalarRel<SIUnit, FloatSIScalar>
         throw new IllegalArgumentException("Error parsing FloatSIScalar with unit " + unitString);
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public String toString(final SIUnit displayUnit, final boolean verbose, final boolean withUnit)
+    {
+        return super.toString(displayUnit, verbose, withUnit).replaceAll("!", "");
+    }
+
     /**********************************************************************************/
     /******************************** 'CAST AS' METHODS *******************************/
     /**********************************************************************************/

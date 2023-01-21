@@ -214,6 +214,13 @@ public class SIScalar extends AbstractDoubleScalarRel<SIUnit, SIScalar>
         throw new IllegalArgumentException("Error parsing SIScalar with unit " + unitString);
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public String toString(final SIUnit displayUnit, final boolean verbose, final boolean withUnit)
+    {
+        return super.toString(displayUnit, verbose, withUnit).replaceAll("!", "");
+    }
+
     /**********************************************************************************/
     /******************************** 'CAST AS' METHODS *******************************/
     /**********************************************************************************/
