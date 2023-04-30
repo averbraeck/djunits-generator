@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 
 import jakarta.annotation.Generated;
 
-import org.djutils.exceptions.Throw;
 import org.djunits.unit.*;
 import org.djunits.unit.si.SIDimensions;
 import org.djunits.unit.util.UnitRuntimeException;
@@ -17,6 +16,8 @@ import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarRel;
 import org.djunits.value.vdouble.scalar.base.DoubleScalar;
 import org.djunits.value.vfloat.scalar.base.AbstractFloatScalarRel;
 import org.djunits.value.vfloat.scalar.base.FloatScalar;
+import org.djutils.base.NumberParser;
+import org.djutils.exceptions.Throw;
 
 /**
  * Easy access methods for the generic Relative SI FloatScalar.
@@ -167,16 +168,12 @@ public class FloatSIScalar extends AbstractFloatScalarRel<SIUnit, FloatSIScalar>
         Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty unitString");
         try
         {
-            NumberFormat formatter = NumberFormat.getInstance();
-            int index = 0;
-            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
-                index++;
-            String unitString = text.substring(index).trim();
-            String valueString = text.substring(0, index).trim();
+            NumberParser numberParser = new NumberParser().lenient().trailing();
+            float f = numberParser.parseFloat(text);
+            String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
             if (unit == null)
                 throw new IllegalArgumentException("Unit " + unitString + " for FloatSIScalar not found");
-            float f = formatter.parse(valueString).floatValue();
             return new FloatSIScalar(f, unit);
         }
         catch (Exception exception)

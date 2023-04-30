@@ -4,10 +4,11 @@ import java.util.regex.Matcher;
 
 import jakarta.annotation.Generated;
 
-import org.djutils.exceptions.Throw;
 import org.djunits.unit.*;
 import org.djunits.value.util.ValueUtil;
 import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarAbs;
+import org.djutils.base.NumberParser;
+import org.djutils.exceptions.Throw;
 
 /**
  * Easy access methods for the Absolute %TypeAbs% DoubleScalar.
@@ -162,16 +163,12 @@ public class %TypeAbs% extends AbstractDoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%,
         Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing %TypeAbs%: empty text to parse");
         try
         {
-            NumberFormat formatter = NumberFormat.getInstance();
-            int index = 0;
-            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
-                index++;
-            String unitString = text.substring(index).trim();
-            String valueString = text.substring(0, index).trim();
+            NumberParser numberParser = new NumberParser().lenient().trailing();
+            double d = numberParser.parseDouble(text);
+            String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
             if (unit == null)
                 throw new IllegalArgumentException("Unit " + unitString + " not found");
-            double d = formatter.parse(valueString).doubleValue();
             return new %TypeAbs%(d, unit);
 	    }
 	    catch (Exception exception)

@@ -6,7 +6,6 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
-import org.djutils.exceptions.Throw;
 import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
@@ -18,6 +17,8 @@ import org.djunits.unit.util.UnitRuntimeException;
 import org.djunits.value.util.ValueUtil;
 import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarRel;
 import org.djunits.value.vdouble.scalar.base.DoubleScalar;
+import org.djutils.base.NumberParser;
+import org.djutils.exceptions.Throw;
 
 /**
  * Easy access methods for the generic Relative SI DoubleScalar.
@@ -168,16 +169,12 @@ public class SIScalar extends AbstractDoubleScalarRel<SIUnit, SIScalar>
         Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty unitString");
         try
         {
-            NumberFormat formatter = NumberFormat.getInstance();
-            int index = 0;
-            while (index < text.length() && "0123456789,._eE+-".contains(text.substring(index, index + 1)))
-                index++;
-            String unitString = text.substring(index).trim();
-            String valueString = text.substring(0, index).trim();
+            NumberParser numberParser = new NumberParser().lenient().trailing();
+            double d = numberParser.parseDouble(text);
+            String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
             if (unit == null)
                 throw new IllegalArgumentException("Unit " + unitString + " for SIScalar not found");
-            double d = formatter.parse(valueString).doubleValue();
             return new SIScalar(d, unit);
         }
         catch (Exception exception)
