@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
-import org.djunits.Throw;
+import org.djutils.exceptions.Throw;
 import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;

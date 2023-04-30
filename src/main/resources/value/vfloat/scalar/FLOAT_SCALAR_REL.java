@@ -7,7 +7,7 @@ import org.djunits.value.util.ValueUtil;
 
 import jakarta.annotation.Generated;
 
-import org.djunits.Throw;
+import org.djutils.exceptions.Throw;
 import org.djunits.unit.*;
 import org.djunits.value.function.DimensionlessFunctions;
 import org.djunits.value.util.ValueUtil;

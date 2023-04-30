@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 
 import jakarta.annotation.Generated;
 
-import org.djunits.Throw;
+import org.djutils.exceptions.Throw;
 import org.djunits.unit.*;
 import org.djunits.value.util.ValueUtil;
 import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarAbs;

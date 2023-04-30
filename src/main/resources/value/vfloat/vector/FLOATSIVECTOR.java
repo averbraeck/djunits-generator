@@ -5,7 +5,7 @@ import java.util.SortedMap;
 
 import jakarta.annotation.Generated;
 
-import org.djunits.Throw;
+import org.djutils.exceptions.Throw;
 import org.djunits.unit.*;
 import org.djunits.unit.si.SIDimensions;
 import org.djunits.unit.util.UnitRuntimeException;
