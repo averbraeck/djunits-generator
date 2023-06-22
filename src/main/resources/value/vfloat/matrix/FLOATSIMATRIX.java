@@ -138,26 +138,5 @@ public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSI
     /******************************** 'CAST AS' METHODS *******************************/
     /**********************************************************************************/
 
-    /**
-     * Return the current matrix transformed to a matrix in the given unit. Of course the SI dimensionality has to match,
-     * otherwise the matrix cannot be transformed. The compiler will check the alignment between the return value and the unit.
-     * @param displayUnit KU; the unit in which the matrix needs to be expressed
-     * @return M; the matrix that has been transformed into the right matrix type and unit
-     * @param <U> the unit type
-     * @param <S> the scalar type
-     * @param <V> the vector type
-     * @param <M> the matrix type
-     */
-    public final <U extends Unit<U>, S extends FloatScalarRel<U, S>,
-            V extends FloatVectorRel<U, S, V>, M extends FloatMatrixRel<U, S, V, M>> M as(final U displayUnit)
-    {
-        Throw.when(!(getDisplayUnit().getQuantity().getSiDimensions().equals(displayUnit.getQuantity().getSiDimensions())),
-                UnitRuntimeException.class, "FloatSIMatrix with unit %s cannot be converted to a FloatMatrix with unit %s",
-                getDisplayUnit(), displayUnit);
-        M result = FloatMatrix.instantiate(this.data, displayUnit.getStandardUnit());
-        result.setDisplayUnit(displayUnit);
-        return result;
-    }
-
     %%ASMETHODS%%
 }
