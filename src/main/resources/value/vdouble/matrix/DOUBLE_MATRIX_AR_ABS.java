@@ -1,13 +1,14 @@
 package org.djunits.value.vdouble.matrix;
 
-import java.util.List;
-import java.util.SortedMap;
+import java.util.Collection;
 
 import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
+import org.djunits.value.storage.StorageType;
 import org.djunits.value.vdouble.matrix.base.DoubleMatrixRelWithAbs;
 import org.djunits.value.vdouble.matrix.base.DoubleMatrixAbs;
+import org.djunits.value.vdouble.matrix.base.DoubleSparseValue;
 import org.djunits.value.vdouble.matrix.data.DoubleMatrixData;
 import org.djunits.value.vdouble.vector.*;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
@@ -30,12 +31,167 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
     private static final long serialVersionUID = 20151006L;
 
     /**
-     * @param data DoubleMatrixData; an internal data object
-     * @param unit %TypeAbs%Unit; the unit
+     * Construct a %TypeAbs%Matrix from an internal data object.
+     * @param data DoubleMatrixData; the internal data object for the matrix
+     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data
      */
-    public %TypeAbs%Matrix(final DoubleMatrixData data, final %TypeAbs%Unit unit)
+    public %TypeAbs%Matrix(final DoubleMatrixData data, final %TypeAbsUnit% displayUnit)
     {
-        super(data, unit);
+        super(data, displayUnit);
+    }
+
+    /* CONSTRUCTORS WITH double[][] */
+
+    /**
+     * Construct a %TypeAbs%Matrix from a double[][] object. The double values are expressed in the displayUnit, and will be printed
+     * using the displayUnit.
+     * @param data double[][]; the data for the matrix, expressed in the displayUnit
+     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final double[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
+    {
+        this(DoubleMatrixData.instantiate(data, displayUnit.getScale(), storageType), displayUnit);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a double[][] object. The double values are expressed in the displayUnit. Assume that the
+     * StorageType is DENSE since we offer the data as an array of an array.
+     * @param data double[][]; the data for the matrix
+     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     */
+    public %TypeAbs%Matrix(final double[][] data, final %TypeAbsUnit% displayUnit)
+    {
+        this(data, displayUnit, StorageType.DENSE);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a double[][] object with SI-unit values.
+     * @param data double[][]; the data for the matrix, in SI units
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final double[][] data, final StorageType storageType)
+    {
+        this(data, %TypeAbsUnit%.BASE.getStandardUnit(), storageType);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a double[][] object with SI-unit values. Assume that the StorageType is DENSE since we offer
+     * the data as an array of an array.
+     * @param data double[][]; the data for the matrix, in SI units
+     */
+    public %TypeAbs%Matrix(final double[][] data)
+    {
+        this(data, StorageType.DENSE);
+    }
+
+    /* CONSTRUCTORS WITH %TypeAbs%[][] */
+
+    /**
+     * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
+     * but will be internally stored as SI values, all expressed in the displayUnit when printing.
+     * @param data %TypeAbs%[][]; the data for the matrix
+     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final %TypeAbs%[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
+    {
+        this(DoubleMatrixData.instantiate(data, storageType), displayUnit);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
+     * but will be internally stored as SI values, all expressed in the displayUnit when printing. Assume that the StorageType
+     * is DENSE since we offer the data as an array of an array.
+     * @param data %TypeAbs%[][]; the data for the matrix
+     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     */
+    public %TypeAbs%Matrix(final %TypeAbs%[][] data, final %TypeAbsUnit% displayUnit)
+    {
+        this(data, displayUnit, StorageType.DENSE);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
+     * but will be internally stored as SI values, and expressed using SI units when printing. since we offer the data as an
+     * array of an array.
+     * @param data %TypeAbs%[][]; the data for the matrix
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final %TypeAbs%[][] data, final StorageType storageType)
+    {
+        this(data, %TypeAbsUnit%.BASE.getStandardUnit(), storageType);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
+     * but will be internally stored as SI values, and expressed using SI units when printing. Assume that the StorageType is
+     * DENSE since we offer the data as an array of an array.
+     * @param data %TypeAbs%[][]; the data for the matrix
+     */
+    public %TypeAbs%Matrix(final %TypeAbs%[][] data)
+    {
+        this(data, StorageType.DENSE);
+    }
+
+    /* CONSTRUCTORS WITH Collection<DoubleSparseValue> */
+
+    /**
+     * Construct a %TypeAbs%Matrix from a (sparse) collection of DoubleSparseValue objects. The displayUnit indicates the unit in
+     * which the values in the collection are expressed, as well as the unit in which they will be printed.
+     * @param data Collection&lt;DoubleSparseValue&gt;; the data for the matrix
+     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
+     * @param rows int; the number of rows of the matrix
+     * @param cols int; the number of columns of the matrix
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final Collection<DoubleSparseValue<%TypeAbsUnit%, %TypeAbs%>> data, final %TypeAbsUnit% displayUnit, final int rows,
+            final int cols, final StorageType storageType)
+    {
+        this(DoubleMatrixData.instantiate(data, rows, cols, storageType), displayUnit);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a (sparse) collection of DoubleSparseValue objects. The displayUnit indicates the unit in
+     * which the values in the collection are expressed, as well as the unit in which they will be printed. Assume the storage
+     * type is SPARSE, since we offer the data as a collection.
+     * @param data Collection&lt;DoubleSparseValue&gt;; the data for the matrix
+     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
+     * @param rows int; the number of rows of the matrix
+     * @param cols int; the number of columns of the matrix
+     */
+    public %TypeAbs%Matrix(final Collection<DoubleSparseValue<%TypeAbsUnit%, %TypeAbs%>> data, final %TypeAbsUnit% displayUnit, final int rows,
+            final int cols)
+    {
+        this(data, displayUnit, rows, cols, StorageType.SPARSE);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a (sparse) collection of DoubleSparseValue objects. The displayUnit indicates the unit in
+     * which the values in the collection are expressed, as well as the unit in which they will be printed. Use the SI unit or
+     * base unit as the displayUnit.
+     * @param data Collection&lt;DoubleSparseValue&gt;; the data for the matrix
+     * @param rows int; the number of rows of the matrix
+     * @param cols int; the number of columns of the matrix
+     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     */
+    public %TypeAbs%Matrix(final Collection<DoubleSparseValue<%TypeAbsUnit%, %TypeAbs%>> data, final int rows, final int cols,
+            final StorageType storageType)
+    {
+        this(data, %TypeAbsUnit%.BASE.getStandardUnit(), rows, cols, storageType);
+    }
+
+    /**
+     * Construct a %TypeAbs%Matrix from a (sparse) collection of DoubleSparseValue objects. The displayUnit indicates the unit in
+     * which the values in the collection are expressed, as well as the unit in which they will be printed. Use the SI unit or
+     * base unit as the displayUnit. Assume the storage type is SPARSE, since we offer the data as a collection.
+     * @param data Collection&lt;DoubleSparseValue&gt;; the data for the matrix
+     * @param rows int; the number of rows of the matrix
+     * @param cols int; the number of columns of the matrix
+     */
+    public %TypeAbs%Matrix(final Collection<DoubleSparseValue<%TypeAbsUnit%, %TypeAbs%>> data, final int rows, final int cols)
+    {
+        this(data, %TypeAbsUnit%.BASE.getStandardUnit(), rows, cols, StorageType.SPARSE);
     }
 
     /** {@inheritDoc} */
