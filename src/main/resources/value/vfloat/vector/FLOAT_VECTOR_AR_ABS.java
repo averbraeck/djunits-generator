@@ -23,7 +23,7 @@ import org.djunits.value.vfloat.vector.base.*;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class Float%TypeAbs%Vector extends AbstractFloatVectorAbs<%TypeAbsUnit%, Float%TypeAbs%, Float%TypeAbs%Vector,
+public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%TypeAbs%, Float%TypeAbs%Vector,
     %TypeRelUnit%, Float%TypeRel%, Float%TypeRel%Vector>
 {
     /** */

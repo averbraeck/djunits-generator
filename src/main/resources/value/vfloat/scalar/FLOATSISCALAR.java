@@ -12,9 +12,9 @@ import org.djunits.unit.util.UnitRuntimeException;
 import org.djunits.value.util.ValueUtil;
 import org.djunits.value.vdouble.scalar.Dimensionless;
 import org.djunits.value.vdouble.scalar.SIScalar;
-import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarRel;
+import org.djunits.value.vdouble.scalar.base.DoubleScalarRel;
 import org.djunits.value.vdouble.scalar.base.DoubleScalar;
-import org.djunits.value.vfloat.scalar.base.AbstractFloatScalarRel;
+import org.djunits.value.vfloat.scalar.base.FloatScalarRel;
 import org.djunits.value.vfloat.scalar.base.FloatScalar;
 import org.djutils.base.NumberParser;
 import org.djutils.exceptions.Throw;
@@ -30,7 +30,7 @@ import org.djutils.exceptions.Throw;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class FloatSIScalar extends AbstractFloatScalarRel<SIUnit, FloatSIScalar>
+public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 {
     /** */
     private static final long serialVersionUID = 20150901L;
@@ -230,7 +230,7 @@ public class FloatSIScalar extends AbstractFloatScalarRel<SIUnit, FloatSIScalar>
      * @param <U> the unit type
      * @param <S> the scalar type
      */
-    public final <U extends Unit<U>, S extends AbstractFloatScalarRel<U, S>> S as(final U displayUnit)
+    public final <U extends Unit<U>, S extends FloatScalarRel<U, S>> S as(final U displayUnit)
     {
         Throw.when(!(getDisplayUnit().getQuantity().getSiDimensions().equals(displayUnit.getQuantity().getSiDimensions())),
                 UnitRuntimeException.class, "FloatSIScalar with unit %s cannot be converted to a scalar with unit %s", getDisplayUnit(),

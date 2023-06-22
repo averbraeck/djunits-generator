@@ -12,15 +12,15 @@ import org.djunits.unit.util.UnitRuntimeException;
 import org.djunits.value.ValueRuntimeException;
 import org.djunits.value.storage.StorageType;
 import org.djunits.value.vdouble.matrix.*;
-import org.djunits.value.vdouble.matrix.base.AbstractDoubleMatrixRel;
+import org.djunits.value.vdouble.matrix.base.DoubleMatrixRel;
 import org.djunits.value.vdouble.matrix.base.DoubleMatrix;
 import org.djunits.value.vdouble.matrix.data.DoubleMatrixData;
 import org.djunits.value.vdouble.scalar.*;
 import org.djunits.value.vdouble.scalar.SIScalar;
-import org.djunits.value.vdouble.scalar.base.AbstractDoubleScalarRel;
+import org.djunits.value.vdouble.scalar.base.DoubleScalarRel;
 import org.djunits.value.vdouble.vector.*;
 import org.djunits.value.vdouble.vector.SIVector;
-import org.djunits.value.vdouble.vector.base.AbstractDoubleVectorRel;
+import org.djunits.value.vdouble.vector.base.DoubleVectorRel;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
 
 /**
@@ -34,7 +34,7 @@ import org.djunits.value.vdouble.vector.data.DoubleVectorData;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class SIMatrix extends AbstractDoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatrix>
+public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatrix>
 {
     /** */
     private static final long serialVersionUID = 20150901L;
@@ -148,8 +148,8 @@ public class SIMatrix extends AbstractDoubleMatrixRel<SIUnit, SIScalar, SIVector
      * @param <V> the vector type
      * @param <M> the matrix type
      */
-    public final <U extends Unit<U>, S extends AbstractDoubleScalarRel<U, S>,
-            V extends AbstractDoubleVectorRel<U, S, V>, M extends AbstractDoubleMatrixRel<U, S, V, M>> M as(final U displayUnit)
+    public final <U extends Unit<U>, S extends DoubleScalarRel<U, S>,
+            V extends DoubleVectorRel<U, S, V>, M extends DoubleMatrixRel<U, S, V, M>> M as(final U displayUnit)
     {
         Throw.when(!(getDisplayUnit().getQuantity().getSiDimensions().equals(displayUnit.getQuantity().getSiDimensions())),
                 UnitRuntimeException.class, "SIMatrix with unit %s cannot be converted to a matrix with unit %s",

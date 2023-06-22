@@ -6,7 +6,7 @@ import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
 import org.djunits.value.util.ValueUtil;
-import org.djunits.value.vfloat.scalar.base.AbstractFloatScalarAbs;
+import org.djunits.value.vfloat.scalar.base.FloatScalarAbs;
 import org.djutils.base.NumberParser;
 import org.djutils.exceptions.Throw;
 
@@ -22,7 +22,7 @@ import org.djutils.exceptions.Throw;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class Float%TypeAbs% extends AbstractFloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%, %TypeRelUnit%, Float%TypeRel%>
+public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%, %TypeRelUnit%, Float%TypeRel%>
 {
     /** */
     private static final long serialVersionUID = 20150901L;

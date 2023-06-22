@@ -6,8 +6,8 @@ import java.util.SortedMap;
 import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
-import org.djunits.value.vdouble.matrix.base.AbstractDoubleMatrixRelWithAbs;
-import org.djunits.value.vdouble.matrix.base.AbstractDoubleMatrixAbs;
+import org.djunits.value.vdouble.matrix.base.DoubleMatrixRelWithAbs;
+import org.djunits.value.vdouble.matrix.base.DoubleMatrixAbs;
 import org.djunits.value.vdouble.matrix.data.DoubleMatrixData;
 import org.djunits.value.vdouble.vector.*;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
@@ -23,7 +23,7 @@ import org.djunits.value.vdouble.scalar.*;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class %TypeAbs%Matrix extends AbstractDoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %TypeAbs%Vector, %TypeAbs%Matrix,
+public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %TypeAbs%Vector, %TypeAbs%Matrix,
     %TypeRelUnit%, %TypeRel%, %TypeRel%Vector, %TypeRel%Matrix>
 {
     /** */

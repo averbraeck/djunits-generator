@@ -10,7 +10,7 @@ import org.djunits.unit.scale.IdentityScale;
 import org.djunits.value.storage.StorageType;
 import org.djunits.value.vdouble.scalar.*;
 import org.djunits.value.vdouble.vector.*;
-import org.djunits.value.vdouble.vector.base.AbstractDoubleVectorAbs;
+import org.djunits.value.vdouble.vector.base.DoubleVectorAbs;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
 
 /**
@@ -23,7 +23,7 @@ import org.djunits.value.vdouble.vector.data.DoubleVectorData;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class %TypeAbs%Vector extends AbstractDoubleVectorAbs<%TypeAbsUnit%, %TypeAbs%, %TypeAbs%Vector, 
+public class %TypeAbs%Vector extends DoubleVectorAbs<%TypeAbsUnit%, %TypeAbs%, %TypeAbs%Vector, 
         %TypeRelUnit%, %TypeRel%, %TypeRel%Vector>
 {
     /** */

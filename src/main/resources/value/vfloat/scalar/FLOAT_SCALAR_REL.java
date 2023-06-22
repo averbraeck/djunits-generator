@@ -24,7 +24,7 @@ import org.djutils.exceptions.Throw;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class Float%Type% extends AbstractFloatScalarRel<%Type%Unit, Float%Type%> %DIMLESS%
+public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLESS%
 {
     /** */
     private static final long serialVersionUID = 20150901L;

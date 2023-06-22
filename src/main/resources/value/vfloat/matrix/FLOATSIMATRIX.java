@@ -14,12 +14,12 @@ import org.djunits.unit.util.UnitRuntimeException;
 import org.djunits.value.ValueRuntimeException;
 import org.djunits.value.storage.StorageType;
 import org.djunits.value.vfloat.scalar.*;
-import org.djunits.value.vfloat.scalar.base.AbstractFloatScalarRel;
+import org.djunits.value.vfloat.scalar.base.FloatScalarRel;
 import org.djunits.value.vfloat.vector.*;
-import org.djunits.value.vfloat.vector.base.AbstractFloatVectorRel;
+import org.djunits.value.vfloat.vector.base.FloatVectorRel;
 import org.djunits.value.vfloat.vector.data.FloatVectorData;
 import org.djunits.value.vfloat.matrix.*;
-import org.djunits.value.vfloat.matrix.base.AbstractFloatMatrixRel;
+import org.djunits.value.vfloat.matrix.base.FloatMatrixRel;
 import org.djunits.value.vfloat.matrix.base.FloatMatrix;
 import org.djunits.value.vfloat.matrix.data.FloatMatrixData;
 
@@ -34,7 +34,7 @@ import org.djunits.value.vfloat.matrix.data.FloatMatrixData;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class FloatSIMatrix extends AbstractFloatMatrixRel<SIUnit, FloatSIScalar, FloatSIVector, FloatSIMatrix>
+public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSIVector, FloatSIMatrix>
 {
     /** */
     private static final long serialVersionUID = 20150901L;
@@ -148,8 +148,8 @@ public class FloatSIMatrix extends AbstractFloatMatrixRel<SIUnit, FloatSIScalar,
      * @param <V> the vector type
      * @param <M> the matrix type
      */
-    public final <U extends Unit<U>, S extends AbstractFloatScalarRel<U, S>,
-            V extends AbstractFloatVectorRel<U, S, V>, M extends AbstractFloatMatrixRel<U, S, V, M>> M as(final U displayUnit)
+    public final <U extends Unit<U>, S extends FloatScalarRel<U, S>,
+            V extends FloatVectorRel<U, S, V>, M extends FloatMatrixRel<U, S, V, M>> M as(final U displayUnit)
     {
         Throw.when(!(getDisplayUnit().getQuantity().getSiDimensions().equals(displayUnit.getQuantity().getSiDimensions())),
                 UnitRuntimeException.class, "FloatSIMatrix with unit %s cannot be converted to a FloatMatrix with unit %s",

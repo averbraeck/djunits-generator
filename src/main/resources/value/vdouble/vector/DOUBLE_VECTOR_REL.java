@@ -12,7 +12,7 @@ import org.djunits.value.storage.StorageType;
 import org.djunits.value.vdouble.function.DoubleMathFunctions;
 import org.djunits.value.vdouble.scalar.*;
 import org.djunits.value.vdouble.vector.*;
-import org.djunits.value.vdouble.vector.base.AbstractDoubleVectorRel;
+import org.djunits.value.vdouble.vector.base.DoubleVectorRel;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
 
 /**
@@ -25,7 +25,7 @@ import org.djunits.value.vdouble.vector.data.DoubleVectorData;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class %Type%Vector extends AbstractDoubleVectorRel<%Type%Unit, %Type%, %Type%Vector>
+public class %Type%Vector extends DoubleVectorRel<%Type%Unit, %Type%, %Type%Vector>
 %DIMLESS%
 {
     /** */

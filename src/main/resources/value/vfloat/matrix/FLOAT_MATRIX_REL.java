@@ -24,7 +24,7 @@ import org.djunits.value.vfloat.vector.data.FloatVectorData;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class Float%Type%Matrix extends AbstractFloatMatrixRel<%Type%Unit, Float%Type%, Float%Type%Vector, Float%Type%Matrix>
+public class Float%Type%Matrix extends FloatMatrixRel<%Type%Unit, Float%Type%, Float%Type%Vector, Float%Type%Matrix>
 %DIMLESS%
 {
     /** */

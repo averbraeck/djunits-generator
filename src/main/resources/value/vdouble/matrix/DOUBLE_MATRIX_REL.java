@@ -8,7 +8,7 @@ import jakarta.annotation.Generated;
 import org.djunits.unit.*;
 import org.djunits.value.function.DimensionlessFunctions;
 import org.djunits.value.vdouble.function.DoubleMathFunctions;
-import org.djunits.value.vdouble.matrix.base.AbstractDoubleMatrixRel;
+import org.djunits.value.vdouble.matrix.base.DoubleMatrixRel;
 import org.djunits.value.vdouble.matrix.data.DoubleMatrixData;
 import org.djunits.value.vdouble.vector.*;
 import org.djunits.value.vdouble.vector.data.DoubleVectorData;
@@ -24,7 +24,7 @@ import org.djunits.value.vdouble.scalar.*;
  * @author <a href="https://www.tudelft.nl/staff/p.knoppers/">Peter Knoppers</a>
  */
 @Generated(value = "GenerateDJUNIT")
-public class %Type%Matrix extends AbstractDoubleMatrixRel<%Type%Unit, %Type%, %Type%Vector, %Type%Matrix>
+public class %Type%Matrix extends DoubleMatrixRel<%Type%Unit, %Type%, %Type%Vector, %Type%Matrix>
 %DIMLESS%
 {
     /** */
