@@ -40,26 +40,37 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
     private static final long serialVersionUID = 20150901L;
 
     /**
-     * Construct a new Relative Double SIMatrix.
-     * @param values double[][]; the values of the entries in the new Relative Double SIMatrix
-     * @param unit SIUnit; the unit of the new Relative Double SIMatrix
-     * @param storageType StorageType; the data type to use (e.g., DENSE or SPARSE)
-     * @return SIMatrix; the SIMatrix of the given unit
-     * @throws ValueRuntimeException when values is null
-     */
-    public static SIMatrix instantiate(final double[][] values, final SIUnit unit, final StorageType storageType)
-            throws ValueRuntimeException
-    {
-        return new SIMatrix(DoubleMatrixData.instantiate(values, unit.getScale(), storageType), unit);
-    }
-
-    /**
+     * Construct a new Relative Double SIMatrix on the basis of a data object.
      * @param data DoubleMatrixData; an internal data object
      * @param unit SIUnit; the unit
      */
     public SIMatrix(final DoubleMatrixData data, final SIUnit unit)
     {
         super(data, unit);
+    }
+
+    /**
+     * Construct a new Relative Double SIMatrix with a unit for the float values that will also be used for the displayUnit.
+     * @param values double[][]; the values of the entries in the new Relative Double SIMatrix
+     * @param unit SIUnit; the unit of the new Relative Double SIMatrix
+     * @param storageType StorageType; the data type to use (e.g., DENSE or SPARSE)
+     * @throws ValueRuntimeException when values is null
+     */
+    public SIMatrix(final double[][] values, final SIUnit unit, final StorageType storageType) throws ValueRuntimeException
+    {
+        this(DoubleMatrixData.instantiate(values, unit.getScale(), storageType), unit);
+    }
+
+    /**
+     * Construct a new Relative Double SIMatrix with a unit for the float values that will also be used for the displayUnit.
+     * Assume the StorageType is DENSE since we offer the content as an array.
+     * @param values double[][]; the values of the entries in the new Relative Double SIMatrix
+     * @param unit SIUnit; the unit of the new Relative Double SIMatrix
+     * @throws ValueRuntimeException when values is null
+     */
+    public SIMatrix(final double[][] values, final SIUnit unit) throws ValueRuntimeException
+    {
+        this(values, unit, StorageType.DENSE);
     }
 
     /** {@inheritDoc} */
@@ -96,7 +107,7 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
             SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
             if (unit != null)
             {
-                return SIMatrix.instantiate(values, unit, storageType);
+                return new SIMatrix(values, unit, storageType);
             }
         }
         catch (Exception exception)
@@ -137,6 +148,7 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
     /**********************************************************************************/
     /******************************** 'CAST AS' METHODS *******************************/
     /**********************************************************************************/
+
 
     %%ASMETHODS%%
 }
