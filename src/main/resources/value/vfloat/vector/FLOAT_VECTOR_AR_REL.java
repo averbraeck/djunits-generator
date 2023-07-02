@@ -1,7 +1,7 @@
 package org.djunits.value.vfloat.vector;
 
 import java.util.List;
-import java.util.SortedMap;
+import java.util.Map;
 
 import jakarta.annotation.Generated;
 
@@ -197,7 +197,7 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
         this(data, StorageType.DENSE);
     }
 
-    /* CONSTRUCTORS WITH SortedMap<Integer, Float> or SortedMap<Integer, Float%TypeRel%> */
+    /* CONSTRUCTORS WITH Map<Integer, Float> or Map<Integer, Float%TypeRel%> */
 
     /**
      * Construct a Float%TypeRel%Vector from a (sparse) map of index values to Number objects or a (sparse) map of index values to
@@ -208,17 +208,17 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
      * unit in which they will be printed. In case the map contains Float%TypeRel% objects, each Float%TypeRel% has its own unit, and the
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing.
-     * @param data SortedMap&lt;Integer, Float&gt; or SortedMap&lt;Integer, Float%TypeRel%&gt;; the data for the vector
+     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeRel%&gt;; the data for the vector
      * @param size int; the size off the vector, i.e., the highest index
      * @param displayUnit %TypeRelUnit%; the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
-    public Float%TypeRel%Vector(final SortedMap<Integer, ? extends Number> data, final int size, final %TypeRelUnit% displayUnit,
+    public Float%TypeRel%Vector(final Map<Integer, ? extends Number> data, final int size, final %TypeRelUnit% displayUnit,
             final StorageType storageType)
     {
         this(data.size() == 0 ? FloatVectorData.instantiate(data, size, IdentityScale.SCALE, storageType)
-                : data.get(data.firstKey()) instanceof Float%TypeRel%
+                : data.values().iterator().next() instanceof Float%TypeRel%
                         ? FloatVectorData.instantiate(data, size, IdentityScale.SCALE, storageType)
                         : FloatVectorData.instantiate(data, size, displayUnit.getScale(), storageType),
                 displayUnit);
@@ -234,12 +234,12 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing. Assume the storage type is SPARSE since we offer the data as
      * a Map.
-     * @param data SortedMap&lt;Integer, Float&gt; or SortedMap&lt;Integer, Float%TypeRel%&gt;; the data for the vector
+     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeRel%&gt;; the data for the vector
      * @param size int; the size off the vector, i.e., the highest index
      * @param displayUnit %TypeRelUnit%; the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      */
-    public Float%TypeRel%Vector(final SortedMap<Integer, ? extends Number> data, final int size, final %TypeRelUnit% displayUnit)
+    public Float%TypeRel%Vector(final Map<Integer, ? extends Number> data, final int size, final %TypeRelUnit% displayUnit)
     {
         this(data, size, displayUnit, StorageType.SPARSE);
     }
@@ -251,11 +251,11 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
      * assume that they are expressed using SI units. When the data consists of Float%TypeRel% objects, they each have their own
      * unit, but will be printed using SI units or base units. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing.
-     * @param data SortedMap&lt;Integer, Float&gt; or SortedMap&lt;Integer, Float%TypeRel%&gt;; the data for the vector
+     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeRel%&gt;; the data for the vector
      * @param size int; the size off the vector, i.e., the highest index
      * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
-    public Float%TypeRel%Vector(final SortedMap<Integer, ? extends Number> data, final int size, final StorageType storageType)
+    public Float%TypeRel%Vector(final Map<Integer, ? extends Number> data, final int size, final StorageType storageType)
     {
         this(data, size, %TypeRelUnit%.SI, storageType);
     }
@@ -268,10 +268,10 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
      * unit, but will be printed using SI units or base units. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing. Assume the storage type is SPARSE since we
      * offer the data as a Map.
-     * @param data SortedMap&lt;Integer, Float&gt; or SortedMap&lt;Integer, Float%TypeRel%&gt;; the data for the vector
+     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeRel%&gt;; the data for the vector
      * @param size int; the size off the vector, i.e., the highest index
      */
-    public Float%TypeRel%Vector(final SortedMap<Integer, ? extends Number> data, final int size)
+    public Float%TypeRel%Vector(final Map<Integer, ? extends Number> data, final int size)
     {
         this(data, size, StorageType.SPARSE);
     }
