@@ -165,7 +165,7 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
     public static FloatSIScalar valueOf(final String text)
     {
         Throw.whenNull(text, "Error parsing SIScalar: unitString is null");
-        Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty unitString");
+        Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing SIScalar: empty string");
         try
         {
             NumberParser numberParser = new NumberParser().lenient().trailing();
@@ -195,7 +195,6 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
     public static FloatSIScalar of(final float value, final String unitString)
     {
         Throw.whenNull(unitString, "Error parsing FloatSIScalar: unitString is null");
-        Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing FloatSIScalar: empty unitString");
         try
         {
             SIUnit unit = Unit.lookupOrCreateUnitWithSIDimensions(SIDimensions.of(unitString));
