@@ -254,8 +254,8 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 	public static Dimensionless of(final double value, final String unitString)
 	{
 	    Throw.whenNull(unitString, "Error parsing Dimensionless: unitString is null");
-	    Throw.when(unitString.length() != 0, IllegalArgumentException.class,
-	            "Error parsing Dimensionless: non-empty unitString");
+        Throw.when(unitString.trim().length() != 0, IllegalArgumentException.class,
+                "Error parsing Dimensionless: non-empty unitString");
 	    DimensionlessUnit unit = DimensionlessUnit.SI;
 	    return new Dimensionless(value, unit);
 	}
