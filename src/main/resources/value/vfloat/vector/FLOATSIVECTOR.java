@@ -204,7 +204,6 @@ public class FloatSIVector extends FloatVectorRel<SIUnit, FloatSIScalar, FloatSI
     {
         Throw.whenNull(value, "Error parsing FloatSIVector: value is null");
         Throw.whenNull(unitString, "Error parsing FloatSIVector: unitString is null");
-        Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing FloatSIVector: empty unitString");
         Throw.whenNull(storageType, "Error parsing FloatSIVector: storageType is null");
         try
         {
@@ -234,7 +233,6 @@ public class FloatSIVector extends FloatVectorRel<SIUnit, FloatSIScalar, FloatSI
     {
         Throw.whenNull(valueList, "Error parsing FloatSIVector: valueList is null");
         Throw.whenNull(unitString, "Error parsing FloatSIVector: unitString is null");
-        Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing FloatSIVector: empty unitString");
         Throw.whenNull(storageType, "Error parsing FloatSIVector: storageType is null");
         try
         {
@@ -266,7 +264,6 @@ public class FloatSIVector extends FloatVectorRel<SIUnit, FloatSIScalar, FloatSI
     {
         Throw.whenNull(valueMap, "Error parsing FloatSIVector: valueMap is null");
         Throw.whenNull(unitString, "Error parsing FloatSIVector: unitString is null");
-        Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing FloatSIVector: empty unitString");
         Throw.whenNull(storageType, "Error parsing FloatSIVector: storageType is null");
         try
         {
