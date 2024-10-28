@@ -68,14 +68,12 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
         super(value);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final Float%TypeAbs% instantiateAbs(final float value, final %TypeAbsUnit% unit)
     {
         return new Float%TypeAbs%(value, unit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final Float%TypeRel% instantiateRel(final float value, final %TypeRelUnit% unit)
     {

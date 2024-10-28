@@ -1,5 +1,4 @@
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector acos()
     {
@@ -7,7 +6,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector asin()
     {
@@ -15,7 +13,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector atan()
     {
@@ -23,7 +20,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector cbrt()
     {
@@ -31,7 +27,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector cos()
     {
@@ -39,7 +34,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector cosh()
     {
@@ -47,7 +41,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector exp()
     {
@@ -55,7 +48,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector expm1()
     {
@@ -63,7 +55,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector log()
     {
@@ -71,7 +62,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector log10()
     {
@@ -79,7 +69,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector log1p()
     {
@@ -87,7 +76,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector pow(final double x)
     {
@@ -95,7 +83,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector signum()
     {
@@ -103,7 +90,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector sin()
     {
@@ -111,7 +97,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector sinh()
     {
@@ -119,7 +104,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector sqrt()
     {
@@ -127,7 +111,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector tan()
     {
@@ -135,7 +118,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector tanh()
     {
@@ -143,7 +125,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessVector inv()
     {

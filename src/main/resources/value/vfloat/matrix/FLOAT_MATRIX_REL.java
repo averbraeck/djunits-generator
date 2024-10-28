@@ -194,35 +194,30 @@ public class Float%Type%Matrix extends FloatMatrixRel<%Type%Unit, Float%Type%, F
         this(data, %Type%Unit.SI, rows, cols, StorageType.SPARSE);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<Float%Type%> getScalarClass()
     {
         return Float%Type%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<Float%Type%Vector> getVectorClass()
     {
         return Float%Type%Vector.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%Type%Matrix instantiateMatrix(final FloatMatrixData fmd, final %Type%Unit displayUnit)
     {
         return new Float%Type%Matrix(fmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%Type%Vector instantiateVector(final FloatVectorData fvd, final %Type%Unit displayUnit)
     {
         return new Float%Type%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%Type% instantiateScalarSI(final float valueSI, final %Type%Unit displayUnit)
     {

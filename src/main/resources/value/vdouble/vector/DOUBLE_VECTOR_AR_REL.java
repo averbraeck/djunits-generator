@@ -277,21 +277,18 @@ public class %TypeRel%Vector extends DoubleVectorRelWithAbs<%TypeAbsUnit%, %Type
 
     /* ****************************** Other methods ****************************** */
 
-    /** {@inheritDoc} */
     @Override
     public Class<%TypeRel%> getScalarClass()
     {
         return %TypeRel%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeRel%Vector instantiateVector(final DoubleVectorData dvd, final %TypeRelUnit% displayUnit)
     {
         return new %TypeRel%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeRel% instantiateScalarSI(final double valueSI, final %TypeRelUnit% displayUnit)
     {
@@ -300,14 +297,12 @@ public class %TypeRel%Vector extends DoubleVectorRelWithAbs<%TypeAbsUnit%, %Type
         return result;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeAbs%Vector instantiateVectorAbs(final DoubleVectorData dvd, final %TypeAbsUnit% displayUnit)
     {
         return new %TypeAbs%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeAbs% instantiateScalarAbsSI(final double valueSI, final %TypeAbsUnit% displayUnit)
     {

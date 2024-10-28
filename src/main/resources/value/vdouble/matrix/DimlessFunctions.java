@@ -1,5 +1,4 @@
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix acos()
     {
@@ -7,7 +6,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix asin()
     {
@@ -15,7 +13,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix atan()
     {
@@ -23,7 +20,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix cbrt()
     {
@@ -31,7 +27,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix cos()
     {
@@ -39,7 +34,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix cosh()
     {
@@ -47,7 +41,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix exp()
     {
@@ -55,7 +48,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix expm1()
     {
@@ -63,7 +55,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix log()
     {
@@ -71,7 +62,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix log10()
     {
@@ -79,7 +69,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix log1p()
     {
@@ -87,7 +76,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix pow(final double x)
     {
@@ -95,7 +83,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix signum()
     {
@@ -103,7 +90,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix sin()
     {
@@ -111,7 +97,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix sinh()
     {
@@ -119,7 +104,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix sqrt()
     {
@@ -127,7 +111,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix tan()
     {
@@ -135,7 +118,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix tanh()
     {
@@ -143,7 +125,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final DimensionlessMatrix inv()
     {

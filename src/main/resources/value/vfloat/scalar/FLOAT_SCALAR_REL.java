@@ -81,7 +81,6 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
         super((float) value, unit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final Float%Type% instantiateRel(final float value, final %Type%Unit unit)
     {

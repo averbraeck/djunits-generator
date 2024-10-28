@@ -55,7 +55,6 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
         super(value);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final SIScalar instantiateRel(final double value, final SIUnit unit)
     {
@@ -147,7 +146,6 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
         return minr;
     }
 
-    /** {@inheritDoc} */
     @Override
     public SIScalar reciprocal()
     {
@@ -211,7 +209,6 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
         throw new IllegalArgumentException("Error parsing SIScalar with unit " + unitString);
     }
 
-    /** {@inheritDoc} */
     @Override
     public String toString(final SIUnit displayUnit, final boolean verbose, final boolean withUnit)
     {

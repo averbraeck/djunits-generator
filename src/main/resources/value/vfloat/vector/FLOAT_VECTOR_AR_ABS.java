@@ -279,7 +279,6 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
 
     /* ****************************** Other methods ****************************** */
 
-    /** {@inheritDoc} */
     @Override
     public Class<Float%TypeAbs%>
 
@@ -288,14 +287,12 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
         return Float%TypeAbs%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeAbs%Vector instantiateVector(final FloatVectorData fvd, final %TypeAbsUnit% displayUnit)
     {
         return new Float%TypeAbs%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeAbs% instantiateScalarSI(final float valueSI, final %TypeAbsUnit% displayUnit)
     {
@@ -304,14 +301,12 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
         return result;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeRel%Vector instantiateVectorRel(final FloatVectorData fvd, final %TypeRelUnit% displayUnit)
     {
         return new Float%TypeRel%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeRel% instantiateScalarRelSI(final float valueSI, final %TypeRelUnit% displayUnit)
     {

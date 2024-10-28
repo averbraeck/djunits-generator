@@ -196,35 +196,30 @@ public class %Type%Matrix extends DoubleMatrixRel<%Type%Unit, %Type%, %Type%Vect
         this(data, %Type%Unit.SI, rows, cols, StorageType.SPARSE);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<%Type%> getScalarClass()
     {
         return %Type%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<%Type%Vector> getVectorClass()
     {
         return %Type%Vector.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %Type%Matrix instantiateMatrix(final DoubleMatrixData dmd, final %Type%Unit displayUnit)
     {
         return new %Type%Matrix(dmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %Type%Vector instantiateVector(final DoubleVectorData dvd, final %Type%Unit displayUnit)
     {
         return new %Type%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %Type% instantiateScalarSI(final double valueSI, final %Type%Unit displayUnit)
     {

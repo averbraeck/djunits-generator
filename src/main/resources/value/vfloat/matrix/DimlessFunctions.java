@@ -1,5 +1,4 @@
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix acos()
     {
@@ -7,7 +6,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix asin()
     {
@@ -15,7 +13,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix atan()
     {
@@ -23,7 +20,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix cbrt()
     {
@@ -31,7 +27,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix cos()
     {
@@ -39,7 +34,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix cosh()
     {
@@ -47,7 +41,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix exp()
     {
@@ -55,7 +48,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix expm1()
     {
@@ -63,7 +55,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix log()
     {
@@ -71,7 +62,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix log10()
     {
@@ -79,7 +69,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix log1p()
     {
@@ -87,7 +76,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix pow(final double x)
     {
@@ -95,7 +83,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix signum()
     {
@@ -103,7 +90,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix sin()
     {
@@ -111,7 +97,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix sinh()
     {
@@ -119,7 +104,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix sqrt()
     {
@@ -127,7 +111,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix tan()
     {
@@ -135,7 +118,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix tanh()
     {
@@ -143,7 +125,6 @@
         return this;
     }
 
-    /** {@inheritDoc} */
     @Override
     public final FloatDimensionlessMatrix inv()
     {

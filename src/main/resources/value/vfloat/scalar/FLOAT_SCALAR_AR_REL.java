@@ -77,7 +77,6 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
         super((float) value, unit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final Float%TypeRel% instantiateRel(final float value, final %TypeRelUnit% unit)
     {
@@ -94,7 +93,6 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
         return new Float%TypeRel%(value, %TypeRelUnit%.SI);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final Float%TypeAbs% instantiateAbs(final float value, final %TypeAbsUnit% unit)
     {

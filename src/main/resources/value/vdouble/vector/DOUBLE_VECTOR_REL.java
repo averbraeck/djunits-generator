@@ -279,21 +279,18 @@ public class %Type%Vector extends DoubleVectorRel<%Type%Unit, %Type%, %Type%Vect
 
     /* ****************************** Other methods ****************************** */
 
-    /** {@inheritDoc} */
     @Override
     public Class<%Type%> getScalarClass()
     {
         return %Type%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %Type%Vector instantiateVector(final DoubleVectorData dvd, final %Type%Unit displayUnit)
     {
         return new %Type%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %Type% instantiateScalarSI(final double valueSI, final %Type%Unit displayUnit)
     {

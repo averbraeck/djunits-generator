@@ -194,35 +194,30 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
         this(data, %TypeAbsUnit%.BASE.getStandardUnit(), rows, cols, StorageType.SPARSE);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<%TypeAbs%> getScalarClass()
     {
         return %TypeAbs%.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Class<%TypeAbs%Vector> getVectorClass()
     {
         return %TypeAbs%Vector.class;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeAbs%Matrix instantiateMatrix(final DoubleMatrixData dmd, final %TypeAbsUnit% displayUnit)
     {
         return new %TypeAbs%Matrix(dmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeAbs%Vector instantiateVector(final DoubleVectorData dvd, final %TypeAbsUnit% displayUnit)
     {
         return new %TypeAbs%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeAbs% instantiateScalarSI(final double valueSI, final %TypeAbsUnit% displayUnit)
     {
@@ -231,21 +226,18 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
         return result;
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeRel%Matrix instantiateMatrixRel(final DoubleMatrixData dmd, final %TypeRelUnit% displayUnit)
     {
         return new %TypeRel%Matrix(dmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeRel%Vector instantiateVectorRel(final DoubleVectorData dvd, final %TypeRelUnit% displayUnit)
     {
         return new %TypeRel%Vector(dvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public %TypeRel% instantiateScalarRelSI(final double valueSI, final %TypeRelUnit% displayUnit)
     {

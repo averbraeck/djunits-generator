@@ -68,7 +68,6 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
         super(value);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final %Type% instantiateRel(final double value, final %Type%Unit unit)
     {
@@ -262,7 +261,6 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 ##ENDIF
 
 ##IF Mass
-/** {@inheritDoc} */
 	@Override
 	public String toStringSIPrefixed(final int smallestPower, final int biggestPower)
 	{

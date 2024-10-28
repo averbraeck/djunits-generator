@@ -280,21 +280,18 @@ public class Float%Type%Vector extends FloatVectorRel<%Type%Unit, Float%Type%, F
 
     /* ****************************** Other methods ****************************** */
 
-    /** {@inheritDoc} */
     @Override
     public Class<Float%Type%> getScalarClass()
     {
         return Float%Type%.class;
     }
         
-    /** {@inheritDoc} */
     @Override
     public Float%Type%Vector instantiateVector(final FloatVectorData fvd, final %Type%Unit displayUnit)
     {
         return new Float%Type%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%Type% instantiateScalarSI(final float valueSI, final %Type%Unit displayUnit)
     {

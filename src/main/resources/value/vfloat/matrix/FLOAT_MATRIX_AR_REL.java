@@ -192,35 +192,30 @@ public class Float%TypeRel%Matrix extends FloatMatrixRelWithAbs<%TypeAbsUnit%, F
         this(data, %TypeRel%Unit.SI, rows, cols, StorageType.SPARSE);
     }
     
-    /** {@inheritDoc} */
     @Override
     public Class<Float%TypeRel%> getScalarClass()
     {
         return Float%TypeRel%.class;
     }
     
-    /** {@inheritDoc} */
     @Override
     public Class<Float%TypeRel%Vector> getVectorClass()
     {
         return Float%TypeRel%Vector.class;
     }
         
-    /** {@inheritDoc} */
     @Override
     public Float%TypeRel%Matrix instantiateMatrix(final FloatMatrixData fmd, final %TypeRelUnit% displayUnit)
     {
         return new Float%TypeRel%Matrix(fmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeRel%Vector instantiateVector(final FloatVectorData fvd, final %TypeRelUnit% displayUnit)
     {
         return new Float%TypeRel%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeRel% instantiateScalarSI(final float valueSI, final %TypeRelUnit% displayUnit)
     {
@@ -229,21 +224,18 @@ public class Float%TypeRel%Matrix extends FloatMatrixRelWithAbs<%TypeAbsUnit%, F
         return result;
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeAbs%Matrix instantiateMatrixAbs(final FloatMatrixData fmd, final %TypeAbsUnit% displayUnit)
     {
         return new Float%TypeAbs%Matrix(fmd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeAbs%Vector instantiateVectorAbs(final FloatVectorData fvd, final %TypeAbsUnit% displayUnit)
     {
         return new Float%TypeAbs%Vector(fvd, displayUnit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public Float%TypeAbs% instantiateScalarAbsSI(final float valueSI, final %TypeAbsUnit% displayUnit)
     {

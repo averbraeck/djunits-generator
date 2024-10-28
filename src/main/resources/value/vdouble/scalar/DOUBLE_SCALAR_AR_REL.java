@@ -67,14 +67,12 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
         super(value);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final %TypeRel% instantiateRel(final double value, final %TypeRelUnit% unit)
     {
         return new %TypeRel%(value, unit);
     }
 
-    /** {@inheritDoc} */
     @Override
     public final %TypeAbs% instantiateAbs(final double value, final %TypeAbsUnit% unit)
     {
