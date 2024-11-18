@@ -38,8 +38,8 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value double; the double value
-     * @param unit SIUnit; unit for the double value
+     * @param value the double value
+     * @param unit unit for the double value
      */
     public SIScalar(final double value, final SIUnit unit)
     {
@@ -48,7 +48,7 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value SIScalar; Scalar from which to construct this instance
+     * @param value Scalar from which to construct this instance
      */
     public SIScalar(final SIScalar value)
     {
@@ -63,9 +63,9 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value double; the double value in SI units
-     * @param unit SIUnit; the unit to use for the SI scalar
-     * @return SIScalar; the new scalar with the SI value
+     * @param value the double value in SI units
+     * @param unit the unit to use for the SI scalar
+     * @return the new scalar with the SI value
      */
     public static final SIScalar instantiateSI(final double value, final SIUnit unit)
     {
@@ -74,10 +74,10 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Interpolate between two values.
-     * @param zero SIScalar; the low value
-     * @param one SIScalar; the high value
-     * @param ratio double; the ratio between 0 and 1, inclusive
-     * @return SIScalar; a Scalar at the ratio between
+     * @param zero the low value
+     * @param one the high value
+     * @param ratio the ratio between 0 and 1, inclusive
+     * @return a Scalar at the ratio between
      */
     public static SIScalar interpolate(final SIScalar zero, final SIScalar one, final double ratio)
     {
@@ -86,9 +86,9 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Return the maximum value of two relative scalars.
-     * @param r1 SIScalar; the first scalar
-     * @param r2 SIScalar; the second scalar
-     * @return SIScalar; the maximum value of two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @return the maximum value of two relative scalars
      */
     public static SIScalar max(final SIScalar r1, final SIScalar r2)
     {
@@ -97,10 +97,10 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Return the maximum value of more than two relative scalars.
-     * @param r1 SIScalar; the first scalar
-     * @param r2 SIScalar; the second scalar
-     * @param rn SIScalar...; the other scalars
-     * @return SIScalar; the maximum value of more than two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @param rn the other scalars
+     * @return the maximum value of more than two relative scalars
      */
     public static SIScalar max(final SIScalar r1, final SIScalar r2, final SIScalar... rn)
     {
@@ -117,9 +117,9 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Return the minimum value of two relative scalars.
-     * @param r1 SIScalar; the first scalar
-     * @param r2 SIScalar; the second scalar
-     * @return SIScalar; the minimum value of two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @return the minimum value of two relative scalars
      */
     public static SIScalar min(final SIScalar r1, final SIScalar r2)
     {
@@ -128,10 +128,10 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Return the minimum value of more than two relative scalars.
-     * @param r1 SIScalar; the first scalar
-     * @param r2 SIScalar; the second scalar
-     * @param rn SIScalar...; the other scalars
-     * @return SIScalar; the minimum value of more than two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @param rn the other scalars
+     * @return the minimum value of more than two relative scalars
      */
     public static SIScalar min(final SIScalar r1, final SIScalar r2, final SIScalar... rn)
     {
@@ -156,8 +156,8 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
      * Returns an SIScalar representation of a textual representation of a value with a unit. The String representation that can
      * be parsed is the double value in the unit, followed by the official abbreviation of the unit. Spaces are allowed, but not
      * required, between the value and the unit.
-     * @param text String; the textual representation to parse into a SIScalar
-     * @return SIScalar; the Scalar representation of the value in its unit
+     * @param text the textual representation to parse into a SIScalar
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
      */
@@ -185,9 +185,9 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
 
     /**
      * Returns an SIScalar based on a value and the textual representation of the unit.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
-     * @return SIScalar; the Scalar representation of the value in its unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */
@@ -222,8 +222,8 @@ public class SIScalar extends DoubleScalarRel<SIUnit, SIScalar>
     /**
      * Return the current scalar transformed to a scalar in the given unit. Of course the SI dimensionality has to match,
      * otherwise the scalar cannot be transformed. The compiler will check the alignment between the return value and the unit.
-     * @param displayUnit KU; the unit in which the scalar needs to be expressed
-     * @return S; the scalar that has been transformed into the right scalar type and unit
+     * @param displayUnit the unit in which the scalar needs to be expressed
+     * @return the scalar that has been transformed into the right scalar type and unit
      * @param <U> the unit type
      * @param <S> the scalar type
      */

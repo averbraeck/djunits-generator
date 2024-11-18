@@ -37,8 +37,8 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value float; the float value
-     * @param unit SIUnit; unit for the float value
+     * @param value the float value
+     * @param unit unit for the float value
      */
     public FloatSIScalar(final float value, final SIUnit unit)
     {
@@ -47,7 +47,7 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value FloatSIScalar; Scalar from which to construct this instance
+     * @param value Scalar from which to construct this instance
      */
     public FloatSIScalar(final FloatSIScalar value)
     {
@@ -62,9 +62,9 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Construct SI scalar.
-     * @param value float; the float value in SI units
-     * @param unit SIUnit; the unit to use for the SI scalar
-     * @return FloatSIScalar; the new scalar with the SI value
+     * @param value the float value in SI units
+     * @param unit the unit to use for the SI scalar
+     * @return the new scalar with the SI value
      */
     public static final FloatSIScalar instantiateSI(final float value, final SIUnit unit)
     {
@@ -73,10 +73,10 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Interpolate between two values.
-     * @param zero FloatSIScalar; the low value
-     * @param one FloatSIScalar; the high value
-     * @param ratio float; the ratio between 0 and 1, inclusive
-     * @return FloatSIScalar; a Scalar at the ratio between
+     * @param zero the low value
+     * @param one the high value
+     * @param ratio the ratio between 0 and 1, inclusive
+     * @return a Scalar at the ratio between
      */
     public static FloatSIScalar interpolate(final FloatSIScalar zero, final FloatSIScalar one, final float ratio)
     {
@@ -85,9 +85,9 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Return the maximum value of two relative scalars.
-     * @param r1 FloatSIScalar; the first scalar
-     * @param r2 FloatSIScalar; the second scalar
-     * @return FloatSIScalar; the maximum value of two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @return the maximum value of two relative scalars
      */
     public static FloatSIScalar max(final FloatSIScalar r1, final FloatSIScalar r2)
     {
@@ -96,10 +96,10 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Return the maximum value of more than two relative scalars.
-     * @param r1 FloatSIScalar; the first scalar
-     * @param r2 FloatSIScalar; the second scalar
-     * @param rn FloatSIScalar...; the other scalars
-     * @return FloatSIScalar; the maximum value of more than two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @param rn the other scalars
+     * @return the maximum value of more than two relative scalars
      */
     public static FloatSIScalar max(final FloatSIScalar r1, final FloatSIScalar r2, final FloatSIScalar... rn)
     {
@@ -116,9 +116,9 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Return the minimum value of two relative scalars.
-     * @param r1 FloatSIScalar; the first scalar
-     * @param r2 FloatSIScalar; the second scalar
-     * @return FloatSIScalar; the minimum value of two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @return the minimum value of two relative scalars
      */
     public static FloatSIScalar min(final FloatSIScalar r1, final FloatSIScalar r2)
     {
@@ -127,10 +127,10 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Return the minimum value of more than two relative scalars.
-     * @param r1 FloatSIScalar; the first scalar
-     * @param r2 FloatSIScalar; the second scalar
-     * @param rn FloatSIScalar...; the other scalars
-     * @return FloatSIScalar; the minimum value of more than two relative scalars
+     * @param r1 the first scalar
+     * @param r2 the second scalar
+     * @param rn the other scalars
+     * @return the minimum value of more than two relative scalars
      */
     public static FloatSIScalar min(final FloatSIScalar r1, final FloatSIScalar r2, final FloatSIScalar... rn)
     {
@@ -155,8 +155,8 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
      * Returns an FloatSIScalar representation of a textual representation of a value with a unit. The String representation that can
      * be parsed is the float value in the unit, followed by the official abbreviation of the unit. Spaces are allowed, but not
      * required, between the value and the unit.
-     * @param text String; the textual representation to parse into a FloatSIScalar
-     * @return FloatSIScalar; the Scalar representation of the value in its unit
+     * @param text the textual representation to parse into a FloatSIScalar
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
      */
@@ -184,9 +184,9 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
 
     /**
      * Returns an FloatSIScalar based on a value and the textual representation of the unit.
-     * @param value float; the value to use
-     * @param unitString String; the textual representation of the unit
-     * @return FloatSIScalar; the Scalar representation of the value in its unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */
@@ -221,8 +221,8 @@ public class FloatSIScalar extends FloatScalarRel<SIUnit, FloatSIScalar>
     /**
      * Return the current scalar transformed to a scalar in the given unit. Of course the SI dimensionality has to match,
      * otherwise the scalar cannot be transformed. The compiler will check the alignment between the return value and the unit.
-     * @param displayUnit KU; the unit in which the scalar needs to be expressed
-     * @return S; the scalar that has been transformed into the right scalar type and unit
+     * @param displayUnit the unit in which the scalar needs to be expressed
+     * @return the scalar that has been transformed into the right scalar type and unit
      * @param <U> the unit type
      * @param <S> the scalar type
      */

@@ -36,8 +36,8 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
 
     /**
      * Construct an SIVector from an internal data object.
-     * @param data DoubleVectorData; the internal data object for the vector
-     * @param displayUnit SIUnit; the display unit of the vector data
+     * @param data the internal data object for the vector
+     * @param displayUnit the display unit of the vector data
      */
     public SIVector(final DoubleVectorData data, final SIUnit displayUnit)
     {
@@ -49,9 +49,9 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
     /**
      * Construct an SIVector from a double[] object. The double values are expressed in the displayUnit, and will be printed
      * using the displayUnit.
-     * @param data double[]; the data for the vector, expressed in the displayUnit
-     * @param displayUnit SIUnit; the unit of the values in the data array, and display unit when printing
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
+     * @param data the data for the vector, expressed in the displayUnit
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public SIVector(final double[] data, final SIUnit displayUnit, final StorageType storageType)
     {
@@ -61,8 +61,8 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
     /**
      * Construct an SIVector from a double[] object. The double values are expressed in the displayUnit. Assume that the
      * StorageType is DENSE since we offer the data as an array.
-     * @param data double[]; the data for the vector
-     * @param displayUnit SIUnit; the unit of the values in the data array, and display unit when printing
+     * @param data the data for the vector
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
      */
     public SIVector(final double[] data, final SIUnit displayUnit)
     {
@@ -74,9 +74,9 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
     /**
      * Construct an SIVector from an array of SIScalar objects. The SIScalar values are each expressed in their own unit, but
      * will be internally stored as SI values, all expressed in the displayUnit when printing.
-     * @param data SIScalar[]; the data for the vector
-     * @param displayUnit SIUnit; the display unit of the values when printing
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the values when printing
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public SIVector(final SIScalar[] data, final SIUnit displayUnit, final StorageType storageType)
     {
@@ -87,8 +87,8 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
      * Construct an SIVector from an array of SIScalar objects. The SIScalar values are each expressed in their own unit, but
      * will be internally stored as SI values, all expressed in the displayUnit when printing. Assume that the StorageType is
      * DENSE since we offer the data as an array.
-     * @param data SIScalar[]; the data for the vector
-     * @param displayUnit SIUnit; the display unit of the values when printing
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the values when printing
      */
     public SIVector(final SIScalar[] data, final SIUnit displayUnit)
     {
@@ -104,10 +104,10 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
      * as well as the unit in which they will be printed. In case the list contains SIScalar objects, each SIScalar has its own
      * unit, and the displayUnit is just used for printing. The values but will always be internally stored as SI values or base
      * values, and expressed using the display unit or base unit when printing.
-     * @param data List&lt;Double&gt; or List&lt;SIScalar&gt;; the data for the vector
-     * @param displayUnit SIUnit; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Double&gt; or List&lt;Number&gt; in general
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public SIVector(final List<? extends Number> data, final SIUnit displayUnit, final StorageType storageType)
     {
@@ -125,8 +125,8 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
      * unit, and the displayUnit is just used for printing. The values but will always be internally stored as SI values or base
      * values, and expressed using the display unit or base unit when printing. Assume the storage type is DENSE since we offer
      * the data as a List.
-     * @param data List&lt;Double&gt; or List&lt;SIScalar&gt;; the data for the vector
-     * @param displayUnit SIUnit; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Double&gt; or List&lt;Number&gt; in general
      */
     public SIVector(final List<? extends Number> data, final SIUnit displayUnit)
@@ -145,11 +145,11 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
      * unit in which they will be printed. In case the map contains SIScalar objects, each SIScalar has its own unit, and the
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing.
-     * @param data Map&lt;Integer, Double&gt; or Map&lt;Integer, SIScalar&gt;; the data for the vector
-     * @param size int; the size off the vector, i.e., the highest index
-     * @param displayUnit SIUnit; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector
+     * @param size the size off the vector, i.e., the highest index
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Double&gt; or List&lt;Number&gt; in general
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Vector
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public SIVector(final Map<Integer, ? extends Number> data, final int size, final SIUnit displayUnit,
             final StorageType storageType)
@@ -171,9 +171,9 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing. Assume the storage type is SPARSE since we offer the data as
      * a Map.
-     * @param data Map&lt;Integer, Double&gt; or Map&lt;Integer, SIScalar&gt;; the data for the vector
-     * @param size int; the size off the vector, i.e., the highest index
-     * @param displayUnit SIUnit; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector
+     * @param size the size off the vector, i.e., the highest index
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Double&gt; or List&lt;Number&gt; in general
      */
     public SIVector(final Map<Integer, ? extends Number> data, final int size, final SIUnit displayUnit)
@@ -191,10 +191,10 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
 
     /**
      * Returns an SIVector based on an array of values and the textual representation of the unit.
-     * @param value double[]; the values to use
-     * @param unitString String; the textual representation of the unit
-     * @param storageType StorageType; the storage type to use
-     * @return SIVector; the vector representation of the values in their unit
+     * @param value the values to use
+     * @param unitString the textual representation of the unit
+     * @param storageType the storage type to use
+     * @return the vector representation of the values in their unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */
@@ -220,10 +220,10 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
 
     /**
      * Returns an SIVector based on an array of values and the textual representation of the unit.
-     * @param valueList List&lt;Double&gt;; the values to use
-     * @param unitString String; the textual representation of the unit
-     * @param storageType StorageType; the storage type to use
-     * @return SIVector; the vector representation of the values in their unit
+     * @param valueList the values to use
+     * @param unitString the textual representation of the unit
+     * @param storageType the storage type to use
+     * @return the vector representation of the values in their unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */
@@ -249,11 +249,11 @@ public class SIVector extends DoubleVectorRel<SIUnit, SIScalar, SIVector>
 
     /**
      * Returns an SIVector based on a (sparse) map of values and the textual representation of the unit.
-     * @param valueMap Map&lt;Integer, Double&gt;; the values to use
-     * @param unitString String; the textual representation of the unit
-     * @param length int; the size of the vector
-     * @param storageType StorageType; the storage type to use
-     * @return SIVector; the vector representation of the values in their unit
+     * @param valueMap the values to use
+     * @param unitString the textual representation of the unit
+     * @param length the size of the vector
+     * @param storageType the storage type to use
+     * @return the vector representation of the values in their unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */

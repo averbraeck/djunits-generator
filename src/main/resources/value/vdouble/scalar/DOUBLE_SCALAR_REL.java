@@ -51,7 +51,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 
     /**
      * Construct %Type% scalar.
-     * @param value double; the double value
+     * @param value the double value
      * @param unit %Type%Unit; unit for the double value
      */
     public %Type%(final double value, final %Type%Unit unit)
@@ -76,7 +76,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 
     /**
      * Construct %Type% scalar.
-     * @param value double; the double value in SI units
+     * @param value the double value in SI units
      * @return %Type%; the new scalar with the SI value
      */
     public static final %Type% instantiateSI(final double value)
@@ -88,7 +88,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
      * Interpolate between two values.
      * @param zero %Type%; the low value
      * @param one %Type%; the high value
-     * @param ratio double; the ratio between 0 and 1, inclusive
+     * @param ratio the ratio between 0 and 1, inclusive
      * @return %Type%; a Scalar at the ratio between
      */
     public static %Type% interpolate(final %Type% zero, final %Type% one, final double ratio)
@@ -163,7 +163,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
      * Returns a %Type% representation of a textual representation of a value with a unit. The String representation that can be
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
-     * @param text String; the textual representation to parse into a %Type%
+     * @param text the textual representation to parse into a %Type%
      * @return %Type%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
@@ -192,8 +192,8 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 
     /**
      * Returns a %Type% based on a value and the textual representation of the unit, which can be localized.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
      * @return %Type%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
@@ -216,8 +216,8 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 	 * Returns a Dimensionless representation of a textual representation of a value with a unit. The String representation that
 	 * can be parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are
 	 * allowed, but not required, between the value and the unit.
-	 * @param text String; the textual representation to parse into a Dimensionless
-	 * @return Dimensionless; the Scalar representation of the value in its unit
+	 * @param text the textual representation to parse into a Dimensionless
+	 * @return the Scalar representation of the value in its unit
 	 * @throws IllegalArgumentException when the text cannot be parsed
 	 * @throws NullPointerException when the text argument is null
 	 */
@@ -244,9 +244,9 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 	
 	/**
 	 * Returns a Dimensionless based on a value and the textual representation of the unit, which can be localized.
-	 * @param value double; the value to use
-	 * @param unitString String; the textual representation of the unit
-	 * @return Dimensionless; the Scalar representation of the value in its unit
+	 * @param value the value to use
+	 * @param unitString the textual representation of the unit
+	 * @return the Scalar representation of the value in its unit
 	 * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
 	 * @throws NullPointerException when the unitString argument is null
 	 */

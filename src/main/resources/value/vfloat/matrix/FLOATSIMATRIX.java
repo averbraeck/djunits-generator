@@ -41,8 +41,8 @@ public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSI
 
     /**
      * Construct a new Relative FloatSIMatrix on the basis of a data object.
-     * @param data FloatMatrixData; an internal data object
-     * @param displayUnit SIUnit; the display unit
+     * @param data an internal data object
+     * @param displayUnit the display unit
      */
     public FloatSIMatrix(final FloatMatrixData data, final SIUnit displayUnit)
     {
@@ -51,9 +51,9 @@ public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSI
 
     /**
      * Construct a new Relative FloatSIMatrix with a unit for the float values that will also be used for the displayUnit.
-     * @param values float[][]; the values of the entries in the new Relative FloatSIMatrix
-     * @param unit SIUnit; the unit of the new Relative FloatSIMatrix
-     * @param storageType StorageType; the data type to use (e.g., DENSE or SPARSE)
+     * @param values the values of the entries in the new Relative FloatSIMatrix
+     * @param unit the unit of the new Relative FloatSIMatrix
+     * @param storageType the data type to use (e.g., DENSE or SPARSE)
      * @throws ValueRuntimeException when values is null
      */
     public FloatSIMatrix(final float[][] values, final SIUnit unit, final StorageType storageType) throws ValueRuntimeException
@@ -64,8 +64,8 @@ public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSI
     /**
      * Construct a new Relative FloatSIMatrix with a unit for the float values that will also be used for the displayUnit.
      * Assume the StorageType is DENSE since we offer the content as an array.
-     * @param values float[][]; the values of the entries in the new Relative FloatSIMatrix
-     * @param unit SIUnit; the unit of the new Relative FloatSIMatrix
+     * @param values the values of the entries in the new Relative FloatSIMatrix
+     * @param unit the unit of the new Relative FloatSIMatrix
      * @throws ValueRuntimeException when values is null
      */
     public FloatSIMatrix(final float[][] values, final SIUnit unit) throws ValueRuntimeException
@@ -87,10 +87,10 @@ public class FloatSIMatrix extends FloatMatrixRel<SIUnit, FloatSIScalar, FloatSI
 
     /**
      * Returns an FloatSIMatrix based on an array of values and the textual representation of the unit.
-     * @param values float[][]; the values to use
-     * @param unitString String; the textual representation of the unit
-     * @param storageType StorageType; the storage type to use
-     * @return FloatSIMatrix; the matrix representation of the values in their unit
+     * @param values the values to use
+     * @param unitString the textual representation of the unit
+     * @param storageType the storage type to use
+     * @return the matrix representation of the values in their unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */

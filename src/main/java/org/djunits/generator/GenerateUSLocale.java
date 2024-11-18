@@ -13,15 +13,14 @@ import org.djunits.unit.util.UNITS;
 
 /**
  * Generator for the locale properties file.
- * <p>
  * @author <a href="https://www.tudelft.nl/p.knoppers">Peter Knoppers</a>
  */
 public class GenerateUSLocale
 {
     /**
      * Determine if a double is (very near to) a power of 10.
-     * @param value double; the value to test
-     * @return boolean; true if <code>value</code> is (very near to) a power of 10; false otherwise
+     * @param value the value to test
+     * @return true if <code>value</code> is (very near to) a power of 10; false otherwise
      */
     static boolean isPowerOf10(final double value)
     {
@@ -34,9 +33,9 @@ public class GenerateUSLocale
 
     /**
      * Compare two double values.
-     * @param left double; the left value
-     * @param right double; the right value
-     * @return int; 0 if the values are equal; -1 if left should be sorted before right; +1 if right should be sorted before
+     * @param left the left value
+     * @param right the right value
+     * @return 0 if the values are equal; -1 if left should be sorted before right; +1 if right should be sorted before
      *         left
      */
     static int compareDoubles(final double left, final double right)
@@ -54,8 +53,8 @@ public class GenerateUSLocale
 
     /**
      * Indicate if a unit is SI.
-     * @param unit Unit&lt;?&gt;; the unit
-     * @return boolean; true if the unit is SI; false otherwise
+     * @param unit the unit
+     * @return true if the unit is SI; false otherwise
      */
     static boolean isSI(final Unit<?> unit)
     {
@@ -65,7 +64,7 @@ public class GenerateUSLocale
 
     /**
      * Generate the localeunit.properties file.
-     * @param args String[]; the command line arguments; not used (yet)
+     * @param args the command line arguments; not used (yet)
      */
     public static void main(final String[] args)
     {
@@ -89,7 +88,7 @@ public class GenerateUSLocale
             Arrays.sort(idArray, new Comparator<String>()
             {
                 @Override
-                public int compare(String o1, String o2)
+                public int compare(final String o1, final String o2)
                 {
                     // System.out.println("Comparing " + o1 + " to " + o2);
                     Unit<?> left = quantity.getUnitById(o1);

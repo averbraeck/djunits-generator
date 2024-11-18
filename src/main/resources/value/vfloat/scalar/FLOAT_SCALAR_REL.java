@@ -54,7 +54,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 
     /**
      * Construct Float%Type% scalar.
-     * @param value float; the float value
+     * @param value the float value
      * @param unit unit for the float value
      */
     public Float%Type%(final float value, final %Type%Unit unit)
@@ -73,7 +73,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 
     /**
      * Construct Float%Type% scalar using a double value.
-     * @param value double; the double value
+     * @param value the double value
      * @param unit unit for the resulting float value
      */
     public Float%Type%(final double value, final %Type%Unit unit)
@@ -89,7 +89,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 
     /**
      * Construct Float%Type% scalar.
-     * @param value float; the float value in SI units
+     * @param value the float value in SI units
      * @return the new scalar with the SI value
      */
     public static final Float%Type% instantiateSI(final float value)
@@ -101,7 +101,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
      * Interpolate between two values.
      * @param zero the low value
      * @param one the high value
-     * @param ratio double; the ratio between 0 and 1, inclusive
+     * @param ratio the ratio between 0 and 1, inclusive
      * @return a Scalar at the ratio between
      */
     public static Float%Type% interpolate(final Float%Type% zero, final Float%Type% one, final float ratio)
@@ -177,7 +177,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
      * Returns a Float%Type% representation of a textual representation of a value with a unit. The String representation that can be
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
-     * @param text String; the textual representation to parse into a Float%Type%
+     * @param text the textual representation to parse into a Float%Type%
      * @return Float%Type%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
@@ -206,8 +206,8 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
     
     /**
      * Returns a Float%Type% based on a value and the textual representation of the unit, which can be localized.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
      * @return Float%Type%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
@@ -230,8 +230,8 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 	 * Returns a FloatDimensionless representation of a textual representation of a value with a unit. The String representation
 	 * that can be parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces
 	 * are allowed, but not required, between the value and the unit.
-	 * @param text String; the textual representation to parse into a FloatDimensionless
-	 * @return FloatDimensionless; the Scalar representation of the value in its unit
+	 * @param text the textual representation to parse into a FloatDimensionless
+	 * @return the Scalar representation of the value in its unit
 	 * @throws IllegalArgumentException when the text cannot be parsed
 	 * @throws NullPointerException when the text argument is null
 	 */
@@ -257,9 +257,9 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 	
 	/**
 	 * Returns a FloatDimensionless based on a value and the textual representation of the unit, which can be localized.
-	 * @param value double; the value to use
-	 * @param unitString String; the textual representation of the unit
-	 * @return FloatDimensionless; the Scalar representation of the value in its unit
+	 * @param value the value to use
+	 * @param unitString the textual representation of the unit
+	 * @return the Scalar representation of the value in its unit
 	 * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
 	 * @throws NullPointerException when the unitString argument is null
 	 */

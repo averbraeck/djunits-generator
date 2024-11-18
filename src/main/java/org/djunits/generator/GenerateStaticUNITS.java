@@ -33,7 +33,7 @@ public final class GenerateStaticUNITS
     }
 
     /**
-     * @param args String[]; should be empty
+     * @param args should be empty
      */
     public static void main(String[] args)
     {

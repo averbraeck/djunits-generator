@@ -41,8 +41,8 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
 
     /**
      * Construct a new Relative Double SIMatrix on the basis of a data object.
-     * @param data DoubleMatrixData; an internal data object
-     * @param unit SIUnit; the unit
+     * @param data an internal data object
+     * @param unit the unit
      */
     public SIMatrix(final DoubleMatrixData data, final SIUnit unit)
     {
@@ -51,9 +51,9 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
 
     /**
      * Construct a new Relative Double SIMatrix with a unit for the float values that will also be used for the displayUnit.
-     * @param values double[][]; the values of the entries in the new Relative Double SIMatrix
-     * @param unit SIUnit; the unit of the new Relative Double SIMatrix
-     * @param storageType StorageType; the data type to use (e.g., DENSE or SPARSE)
+     * @param values the values of the entries in the new Relative Double SIMatrix
+     * @param unit the unit of the new Relative Double SIMatrix
+     * @param storageType the data type to use (e.g., DENSE or SPARSE)
      * @throws ValueRuntimeException when values is null
      */
     public SIMatrix(final double[][] values, final SIUnit unit, final StorageType storageType) throws ValueRuntimeException
@@ -64,8 +64,8 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
     /**
      * Construct a new Relative Double SIMatrix with a unit for the float values that will also be used for the displayUnit.
      * Assume the StorageType is DENSE since we offer the content as an array.
-     * @param values double[][]; the values of the entries in the new Relative Double SIMatrix
-     * @param unit SIUnit; the unit of the new Relative Double SIMatrix
+     * @param values the values of the entries in the new Relative Double SIMatrix
+     * @param unit the unit of the new Relative Double SIMatrix
      * @throws ValueRuntimeException when values is null
      */
     public SIMatrix(final double[][] values, final SIUnit unit) throws ValueRuntimeException
@@ -87,10 +87,10 @@ public class SIMatrix extends DoubleMatrixRel<SIUnit, SIScalar, SIVector, SIMatr
 
     /**
      * Returns an SIMatrix based on an array of values and the textual representation of the unit.
-     * @param values double[][]; the values to use
-     * @param unitString String; the textual representation of the unit
-     * @param storageType StorageType; the storage type to use
-     * @return SIMatrix; the matrix representation of the values in their unit
+     * @param values the values to use
+     * @param unitString the textual representation of the unit
+     * @param storageType the storage type to use
+     * @return the matrix representation of the values in their unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */

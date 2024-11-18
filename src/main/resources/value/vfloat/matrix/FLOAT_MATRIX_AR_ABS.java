@@ -30,7 +30,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     
     /**
      * Construct a %TypeAbs%Matrix from an internal data object.
-     * @param data FloatMatrixData; the internal data object for the matrix
+     * @param data the internal data object for the matrix
      * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data
      */
     public Float%TypeAbs%Matrix(final FloatMatrixData data, final %TypeAbsUnit% displayUnit)
@@ -43,9 +43,9 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Matrix from a float[][] object. The float values are expressed in the displayUnit, and will be printed
      * using the displayUnit.
-     * @param data float[][]; the data for the matrix, expressed in the displayUnit
+     * @param data the data for the matrix, expressed in the displayUnit
      * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final float[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
     {
@@ -55,7 +55,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Matrix from a float[][] object. The float values are expressed in the displayUnit. Assume that the
      * StorageType is DENSE since we offer the data as an array of an array.
-     * @param data float[][]; the data for the matrix
+     * @param data the data for the matrix
      * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
      */
     public Float%TypeAbs%Matrix(final float[][] data, final %TypeAbsUnit% displayUnit)
@@ -65,8 +65,8 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
 
     /**
      * Construct a Float%TypeAbs%Matrix from a float[][] object with SI-unit values.
-     * @param data float[][]; the data for the matrix, in SI units
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param data the data for the matrix, in SI units
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final float[][] data, final StorageType storageType)
     {
@@ -76,7 +76,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Matrix from a float[][] object with SI-unit values. Assume that the StorageType is DENSE since we offer
      * the data as an array of an array.
-     * @param data float[][]; the data for the matrix, in SI units
+     * @param data the data for the matrix, in SI units
      */
     public Float%TypeAbs%Matrix(final float[][] data)
     {
@@ -90,7 +90,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
      * but will be internally stored as SI values, all expressed in the displayUnit when printing.
      * @param data Float%TypeAbs%[][]; the data for the matrix
      * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final Float%TypeAbs%[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
     {
@@ -114,7 +114,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
      * but will be internally stored as SI values, and expressed using SI units when printing. since we offer the data as an
      * array of an array.
      * @param data Float%TypeAbs%[][]; the data for the matrix
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final Float%TypeAbs%[][] data, final StorageType storageType)
     {
@@ -137,11 +137,11 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Matrix from a (sparse) collection of FloatSparseValue objects. The displayUnit indicates the unit in
      * which the values in the collection are expressed, as well as the unit in which they will be printed.
-     * @param data Collection&lt;FloatSparseValue&gt;; the data for the matrix
+     * @param data the data for the matrix
      * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
-     * @param rows int; the number of rows of the matrix
-     * @param cols int; the number of columns of the matrix
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param rows the number of rows of the matrix
+     * @param cols the number of columns of the matrix
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final Collection<FloatSparseValue<%TypeAbsUnit%, Float%TypeAbs%>> data, final %TypeAbsUnit% displayUnit, final int rows,
             final int cols, final StorageType storageType)
@@ -153,10 +153,10 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Matrix from a (sparse) collection of FloatSparseValue objects. The displayUnit indicates the unit in
      * which the values in the collection are expressed, as well as the unit in which they will be printed. Assume the storage
      * type is SPARSE, since we offer the data as a collection.
-     * @param data Collection&lt;FloatSparseValue&gt;; the data for the matrix
+     * @param data the data for the matrix
      * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
-     * @param rows int; the number of rows of the matrix
-     * @param cols int; the number of columns of the matrix
+     * @param rows the number of rows of the matrix
+     * @param cols the number of columns of the matrix
      */
     public Float%TypeAbs%Matrix(final Collection<FloatSparseValue<%TypeAbsUnit%, Float%TypeAbs%>> data, final %TypeAbsUnit% displayUnit, final int rows,
             final int cols)
@@ -168,10 +168,10 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Matrix from a (sparse) collection of FloatSparseValue objects. The displayUnit indicates the unit in
      * which the values in the collection are expressed, as well as the unit in which they will be printed. Use the SI unit or
      * base unit as the displayUnit.
-     * @param data Collection&lt;FloatSparseValue&gt;; the data for the matrix
-     * @param rows int; the number of rows of the matrix
-     * @param cols int; the number of columns of the matrix
-     * @param storageType StorageType; the StorageType (SPARSE or DENSE) to use for constructing the Matrix
+     * @param data the data for the matrix
+     * @param rows the number of rows of the matrix
+     * @param cols the number of columns of the matrix
+     * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public Float%TypeAbs%Matrix(final Collection<FloatSparseValue<%TypeAbsUnit%, Float%TypeAbs%>> data, final int rows, final int cols,
             final StorageType storageType)
@@ -183,9 +183,9 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Matrix from a (sparse) collection of FloatSparseValue objects. The displayUnit indicates the unit in
      * which the values in the collection are expressed, as well as the unit in which they will be printed. Use the SI unit or
      * base unit as the displayUnit. Assume the storage type is SPARSE, since we offer the data as a collection.
-     * @param data Collection&lt;FloatSparseValue&gt;; the data for the matrix
-     * @param rows int; the number of rows of the matrix
-     * @param cols int; the number of columns of the matrix
+     * @param data the data for the matrix
+     * @param rows the number of rows of the matrix
+     * @param cols the number of columns of the matrix
      */
     public Float%TypeAbs%Matrix(final Collection<FloatSparseValue<%TypeAbsUnit%, Float%TypeAbs%>> data, final int rows, final int cols)
     {

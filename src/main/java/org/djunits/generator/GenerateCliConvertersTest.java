@@ -115,7 +115,7 @@ public class GenerateCliConvertersTest
     }
 
     /**
-     * @param args String[]; blank
+     * @param args blank
      * @throws IOException on i/o error
      * @throws URISyntaxException on i/o error
      */
@@ -188,13 +188,13 @@ public class GenerateCliConvertersTest
         protected String value2;
 
         /**
-         * @param type String; type, e.g. "Length"
-         * @param amount1 double; initial amount, e.g. 10.0
-         * @param unit1 String; initial unit, e.g. LengthUnit.METER
-         * @param value1 String; initial String value, e.g. "10.0m"
-         * @param amount2 double; changed amount, e.g. 5.0
-         * @param unit2 String; changed unit, e.g. LengthUnit.KILOMETER
-         * @param value2 String; changed String amount, e.g. 5.0km
+         * @param type type, e.g. "Length"
+         * @param amount1 initial amount, e.g. 10.0
+         * @param unit1 initial unit, e.g. LengthUnit.METER
+         * @param value1 initial String value, e.g. "10.0m"
+         * @param amount2 changed amount, e.g. 5.0
+         * @param unit2 changed unit, e.g. LengthUnit.KILOMETER
+         * @param value2 changed String amount, e.g. 5.0km
          */
         public TestRecord(String type, double amount1, String unit1, String value1, double amount2, String unit2, String value2)
         {

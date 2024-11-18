@@ -50,7 +50,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
 
     /**
      * Construct %TypeRel% scalar.
-     * @param value double; double value
+     * @param value double value
      * @param unit %TypeRelUnit%; unit for the double value
      */
     public %TypeRel%(final double value, final %TypeRelUnit% unit)
@@ -81,7 +81,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
 
     /**
      * Construct %TypeRel% scalar.
-     * @param value double; the double value in SI units
+     * @param value the double value in SI units
      * @return %TypeRel%; the new scalar with the SI value
      */
     public static final %TypeRel% instantiateSI(final double value)
@@ -93,7 +93,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
      * Interpolate between two values.
      * @param zero %TypeRel%; the low value
      * @param one %TypeRel%; the high value
-     * @param ratio double; the ratio between 0 and 1, inclusive
+     * @param ratio the ratio between 0 and 1, inclusive
      * @return %TypeRel%; a Scalar at the ratio between
      */
     public static %TypeRel% interpolate(final %TypeRel% zero, final %TypeRel% one, final double ratio)
@@ -168,7 +168,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
      * Returns a %TypeRel% representation of a textual representation of a value with a unit. The String representation that can be
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
-     * @param text String; the textual representation to parse into a %TypeRel%
+     * @param text the textual representation to parse into a %TypeRel%
      * @return %TypeRel%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
@@ -197,8 +197,8 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
 
     /**
      * Returns a %TypeRel% based on a value and the textual representation of the unit, which can be localized.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
      * @return %TypeRel%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null

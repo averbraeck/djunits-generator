@@ -40,7 +40,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Construct %TypeAbs% scalar.
-     * @param value double; value
+     * @param value value
      * @param unit %TypeAbsUnit%; unit for the double value
      */
     public %TypeAbs%(final double value, final %TypeAbsUnit% unit)
@@ -71,7 +71,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Construct %TypeAbs% scalar.
-     * @param value double; value in SI units
+     * @param value value in SI units
      * @return %TypeAbs%; the new scalar with the SI value
      */
     public static final %TypeAbs% instantiateSI(final double value)
@@ -83,7 +83,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
      * Interpolate between two values.
      * @param zero %TypeAbs%; the low value
      * @param one %TypeAbs%; the high value
-     * @param ratio double; the ratio between 0 and 1, inclusive
+     * @param ratio the ratio between 0 and 1, inclusive
      * @return %TypeAbs%; a Scalar at the ratio between
      */
     public static %TypeAbs% interpolate(final %TypeAbs% zero, final %TypeAbs% one, final double ratio)
@@ -158,7 +158,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
      * Returns a %TypeAbs% representation of a textual representation of a value with a unit. The String representation that can be
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
-     * @param text String; the textual representation to parse into a %TypeAbs%
+     * @param text the textual representation to parse into a %TypeAbs%
      * @return %TypeAbs%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
@@ -187,8 +187,8 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Returns a %TypeAbs% based on a value and the textual representation of the unit, which can be localized.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
      * @return %TypeAbs%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null

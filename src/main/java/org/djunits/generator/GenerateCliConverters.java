@@ -20,7 +20,7 @@ public class GenerateCliConverters
 {
 
     /**
-     * @param args String[]; blank
+     * @param args blank
      * @throws IOException on i/o error
      * @throws URISyntaxException on i/o error
      */
@@ -40,7 +40,7 @@ public class GenerateCliConverters
         // @formatter:off
         System.out.println("    /**\r\n" + 
             "     * Register all DJUNITS converters for a CommandLine.\n" + 
-            "     * @param cmd String; the CommandLine for which the DJUNITS converters should be registered\n" + 
+            "     * @param cmd the CommandLine for which the DJUNITS converters should be registered\n" + 
             "     */\n" + 
             "    @Generated(value = \"" + GenerateCliConverters.class.getName() + "\", date = \"" + generationTime + "\")\n" +
             "    public static void registerAll(final CommandLine cmd)\n" + 

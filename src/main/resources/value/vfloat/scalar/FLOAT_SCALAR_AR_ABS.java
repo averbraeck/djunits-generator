@@ -41,7 +41,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Construct Float%TypeAbs% scalar.
-     * @param value float; the float value
+     * @param value the float value
      * @param unit %TypeAbsUnit%; unit for the float value
      */
     public Float%TypeAbs%(final float value, final %TypeAbsUnit% unit)
@@ -51,7 +51,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Construct Float%TypeAbs% scalar using a double value.
-     * @param value double; the double value
+     * @param value the double value
      * @param unit %TypeAbsUnit%; unit for the resulting float value
      */
     public Float%TypeAbs%(final double value, final %TypeAbsUnit% unit)
@@ -82,7 +82,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Construct Float%TypeAbs% scalar.
-     * @param value float; the float value in BASE units
+     * @param value the float value in BASE units
      * @return Float%TypeAbs%; the new scalar with the BASE value
      */
     public static final Float%TypeAbs% instantiateSI(final float value)
@@ -94,7 +94,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
      * Interpolate between two values.
      * @param zero Float%TypeAbs%; the low value
      * @param one Float%TypeAbs%; the high value
-     * @param ratio float; the ratio between 0 and 1, inclusive
+     * @param ratio the ratio between 0 and 1, inclusive
      * @return Float%TypeAbs%; a Scalar at the ratio between
      */
     public static Float%TypeAbs% interpolate(final Float%TypeAbs% zero, final Float%TypeAbs% one, final float ratio)
@@ -169,7 +169,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
      * Returns a Float%TypeAbs% representation of a textual representation of a value with a unit. The String representation that can be
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
-     * @param text String; the textual representation to parse into a Float%TypeAbs%
+     * @param text the textual representation to parse into a Float%TypeAbs%
      * @return Float%TypeAbs%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
@@ -198,8 +198,8 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Returns a Float%TypeAbs% based on a value and the textual representation of the unit, which can be localized.
-     * @param value double; the value to use
-     * @param unitString String; the textual representation of the unit
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
      * @return Float%TypeAbs%; the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null

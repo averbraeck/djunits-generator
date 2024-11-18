@@ -28,7 +28,7 @@ public class GenerateXSD
     private static String absoluteRootPath;
 
     /**
-     * @param args String[]; not used
+     * @param args not used
      * @throws FileNotFoundException in case we cannot find the djunits project
      */
     public static void main(final String[] args) throws FileNotFoundException
@@ -160,10 +160,10 @@ public class GenerateXSD
      
     /**
      * Write a scalar with unit to the file, with or without [+-]?
-     * @param pw PrintWriter; the file to write to
-     * @param typeStrOrig String; the previous the unit we were looking at
-     * @param line String; the line from the preoperties file
-     * @param plus boolean; with or without [+-]?
+     * @param pw the file to write to
+     * @param typeStrOrig the previous the unit we were looking at
+     * @param line the line from the preoperties file
+     * @param plus with or without [+-]?
      * @return the unit we are looking at
      */
     private static String writeScalar(final PrintWriter pw, final String line, final String typeStrOrig, final boolean plus)
@@ -225,9 +225,9 @@ public class GenerateXSD
 
     /**
      * Write a unit type to the file.
-     * @param pw PrintWriter; the file to write to
-     * @param typeStrOrig String; the previous the unit we were looking at
-     * @param line String; the line from the preoperties file
+     * @param pw the file to write to
+     * @param typeStrOrig the previous the unit we were looking at
+     * @param line the line from the preoperties file
      * @return the unit we are looking at
      */
     private static String writeType(final PrintWriter pw, final String line, final String typeStrOrig)
@@ -280,7 +280,7 @@ public class GenerateXSD
     private static final String escape = "(){}.?|<>*-+'\\%^";
 
     /**
-     * @param s String; the String to escape
+     * @param s the String to escape
      * @return the String with \ before escaped chars
      */
     private static String escape(final String s)
