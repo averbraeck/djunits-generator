@@ -32,7 +32,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Vector from an internal data object.
      * @param data the internal data object for the vector
-     * @param displayUnit %TypeAbsUnit%; the display unit of the vector data
+     * @param displayUnit the display unit of the vector data
      */
     public Float%TypeAbs%Vector(final FloatVectorData data, final %TypeAbsUnit% displayUnit)
     {
@@ -45,7 +45,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Vector from a float[] object. The Float values are expressed in the displayUnit, and will be
      * printed using the displayUnit.
      * @param data the data for the vector, expressed in the displayUnit
-     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public Float%TypeAbs%Vector(final float[] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
@@ -57,7 +57,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Vector from a float[] object. The Float values are expressed in the displayUnit. Assume that the
      * StorageType is DENSE since we offer the data as an array.
      * @param data the data for the vector
-     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
      */
     public Float%TypeAbs%Vector(final float[] data, final %TypeAbsUnit% displayUnit)
     {
@@ -89,8 +89,8 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
     /**
      * Construct a Float%TypeAbs%Vector from an array of Float%TypeAbs% objects. The Float%TypeAbs% values are each expressed in their own
      * unit, but will be internally stored as SI values, all expressed in the displayUnit when printing.
-     * @param data Float%TypeAbs%[]; the data for the vector
-     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the values when printing
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public Float%TypeAbs%Vector(final Float%TypeAbs%[] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
@@ -102,8 +102,8 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Vector from an array of Float%TypeAbs% objects. The Float%TypeAbs% values are each expressed in their own
      * unit, but will be internally stored as SI values, all expressed in the displayUnit when printing. Assume that the
      * StorageType is DENSE since we offer the data as an array.
-     * @param data Float%TypeAbs%[]; the data for the vector
-     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     * @param data the data for the vector
+     * @param displayUnit the display unit of the values when printing
      */
     public Float%TypeAbs%Vector(final Float%TypeAbs%[] data, final %TypeAbsUnit% displayUnit)
     {
@@ -114,7 +114,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Vector from an array of Float%TypeAbs% objects. The Float%TypeAbs% values are each expressed in their own
      * unit, but will be internally stored as SI values, and expressed using SI units when printing. since we offer the data as
      * an array.
-     * @param data Float%TypeAbs%[]; the data for the vector
+     * @param data the data for the vector
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public Float%TypeAbs%Vector(final Float%TypeAbs%[] data, final StorageType storageType)
@@ -126,7 +126,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * Construct a Float%TypeAbs%Vector from an array of Float%TypeAbs% objects. The Float%TypeAbs% values are each expressed in their own
      * unit, but will be internally stored as SI values, and expressed using SI units when printing. Assume that the StorageType
      * is DENSE since we offer the data as an array.
-     * @param data Float%TypeAbs%[]; the data for the vector
+     * @param data the data for the vector
      */
     public Float%TypeAbs%Vector(final Float%TypeAbs%[] data)
     {
@@ -142,8 +142,8 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * as well as the unit in which they will be printed. In case the list contains Float%TypeAbs% objects, each Float%TypeAbs% has its
      * own unit, and the displayUnit is just used for printing. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing.
-     * @param data List&lt;Float&gt; or List&lt;%TypeAbs%&gt;; the data for the vector
-     * @param displayUnit %TypeAbsUnit%; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector as a List&lt;Float&gt; or List&lt;%TypeAbs%&gt;
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
@@ -163,8 +163,8 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * own unit, and the displayUnit is just used for printing. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing. Assume the storage type is DENSE since we
      * offer the data as a List.
-     * @param data List&lt;Float&gt; or List&lt;%TypeAbs%&gt;; the data for the vector
-     * @param displayUnit %TypeAbsUnit%; the display unit of the vector data, and the unit of the data points when the data is
+     * @param data the data for the vector as a List&lt;Float&gt; or List&lt;%TypeAbs%&gt;
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      */
     public Float%TypeAbs%Vector(final List<? extends Number> data, final %TypeAbsUnit% displayUnit)
@@ -177,7 +177,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * such as Float, assume that they are expressed using SI units. When the data consists of Float%TypeAbs% objects, they each have
      * their own unit, but will be printed using SI units or base units. The values but will always be internally stored as SI
      * values or base values, and expressed using the display unit or base unit when printing.
-     * @param data List&lt;Float&gt; or List&lt;%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a List&lt;Float&gt; or List&lt;%TypeAbs%&gt;
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
     public Float%TypeAbs%Vector(final List<? extends Number> data, final StorageType storageType)
@@ -191,7 +191,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * their own unit, but will be printed using SI units or base units. The values but will always be internally stored as SI
      * values or base values, and expressed using the display unit or base unit when printing. Assume the storage type is DENSE
      * since we offer the data as a List.
-     * @param data List&lt;Float&gt; or List&lt;%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a List&lt;Float&gt; or List&lt;%TypeAbs%&gt;
      */
     public Float%TypeAbs%Vector(final List<? extends Number> data)
     {
@@ -209,9 +209,9 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * unit in which they will be printed. In case the map contains Float%TypeAbs% objects, each Float%TypeAbs% has its own unit, and the
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing.
-     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;
      * @param size the size off the vector, i.e., the highest index
-     * @param displayUnit %TypeAbsUnit%; the display unit of the vector data, and the unit of the data points when the data is
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
@@ -235,9 +235,9 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * displayUnit is just used for printing. The values but will always be internally stored as SI values or base values, and
      * expressed using the display unit or base unit when printing. Assume the storage type is SPARSE since we offer the data as
      * a Map.
-     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;
      * @param size the size off the vector, i.e., the highest index
-     * @param displayUnit %TypeAbsUnit%; the display unit of the vector data, and the unit of the data points when the data is
+     * @param displayUnit the display unit of the vector data, and the unit of the data points when the data is
      *            expressed as List&lt;Float&gt; or List&lt;Number&gt; in general
      */
     public Float%TypeAbs%Vector(final Map<Integer, ? extends Number> data, final int size, final %TypeAbsUnit% displayUnit)
@@ -252,7 +252,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * assume that they are expressed using SI units. When the data consists of Float%TypeAbs% objects, they each have their own
      * unit, but will be printed using SI units or base units. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing.
-     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;
      * @param size the size off the vector, i.e., the highest index
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Vector
      */
@@ -269,7 +269,7 @@ public class Float%TypeAbs%Vector extends FloatVectorAbs<%TypeAbsUnit%, Float%Ty
      * unit, but will be printed using SI units or base units. The values but will always be internally stored as SI values or
      * base values, and expressed using the display unit or base unit when printing. Assume the storage type is SPARSE since we
      * offer the data as a Map.
-     * @param data Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;; the data for the vector
+     * @param data the data for the vector as a Map&lt;Integer, Float&gt; or Map&lt;Integer, Float%TypeAbs%&gt;
      * @param size the size off the vector, i.e., the highest index
      */
     public Float%TypeAbs%Vector(final Map<Integer, ? extends Number> data, final int size)

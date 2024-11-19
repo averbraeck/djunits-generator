@@ -33,7 +33,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
     /**
      * Construct a %TypeAbs%Matrix from an internal data object.
      * @param data the internal data object for the matrix
-     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data
+     * @param displayUnit the display unit of the matrix data
      */
     public %TypeAbs%Matrix(final DoubleMatrixData data, final %TypeAbsUnit% displayUnit)
     {
@@ -46,7 +46,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from a double[][] object. The double values are expressed in the displayUnit, and will be printed
      * using the displayUnit.
      * @param data the data for the matrix, expressed in the displayUnit
-     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public %TypeAbs%Matrix(final double[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
@@ -58,7 +58,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from a double[][] object. The double values are expressed in the displayUnit. Assume that the
      * StorageType is DENSE since we offer the data as an array of an array.
      * @param data the data for the matrix
-     * @param displayUnit %TypeAbsUnit%; the unit of the values in the data array, and display unit when printing
+     * @param displayUnit the unit of the values in the data array, and display unit when printing
      */
     public %TypeAbs%Matrix(final double[][] data, final %TypeAbsUnit% displayUnit)
     {
@@ -90,8 +90,8 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
     /**
      * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
      * but will be internally stored as SI values, all expressed in the displayUnit when printing.
-     * @param data %TypeAbs%[][]; the data for the matrix
-     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     * @param data the data for the matrix
+     * @param displayUnit the display unit of the values when printing
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public %TypeAbs%Matrix(final %TypeAbs%[][] data, final %TypeAbsUnit% displayUnit, final StorageType storageType)
@@ -103,8 +103,8 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
      * but will be internally stored as SI values, all expressed in the displayUnit when printing. Assume that the StorageType
      * is DENSE since we offer the data as an array of an array.
-     * @param data %TypeAbs%[][]; the data for the matrix
-     * @param displayUnit %TypeAbsUnit%; the display unit of the values when printing
+     * @param data the data for the matrix
+     * @param displayUnit the display unit of the values when printing
      */
     public %TypeAbs%Matrix(final %TypeAbs%[][] data, final %TypeAbsUnit% displayUnit)
     {
@@ -115,7 +115,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
      * but will be internally stored as SI values, and expressed using SI units when printing. since we offer the data as an
      * array of an array.
-     * @param data %TypeAbs%[][]; the data for the matrix
+     * @param data the data for the matrix
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
      */
     public %TypeAbs%Matrix(final %TypeAbs%[][] data, final StorageType storageType)
@@ -127,7 +127,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from an array of an array of %TypeAbs% objects. The %TypeAbs% values are each expressed in their own unit,
      * but will be internally stored as SI values, and expressed using SI units when printing. Assume that the StorageType is
      * DENSE since we offer the data as an array of an array.
-     * @param data %TypeAbs%[][]; the data for the matrix
+     * @param data the data for the matrix
      */
     public %TypeAbs%Matrix(final %TypeAbs%[][] data)
     {
@@ -140,7 +140,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * Construct a %TypeAbs%Matrix from a (sparse) collection of DoubleSparseValue objects. The displayUnit indicates the unit in
      * which the values in the collection are expressed, as well as the unit in which they will be printed.
      * @param data the data for the matrix
-     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
+     * @param displayUnit the display unit of the matrix data, and the unit of the data points
      * @param rows the number of rows of the matrix
      * @param cols the number of columns of the matrix
      * @param storageType the StorageType (SPARSE or DENSE) to use for constructing the Matrix
@@ -156,7 +156,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
      * which the values in the collection are expressed, as well as the unit in which they will be printed. Assume the storage
      * type is SPARSE, since we offer the data as a collection.
      * @param data the data for the matrix
-     * @param displayUnit %TypeAbsUnit%; the display unit of the matrix data, and the unit of the data points
+     * @param displayUnit the display unit of the matrix data, and the unit of the data points
      * @param rows the number of rows of the matrix
      * @param cols the number of columns of the matrix
      */

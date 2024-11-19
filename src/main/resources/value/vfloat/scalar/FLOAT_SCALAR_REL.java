@@ -178,7 +178,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
      * @param text the textual representation to parse into a Float%Type%
-     * @return Float%Type%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
      */
@@ -208,7 +208,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
      * Returns a Float%Type% based on a value and the textual representation of the unit, which can be localized.
      * @param value the value to use
      * @param unitString the textual representation of the unit
-     * @return Float%Type%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */

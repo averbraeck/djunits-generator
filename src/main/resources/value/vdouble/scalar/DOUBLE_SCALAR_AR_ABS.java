@@ -41,7 +41,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
     /**
      * Construct %TypeAbs% scalar.
      * @param value value
-     * @param unit %TypeAbsUnit%; unit for the double value
+     * @param unit unit for the double value
      */
     public %TypeAbs%(final double value, final %TypeAbsUnit% unit)
     {
@@ -50,7 +50,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Construct %TypeAbs% scalar.
-     * @param value %TypeAbs%; Scalar from which to construct this instance
+     * @param value Scalar from which to construct this instance
      */
     public %TypeAbs%(final %TypeAbs% value)
     {
@@ -72,7 +72,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
     /**
      * Construct %TypeAbs% scalar.
      * @param value value in SI units
-     * @return %TypeAbs%; the new scalar with the SI value
+     * @return the new scalar with the SI value
      */
     public static final %TypeAbs% instantiateSI(final double value)
     {
@@ -81,10 +81,10 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Interpolate between two values.
-     * @param zero %TypeAbs%; the low value
-     * @param one %TypeAbs%; the high value
+     * @param zero the low value
+     * @param one the high value
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return %TypeAbs%; a Scalar at the ratio between
+     * @return a Scalar at the ratio between
      */
     public static %TypeAbs% interpolate(final %TypeAbs% zero, final %TypeAbs% one, final double ratio)
     {
@@ -94,9 +94,9 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Return the maximum value of two absolute scalars.
-     * @param a1 %TypeAbs%; the first scalar
-     * @param a2 %TypeAbs%; the second scalar
-     * @return %TypeAbs%; the maximum value of two absolute scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @return the maximum value of two absolute scalars
      */
     public static %TypeAbs% max(final %TypeAbs% a1, final %TypeAbs% a2)
     {
@@ -105,9 +105,9 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Return the maximum value of more than two absolute scalars.
-     * @param a1 %TypeAbs%; the first scalar
-     * @param a2 %TypeAbs%; the second scalar
-     * @param an %TypeAbs%...; the other scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @param an the other scalars
      * @return the maximum value of more than two absolute scalars
      */
     public static %TypeAbs% max(final %TypeAbs% a1, final %TypeAbs% a2, final %TypeAbs%... an)
@@ -125,8 +125,8 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Return the minimum value of two absolute scalars.
-     * @param a1 %TypeAbs%; the first scalar
-     * @param a2 %TypeAbs%; the second scalar
+     * @param a1 the first scalar
+     * @param a2 the second scalar
      * @return the minimum value of two absolute scalars
      */
     public static %TypeAbs% min(final %TypeAbs% a1, final %TypeAbs% a2)
@@ -136,9 +136,9 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
 
     /**
      * Return the minimum value of more than two absolute scalars.
-     * @param a1 %TypeAbs%; the first scalar
-     * @param a2 %TypeAbs%; the second scalar
-     * @param an %TypeAbs%...; the other scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @param an the other scalars
      * @return the minimum value of more than two absolute scalars
      */
     public static %TypeAbs% min(final %TypeAbs% a1, final %TypeAbs% a2, final %TypeAbs%... an)
@@ -159,7 +159,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
      * @param text the textual representation to parse into a %TypeAbs%
-     * @return %TypeAbs%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
      */
@@ -189,7 +189,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
      * Returns a %TypeAbs% based on a value and the textual representation of the unit, which can be localized.
      * @param value the value to use
      * @param unitString the textual representation of the unit
-     * @return %TypeAbs%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */

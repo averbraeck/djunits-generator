@@ -1,6 +1,6 @@
     /**
      * Return the current vector as a %type% vector.
-     * @return %Type%Vector; the current vector as a %type% vector
+     * @return the current vector as a %type% vector
      */
     public final %Type%Vector as%Type%()
     {
@@ -12,7 +12,7 @@
     /**
      * Return the current vector as a %type% vector, and provide a display unit.
      * @param displayUnit the unit in which the value will be displayed
-     * @return %Type%Vector; the current vector as a %type% vector
+     * @return the current vector as a %type% vector
      */
     public final %Type%Vector as%Type%(final %Type%Unit displayUnit)
     {

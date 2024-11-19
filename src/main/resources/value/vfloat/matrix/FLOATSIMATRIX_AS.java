@@ -1,6 +1,6 @@
     /**
      * Return the current matrix as a %type% matrix.
-     * @return Float%Type%Matrix; the current matrix as a %type% matrix
+     * @return the current matrix as a %type% matrix
      */
     public final Float%Type%Matrix as%Type%()
     {
@@ -12,7 +12,7 @@
     /**
      * Return the current matrix as a %type% matrix, and provide a display unit.
      * @param displayUnit the unit in which the value will be displayed
-     * @return Float%Type%Matrix; the current matrix as a %type% matrix
+     * @return the current matrix as a %type% matrix
      */
     public final Float%Type%Matrix as%Type%(final %Type%Unit displayUnit)
     {

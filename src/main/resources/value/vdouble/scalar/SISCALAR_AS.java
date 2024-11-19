@@ -1,6 +1,6 @@
     /**
      * Return the current scalar as a %type%.
-     * @return %Type%; the current scalar as a %type%
+     * @return the current scalar as a %type%
      */
     public final %Type% as%Type%()
     {
@@ -12,7 +12,7 @@
     /**
      * Return the current scalar as a %type%, and provide a display unit.
      * @param displayUnit the unit in which the value will be displayed
-     * @return %Type%; the current scalar as a %type%
+     * @return the current scalar as a %type%
      */
     public final %Type% as%Type%(final %Type%Unit displayUnit)
     {

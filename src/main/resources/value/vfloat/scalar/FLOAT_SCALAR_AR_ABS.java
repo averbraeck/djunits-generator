@@ -42,7 +42,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     /**
      * Construct Float%TypeAbs% scalar.
      * @param value the float value
-     * @param unit %TypeAbsUnit%; unit for the float value
+     * @param unit unit for the float value
      */
     public Float%TypeAbs%(final float value, final %TypeAbsUnit% unit)
     {
@@ -52,7 +52,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     /**
      * Construct Float%TypeAbs% scalar using a double value.
      * @param value the double value
-     * @param unit %TypeAbsUnit%; unit for the resulting float value
+     * @param unit unit for the resulting float value
      */
     public Float%TypeAbs%(final double value, final %TypeAbsUnit% unit)
     {
@@ -61,7 +61,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Construct Float%TypeAbs% scalar.
-     * @param value Float%TypeAbs%; Scalar from which to construct this instance
+     * @param value Scalar from which to construct this instance
      */
     public Float%TypeAbs%(final Float%TypeAbs% value)
     {
@@ -83,7 +83,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     /**
      * Construct Float%TypeAbs% scalar.
      * @param value the float value in BASE units
-     * @return Float%TypeAbs%; the new scalar with the BASE value
+     * @return the new scalar with the BASE value
      */
     public static final Float%TypeAbs% instantiateSI(final float value)
     {
@@ -92,10 +92,10 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Interpolate between two values.
-     * @param zero Float%TypeAbs%; the low value
-     * @param one Float%TypeAbs%; the high value
+     * @param zero the low value
+     * @param one the high value
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return Float%TypeAbs%; a Scalar at the ratio between
+     * @return a Scalar at the ratio between
      */
     public static Float%TypeAbs% interpolate(final Float%TypeAbs% zero, final Float%TypeAbs% one, final float ratio)
     {
@@ -105,9 +105,9 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     
     /**
      * Return the maximum value of two absolute scalars.
-     * @param a1 Float%TypeAbs%; the first scalar
-     * @param a2 Float%TypeAbs%; the second scalar
-     * @return Float%TypeAbs%; the maximum value of two absolute scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @return the maximum value of two absolute scalars
      */
     public static Float%TypeAbs% max(final Float%TypeAbs% a1, final Float%TypeAbs% a2)
     {
@@ -116,10 +116,10 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Return the maximum value of more than two absolute scalars.
-     * @param a1 Float%TypeAbs%; the first scalar
-     * @param a2 Float%TypeAbs%; the second scalar
-     * @param an Float%TypeAbs%...; the other scalars
-     * @return Float%TypeAbs%; the maximum value of more than two absolute scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @param an the other scalars
+     * @return the maximum value of more than two absolute scalars
      */
     public static Float%TypeAbs% max(final Float%TypeAbs% a1, final Float%TypeAbs% a2, final Float%TypeAbs%... an)
     {
@@ -136,9 +136,9 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Return the minimum value of two absolute scalars.
-     * @param a1 Float%TypeAbs%; the first scalar
-     * @param a2 Float%TypeAbs%; the second scalar
-     * @return Float%TypeAbs%; the minimum value of two absolute scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @return the minimum value of two absolute scalars
      */
     public static Float%TypeAbs% min(final Float%TypeAbs% a1, final Float%TypeAbs% a2)
     {
@@ -147,10 +147,10 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
 
     /**
      * Return the minimum value of more than two absolute scalars.
-     * @param a1 Float%TypeAbs%; the first scalar
-     * @param a2 Float%TypeAbs%; the second scalar
-     * @param an Float%TypeAbs%...; the other scalars
-     * @return Float%TypeAbs%; the minimum value of more than two absolute scalars
+     * @param a1 the first scalar
+     * @param a2 the second scalar
+     * @param an the other scalars
+     * @return the minimum value of more than two absolute scalars
      */
     public static Float%TypeAbs% min(final Float%TypeAbs% a1, final Float%TypeAbs% a2, final Float%TypeAbs%... an)
     {
@@ -170,7 +170,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
      * parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are allowed,
      * but not required, between the value and the unit.
      * @param text the textual representation to parse into a Float%TypeAbs%
-     * @return Float%TypeAbs%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the text cannot be parsed
      * @throws NullPointerException when the text argument is null
      */
@@ -200,7 +200,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
      * Returns a Float%TypeAbs% based on a value and the textual representation of the unit, which can be localized.
      * @param value the value to use
      * @param unitString the textual representation of the unit
-     * @return Float%TypeAbs%; the Scalar representation of the value in its unit
+     * @return the Scalar representation of the value in its unit
      * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
      * @throws NullPointerException when the unitString argument is null
      */
