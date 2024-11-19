@@ -274,7 +274,6 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 ##ENDIF
 
 ##IF Mass
-	/** {@inheritDoc} */
 	@Override
 	public String toStringSIPrefixed(final int smallestPower, final int biggestPower)
 	{
