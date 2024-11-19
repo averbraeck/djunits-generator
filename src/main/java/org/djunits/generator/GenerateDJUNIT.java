@@ -174,8 +174,8 @@ public class GenerateDJUNIT
                 fStr += "        /**\n";
                 fStr += "         * Calculate the " + dm + " of " + pType + " and " + pParam + ", which results in a ";
                 fStr += pResult + " scalar.\n";
-                fStr += "         * @param v " + pType + "; scalar\n";
-                fStr += "         * @return " + pResult + "; scalar as a " + dm + " of " + pType + " and " + pParam + "\n";
+                fStr += "         * @param v scalar\n";
+                fStr += "         * @return scalar as a " + dm + " of " + pType + " and " + pParam + "\n";
                 fStr += "         */\n";
                 fStr += "        public final " + pResult + " " + method;
                 fStr += "(final " + pParam + " v)\n";
@@ -235,7 +235,7 @@ public class GenerateDJUNIT
      * @param type the type
      * @return the file with replacements
      */
-    private static String handleIf(String java, final String type)
+    private static String handleIf(final String java, final String type)
     {
         // break into lines
         String[] lines = java.split("\\R");
