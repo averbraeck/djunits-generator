@@ -24,7 +24,7 @@ public class GenerateCliConverters
      * @throws IOException on i/o error
      * @throws URISyntaxException on i/o error
      */
-    public static void main(String[] args) throws IOException, URISyntaxException
+    public static void main(final String[] args) throws IOException, URISyntaxException
     {
         String generationTime = Instant.now().toString();
         List<String> types = Files.readAllLines(Paths.get(URLResource.getResource("/resources/TYPES_REL.txt").toURI()));
@@ -78,7 +78,6 @@ public class GenerateCliConverters
                     "     */\n" + 
                     "    public static class " + type.toUpperCase() + " implements ITypeConverter<" + type + ">\n" + 
                     "    {\n" + 
-                    "        /** {@inheritDoc} */\n" + 
                     "        @Override\n" + 
                     "        @Generated(value = \"" + GenerateCliConverters.class.getName() + "\", date = \"" + generationTime + "\")\n" +
                     "        public " + type + " convert(final String value) throws Exception\n" + 

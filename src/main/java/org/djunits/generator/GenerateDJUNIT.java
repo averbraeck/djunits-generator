@@ -191,7 +191,6 @@ public class GenerateDJUNIT
             // reciprocal function
             if (!absolute)
             {
-                fStr += "        /** {@inheritDoc} */\n";
                 fStr += "        @Override\n";
                 if (reciprocalType == null)
                 {
