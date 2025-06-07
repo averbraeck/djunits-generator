@@ -82,7 +82,10 @@ public class GenerateCliConverters
                     "        @Generated(value = \"" + GenerateCliConverters.class.getName() + "\", date = \"" + generationTime + "\")\n" +
                     "        public " + type + " convert(final String value) throws Exception\n" + 
                     "        {\n" + 
-                    "            return " + type + ".valueOf(value);\n" + 
+                    "            CliUtil.prepareLocale();\n" +
+                    "            var ret = " + type + ".valueOf(value);\n" + 
+                    "            CliUtil.restoreLocale();\n" +
+                    "            return ret;\n" + 
                     "        }\n" + 
                     "    }\n");
             // @formatter:on
