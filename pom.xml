@@ -3,7 +3,7 @@
 
   <groupId>org.djunits</groupId>
   <artifactId>djunits-generator</artifactId>
-  <version>5.2.1</version>
+  <version>5.2.2</version>
 
   <name>Delft Java UNIT System - Source generator</name>
   <description>Delft Java UNIT System - Sourrce generator</description>
