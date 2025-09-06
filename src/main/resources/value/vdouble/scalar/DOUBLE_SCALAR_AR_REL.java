@@ -60,8 +60,8 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
     public static final %TypeRel% NEG_MAXVALUE = new %TypeRel%(-Double.MAX_VALUE, %TypeRelUnit%.SI);
 
     /**
-     * Construct %TypeRel% scalar.
-     * @param value double value
+     * Construct %TypeRel% scalar with a unit.
+     * @param value the double value, expressed in the given unit
      * @param unit unit for the double value
      */
     public %TypeRel%(final double value, final %TypeRelUnit% unit)
@@ -91,7 +91,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
     }
 
     /**
-     * Construct %TypeRel% scalar.
+     * Construct %TypeRel% scalar based on an SI value.
      * @param value the double value in SI units
      * @return the new scalar with the SI value
      */
@@ -101,14 +101,16 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
     }
 
     /**
-     * Interpolate between two values.
-     * @param zero the low value
-     * @param one the high value
+     * Interpolate between two values. Note that the first value does not have to be smaller than the second.
+     * @param zero the value at a ratio of zero
+     * @param one the value at a ratio of one
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return a Scalar at the ratio between
+     * @return a %TypeRel% at the given ratio between 0 and 1
      */
     public static %TypeRel% interpolate(final %TypeRel% zero, final %TypeRel% one, final double ratio)
     {
+        Throw.when(ratio < 0.0 || ratio > 1.0, IllegalArgumentException.class, 
+                "ratio for interpolation should be between 0 and 1, but is %f", ratio);
         return new %TypeRel%(zero.getInUnit() * (1 - ratio) + one.getInUnit(zero.getDisplayUnit()) * ratio, zero
             .getDisplayUnit());
     }

@@ -53,8 +53,8 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
     public static final Float%Type% NEG_MAXVALUE = new Float%Type%(-Float.MAX_VALUE, %Type%Unit.SI);
 
     /**
-     * Construct Float%Type% scalar.
-     * @param value the float value
+     * Construct Float%Type% scalar with a unit.
+     * @param value the float value, expressed in the given unit
      * @param unit unit for the float value
      */
     public Float%Type%(final float value, final %Type%Unit unit)
@@ -72,8 +72,8 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
     }
 
     /**
-     * Construct Float%Type% scalar using a double value.
-     * @param value the double value
+     * Construct Float%Type% scalar with a unit using a double value.
+     * @param value the double value, expressed in the given unit
      * @param unit unit for the resulting float value
      */
     public Float%Type%(final double value, final %Type%Unit unit)
@@ -88,7 +88,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
     }
 
     /**
-     * Construct Float%Type% scalar.
+     * Construct Float%Type% scalar based on an SI value.
      * @param value the float value in SI units
      * @return the new scalar with the SI value
      */
@@ -98,14 +98,16 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
     }
 
     /**
-     * Interpolate between two values.
-     * @param zero the low value
-     * @param one the high value
+     * Interpolate between two values. Note that the first value does not have to be smaller than the second.
+     * @param zero the value at a ratio of zero
+     * @param one the value at a ratio of one
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return a Scalar at the ratio between
+     * @return a Float%Type% at the given ratio between 0 and 1
      */
     public static Float%Type% interpolate(final Float%Type% zero, final Float%Type% one, final float ratio)
     {
+        Throw.when(ratio < 0.0 || ratio > 1.0, IllegalArgumentException.class, 
+                "ratio for interpolation should be between 0 and 1, but is %f", ratio);
         return new Float%Type%(zero.getInUnit() * (1 - ratio) + one.getInUnit(zero.getDisplayUnit()) * ratio, zero
             .getDisplayUnit());
     }

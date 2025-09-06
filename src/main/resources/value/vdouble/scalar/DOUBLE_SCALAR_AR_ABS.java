@@ -39,8 +39,8 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
     public static final %TypeAbs% ZERO = new %TypeAbs%(0.0, %TypeAbsUnit%.DEFAULT);
 
     /**
-     * Construct %TypeAbs% scalar.
-     * @param value value
+     * Construct %TypeAbs% scalar with a unit.
+     * @param value the double value, expressed in the given unit
      * @param unit unit for the double value
      */
     public %TypeAbs%(final double value, final %TypeAbsUnit% unit)
@@ -70,9 +70,9 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
     }
 
     /**
-     * Construct %TypeAbs% scalar.
-     * @param value value in SI units
-     * @return the new scalar with the SI value
+     * Construct %TypeAbs% scalar based on a BASE unit value.
+     * @param value value in BASE units
+     * @return the new scalar with the BASE unit value
      */
     public static final %TypeAbs% ofSI(final double value)
     {
@@ -80,14 +80,16 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
     }
 
     /**
-     * Interpolate between two values.
-     * @param zero the low value
-     * @param one the high value
+     * Interpolate between two values. Note that the first value does not have to be smaller than the second.
+     * @param zero the value at a ratio of zero
+     * @param one the value at a ratio of one
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return a Scalar at the ratio between
+     * @return a %TypeAbs% at the given ratio between 0 and 1
      */
     public static %TypeAbs% interpolate(final %TypeAbs% zero, final %TypeAbs% one, final double ratio)
     {
+        Throw.when(ratio < 0.0 || ratio > 1.0, IllegalArgumentException.class, 
+                "ratio for interpolation should be between 0 and 1, but is %f", ratio);
         return new %TypeAbs%(zero.getInUnit() * (1 - ratio) + one.getInUnit(zero.getDisplayUnit()) * ratio, zero
             .getDisplayUnit());
     }

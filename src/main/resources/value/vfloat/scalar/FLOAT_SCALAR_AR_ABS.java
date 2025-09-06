@@ -40,8 +40,8 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     public static final Float%TypeAbs% ZERO = new Float%TypeAbs%(0.0f, %TypeAbsUnit%.DEFAULT);
 
     /**
-     * Construct Float%TypeAbs% scalar.
-     * @param value the float value
+     * Construct Float%TypeAbs% scalar with a unit.
+     * @param value the float value, expressed in the given unit
      * @param unit unit for the float value
      */
     public Float%TypeAbs%(final float value, final %TypeAbsUnit% unit)
@@ -50,8 +50,8 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     }
 
     /**
-     * Construct Float%TypeAbs% scalar using a double value.
-     * @param value the double value
+     * Construct Float%TypeAbs% scalar with a unit using a double value.
+     * @param value the double value, expressed in the given unit
      * @param unit unit for the resulting float value
      */
     public Float%TypeAbs%(final double value, final %TypeAbsUnit% unit)
@@ -81,7 +81,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     }
 
     /**
-     * Construct Float%TypeAbs% scalar.
+     * Construct Float%TypeAbs% scalar based on an BASE unit.
      * @param value the float value in BASE units
      * @return the new scalar with the BASE value
      */
@@ -91,14 +91,16 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
     }
 
     /**
-     * Interpolate between two values.
-     * @param zero the low value
-     * @param one the high value
+     * Interpolate between two values. Note that the first value does not have to be smaller than the second.
+     * @param zero the value at a ratio of zero
+     * @param one the value at a ratio of one
      * @param ratio the ratio between 0 and 1, inclusive
-     * @return a Scalar at the ratio between
+     * @return a Float%TypeAbs% at the given ratio between 0 and 1
      */
     public static Float%TypeAbs% interpolate(final Float%TypeAbs% zero, final Float%TypeAbs% one, final float ratio)
     {
+        Throw.when(ratio < 0.0 || ratio > 1.0, IllegalArgumentException.class, 
+                "ratio for interpolation should be between 0 and 1, but is %f", ratio);
         return new Float%TypeAbs%(zero.getInUnit() * (1 - ratio) + one.getInUnit(zero.getDisplayUnit()) * ratio, zero
             .getDisplayUnit());
     }
