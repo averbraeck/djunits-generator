@@ -196,8 +196,7 @@ public class GenerateDJUNIT
                 {
                     fStr += "        public " + prefix + "SIScalar reciprocal()\n";
                     fStr += "        {\n";
-                    String df = prefix.length() == 0 ? "Double" : "Float";
-                    fStr += "            return " + df + "Scalar.divide(" + prefix + "Dimensionless.ONE, this);\n";
+                    fStr += "            return " + prefix + "SIScalar.divide(" + prefix + "Dimensionless.ONE, this);\n";
                 }
                 else
                 {
