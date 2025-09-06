@@ -184,7 +184,9 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeRelUnit% unit = %TypeRelUnit%.BASE.getUnitByAbbreviation(unitString);
             if (unit == null)
+            {
                 throw new IllegalArgumentException("Unit " + unitString + " not found");
+            }
             return new %TypeRel%(d, unit);
 	    }
 	    catch (Exception exception)

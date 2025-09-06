@@ -174,7 +174,9 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
             if (unit == null)
+            {
                 throw new IllegalArgumentException("Unit " + unitString + " not found");
+            }
             return new %TypeAbs%(d, unit);
 	    }
 	    catch (Exception exception)

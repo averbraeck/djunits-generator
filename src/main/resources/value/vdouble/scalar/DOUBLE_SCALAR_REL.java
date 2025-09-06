@@ -179,7 +179,9 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
             if (unit == null)
+            {
                 throw new IllegalArgumentException("Unit " + unitString + " not found");
+            }
             return new %Type%(d, unit);
 	    }
 	    catch (Exception exception)
