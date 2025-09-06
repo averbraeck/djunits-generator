@@ -219,7 +219,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     @Override
     public Float%TypeAbs% instantiateScalarSI(final float valueSI, final %TypeAbsUnit% displayUnit)
     {
-        Float%TypeAbs% result = Float%TypeAbs%.instantiateSI(valueSI);
+        Float%TypeAbs% result = Float%TypeAbs%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }
@@ -239,7 +239,7 @@ public class Float%TypeAbs%Matrix extends FloatMatrixAbs<%TypeAbsUnit%, Float%Ty
     @Override
     public Float%TypeRel% instantiateScalarRelSI(final float valueSI, final %TypeRelUnit% displayUnit)
     {
-        Float%TypeRel% result = Float%TypeRel%.instantiateSI(valueSI);
+        Float%TypeRel% result = Float%TypeRel%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }

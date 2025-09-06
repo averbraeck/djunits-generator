@@ -294,7 +294,7 @@ public class %Type%Vector extends DoubleVectorRel<%Type%Unit, %Type%, %Type%Vect
     @Override
     public %Type% instantiateScalarSI(final double valueSI, final %Type%Unit displayUnit)
     {
-        %Type% result = %Type%.instantiateSI(valueSI);
+        %Type% result = %Type%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }

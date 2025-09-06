@@ -204,7 +204,7 @@ public class GenerateDJUNIT
                     fStr += "        public " + prefix + reciprocalType + " reciprocal()\n";
                     fStr += "        {\n";
                     String f = prefix.length() == 0 ? "" : "f";
-                    fStr += "            return " + prefix + reciprocalType + ".instantiateSI(1.0" + f + " / this.si);\n";
+                    fStr += "            return " + prefix + reciprocalType + ".ofSI(1.0" + f + " / this.si);\n";
                 }
                 fStr += "        }\n\n";
             }

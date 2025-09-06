@@ -74,7 +74,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
      * @param value value in SI units
      * @return the new scalar with the SI value
      */
-    public static final %TypeAbs% instantiateSI(final double value)
+    public static final %TypeAbs% ofSI(final double value)
     {
         return new %TypeAbs%(value, %TypeAbsUnit%.DEFAULT);
     }

@@ -79,7 +79,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
      * @param value the double value in SI units
      * @return the new scalar with the SI value
      */
-    public static final %Type% instantiateSI(final double value)
+    public static final %Type% ofSI(final double value)
     {
         return new %Type%(value, %Type%Unit.SI);
     }

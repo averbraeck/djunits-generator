@@ -85,7 +85,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
      * @param value the float value in BASE units
      * @return the new scalar with the BASE value
      */
-    public static final Float%TypeAbs% instantiateSI(final float value)
+    public static final Float%TypeAbs% ofSI(final float value)
     {
         return new Float%TypeAbs%(value, %TypeAbsUnit%.DEFAULT);
     }

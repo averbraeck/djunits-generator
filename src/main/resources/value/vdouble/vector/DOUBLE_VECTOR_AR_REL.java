@@ -292,7 +292,7 @@ public class %TypeRel%Vector extends DoubleVectorRelWithAbs<%TypeAbsUnit%, %Type
     @Override
     public %TypeRel% instantiateScalarSI(final double valueSI, final %TypeRelUnit% displayUnit)
     {
-        %TypeRel% result = %TypeRel%.instantiateSI(valueSI);
+        %TypeRel% result = %TypeRel%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }
@@ -306,7 +306,7 @@ public class %TypeRel%Vector extends DoubleVectorRelWithAbs<%TypeAbsUnit%, %Type
     @Override
     public %TypeAbs% instantiateScalarAbsSI(final double valueSI, final %TypeAbsUnit% displayUnit)
     {
-        %TypeAbs% result = %TypeAbs%.instantiateSI(valueSI);
+        %TypeAbs% result = %TypeAbs%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }

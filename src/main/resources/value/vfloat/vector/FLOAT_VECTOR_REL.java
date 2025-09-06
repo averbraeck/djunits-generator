@@ -295,7 +295,7 @@ public class Float%Type%Vector extends FloatVectorRel<%Type%Unit, Float%Type%, F
     @Override
     public Float%Type% instantiateScalarSI(final float valueSI, final %Type%Unit displayUnit)
     {
-        Float%Type% result = Float%Type%.instantiateSI(valueSI);
+        Float%Type% result = Float%Type%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }

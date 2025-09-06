@@ -293,7 +293,7 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
     @Override
     public Float%TypeRel% instantiateScalarSI(final float valueSI, final %TypeRelUnit% displayUnit)
     {
-        Float%TypeRel% result = Float%TypeRel%.instantiateSI(valueSI);
+        Float%TypeRel% result = Float%TypeRel%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }
@@ -307,7 +307,7 @@ public class Float%TypeRel%Vector extends FloatVectorRelWithAbs<%TypeAbsUnit%, F
     @Override
     public Float%TypeAbs% instantiateScalarAbsSI(final float valueSI, final %TypeAbsUnit% displayUnit)
     {
-        Float%TypeAbs% result = Float%TypeAbs%.instantiateSI(valueSI);
+        Float%TypeAbs% result = Float%TypeAbs%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }

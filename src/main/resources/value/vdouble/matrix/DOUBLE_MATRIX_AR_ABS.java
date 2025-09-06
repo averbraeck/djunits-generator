@@ -221,7 +221,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
     @Override
     public %TypeAbs% instantiateScalarSI(final double valueSI, final %TypeAbsUnit% displayUnit)
     {
-        %TypeAbs% result = %TypeAbs%.instantiateSI(valueSI);
+        %TypeAbs% result = %TypeAbs%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }
@@ -241,7 +241,7 @@ public class %TypeAbs%Matrix extends DoubleMatrixAbs<%TypeAbsUnit%, %TypeAbs%, %
     @Override
     public %TypeRel% instantiateScalarRelSI(final double valueSI, final %TypeRelUnit% displayUnit)
     {
-        %TypeRel% result = %TypeRel%.instantiateSI(valueSI);
+        %TypeRel% result = %TypeRel%.ofSI(valueSI);
         result.setDisplayUnit(displayUnit);
         return result;
     }
