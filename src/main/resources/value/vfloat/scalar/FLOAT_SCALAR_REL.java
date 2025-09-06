@@ -240,10 +240,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 	        NumberParser numberParser = new NumberParser().lenient().trailing();
 	        float f = numberParser.parseFloat(text);
 	        String unitString = text.substring(numberParser.getTrailingPosition()).trim();
-	        if (unitString.length() != 0)
-	        {
-	            throw new IllegalArgumentException("Unit " + unitString + " not found for Dimensionless");
-	        }
+            Throw.when(unitString.length() != 0, IllegalArgumentException.class, "Dimensionless should not have unit %s", unitString);
 	        return new FloatDimensionless(f, DimensionlessUnit.SI);
 	    }
 	    catch (Exception exception)

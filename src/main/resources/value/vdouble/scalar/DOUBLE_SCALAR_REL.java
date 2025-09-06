@@ -226,10 +226,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 	        NumberParser numberParser = new NumberParser().lenient().trailing();
 	        double d = numberParser.parseDouble(text);
 	        String unitString = text.substring(numberParser.getTrailingPosition()).trim();
-	        if (unitString.length() != 0)
-	        {
-	            throw new IllegalArgumentException("Unit " + unitString + " not found for Dimensionless");
-	        }
+	        Throw.when(unitString.length() != 0, IllegalArgumentException.class, "Dimensionless should not have unit %s", unitString);
 	        return new Dimensionless(d, DimensionlessUnit.SI);
 	    }
 	    catch (Exception exception)
