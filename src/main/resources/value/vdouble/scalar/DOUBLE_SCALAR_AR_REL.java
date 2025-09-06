@@ -32,6 +32,17 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
     /** Constant with value one. */
     public static final %TypeRel% ONE = new %TypeRel%(1.0, %TypeRelUnit%.SI);
 
+##IF Angle
+    /** Constant with value pi. */
+    public static final Angle PI = new Angle(Math.PI, AngleUnit.RADIAN);
+   
+    /** Constant with value pi/2. */
+    public static final Angle HALF_PI = new Angle(Math.PI / 2.0, AngleUnit.RADIAN);
+
+    /** Constant with value tau. */
+    public static final Angle TAU = new Angle(Math.PI * 2.0, AngleUnit.RADIAN);
+##ENDIF
+
     /** Constant with value NaN. */
     @SuppressWarnings("checkstyle:constantname")
     public static final %TypeRel% NaN = new %TypeRel%(Double.NaN, %TypeRelUnit%.SI);

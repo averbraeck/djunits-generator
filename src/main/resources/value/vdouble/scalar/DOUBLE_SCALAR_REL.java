@@ -32,7 +32,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 
     /** Constant with value one. */
     public static final %Type% ONE = new %Type%(1.0, %Type%Unit.SI);
-
+    
     /** Constant with value NaN. */
     @SuppressWarnings("checkstyle:constantname")
     public static final %Type% NaN = new %Type%(Double.NaN, %Type%Unit.SI);

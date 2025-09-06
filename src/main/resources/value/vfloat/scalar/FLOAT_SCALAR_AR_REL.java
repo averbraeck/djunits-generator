@@ -32,6 +32,17 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
     /** Constant with value one. */
     public static final Float%TypeRel% ONE = new Float%TypeRel%(1.0f, %TypeRelUnit%.SI);
 
+##IF Angle
+    /** Constant with value pi. */
+    public static final FloatAngle PI = new FloatAngle((float) Math.PI, AngleUnit.RADIAN);
+   
+    /** Constant with value pi/2. */
+    public static final FloatAngle HALF_PI = new FloatAngle((float) (Math.PI / 2.0), AngleUnit.RADIAN);
+
+    /** Constant with value tau. */
+    public static final FloatAngle TAU = new FloatAngle((float) (Math.PI * 2.0), AngleUnit.RADIAN);
+##ENDIF
+
     /** Constant with value NaN. */
     @SuppressWarnings("checkstyle:constantname")
     public static final Float%TypeRel% NaN = new Float%TypeRel%(Float.NaN, %TypeRelUnit%.SI);
