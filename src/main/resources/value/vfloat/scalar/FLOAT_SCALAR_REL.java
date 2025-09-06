@@ -296,6 +296,42 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 ##ENDIF
 
 %FORMULAS%%Type%%
+
+    /**
+     * Multiply two scalars that result in a scalar of type Float%Type%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the multiplication of both scalars as an instance of Float%Type%
+     */
+    public static Float%Type% multiply(final FloatScalarRel<?, ?> scalar1, final FloatScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(
+                !scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                        .plus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%Type%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Multiplying %s by %s does not result in instance of type Float%Type%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new Float%Type%(scalar1.si * scalar2.si, %Type%Unit.SI);
+    }
+    
+    /**
+     * Divide two scalars that result in a scalar of type Float%Type%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the division of scalar1 by scalar2 as an instance of Float%Type%
+     */
+    public static Float%Type% divide(final FloatScalarRel<?, ?> scalar1, final FloatScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(!scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                .minus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%Type%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Dividing %s by %s does not result in an instance of type Float%Type%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new Float%Type%(scalar1.si / scalar2.si, %Type%Unit.SI);
+    }
+
 }
 
 

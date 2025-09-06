@@ -236,5 +236,41 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
 
 
 %FORMULAS%%TypeRel%%
+
+    /**
+     * Multiply two scalars that result in a scalar of type Float%TypeRel%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the multiplication of both scalars as an instance of Float%TypeRel%
+     */
+    public static Float%TypeRel% multiply(final FloatScalarRel<?, ?> scalar1, final FloatScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(
+                !scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                        .plus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%TypeRel%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Multiplying %s by %s does not result in instance of type Float%TypeRel%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new Float%TypeRel%(scalar1.si * scalar2.si, %TypeRel%Unit.SI);
+    }
+    
+    /**
+     * Divide two scalars that result in a scalar of type Float%TypeRel%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the division of scalar1 by scalar2 as an instance of Float%TypeRel%
+     */
+    public static Float%TypeRel% divide(final FloatScalarRel<?, ?> scalar1, final FloatScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(!scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                .minus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%TypeRel%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Dividing %s by %s does not result in an instance of type Float%TypeRel%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new Float%TypeRel%(scalar1.si / scalar2.si, %TypeRel%Unit.SI);
+    }
+
 }
 

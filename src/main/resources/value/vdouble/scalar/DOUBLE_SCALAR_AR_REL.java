@@ -227,5 +227,40 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
 
 %FORMULAS%%TypeRel%%
     
+    /**
+     * Multiply two scalars that result in a scalar of type %TypeRel%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the multiplication of both scalars as an instance of %TypeRel%
+     */
+    public static %TypeRel% multiply(final DoubleScalarRel<?, ?> scalar1, final DoubleScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(
+                !scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                        .plus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%TypeRel%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Multiplying %s by %s does not result in instance of type %TypeRel%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new %TypeRel%(scalar1.si * scalar2.si, %TypeRel%Unit.SI);
+    }
+    
+    /**
+     * Divide two scalars that result in a scalar of type %TypeRel%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the division of scalar1 by scalar2 as an instance of %TypeRel%
+     */
+    public static %TypeRel% divide(final DoubleScalarRel<?, ?> scalar1, final DoubleScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(!scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                .minus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%TypeRel%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Dividing %s by %s does not result in an instance of type %TypeRel%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new %TypeRel%(scalar1.si / scalar2.si, %TypeRel%Unit.SI);
+    }
+
 }
 

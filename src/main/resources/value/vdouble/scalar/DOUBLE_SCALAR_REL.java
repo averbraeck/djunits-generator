@@ -7,6 +7,7 @@ import jakarta.annotation.Generated;
 
 import org.djunits.unit.*;
 import org.djunits.value.util.ValueUtil;
+import org.djunits.value.vdouble.scalar.base.DoubleScalar;
 import org.djunits.value.vdouble.scalar.base.DoubleScalarRel;
 import org.djunits.value.function.DimensionlessFunctions;
 import org.djutils.base.NumberParser;
@@ -284,6 +285,42 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 ##ENDIF
     
 %FORMULAS%%Type%%
+
+    /**
+     * Multiply two scalars that result in a scalar of type %Type%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the multiplication of both scalars as an instance of %Type%
+     */
+    public static %Type% multiply(final DoubleScalarRel<?, ?> scalar1, final DoubleScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(
+                !scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                        .plus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%Type%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Multiplying %s by %s does not result in instance of type %Type%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new %Type%(scalar1.si * scalar2.si, %Type%Unit.SI);
+    }
+    
+    /**
+     * Divide two scalars that result in a scalar of type %Type%.
+     * @param scalar1 the first scalar
+     * @param scalar2 the second scalar
+     * @return the division of scalar1 by scalar2 as an instance of %Type%
+     */
+    public static %Type% divide(final DoubleScalarRel<?, ?> scalar1, final DoubleScalarRel<?, ?> scalar2)
+    {
+        Throw.whenNull(scalar1, "scalar1 cannot be null");
+        Throw.whenNull(scalar2, "scalar2 cannot be null");
+        Throw.when(!scalar1.getDisplayUnit().getQuantity().getSiDimensions()
+                .minus(scalar2.getDisplayUnit().getQuantity().getSiDimensions()).equals(%Type%Unit.BASE.getSiDimensions()),
+                IllegalArgumentException.class, "Dividing %s by %s does not result in an instance of type %Type%",
+                scalar1.toDisplayString(), scalar2.toDisplayString());
+        return new %Type%(scalar1.si / scalar2.si, %Type%Unit.SI);
+    }
+
 }
 
 
