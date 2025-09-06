@@ -178,10 +178,7 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
             double d = numberParser.parseDouble(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-            {
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
-            }
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %Type%", unitString);
             return new %Type%(d, unit);
 	    }
 	    catch (Exception exception)
@@ -205,11 +202,8 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
         Throw.whenNull(unitString, "Error parsing %Type%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing %Type%: empty unitString");
         %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new %Type%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing %Type% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing %Type% with unit %s", unitString);
+        return new %Type%(value, unit);
     }
 ##ENDIF
 
@@ -233,7 +227,9 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 	        double d = numberParser.parseDouble(text);
 	        String unitString = text.substring(numberParser.getTrailingPosition()).trim();
 	        if (unitString.length() != 0)
+	        {
 	            throw new IllegalArgumentException("Unit " + unitString + " not found for Dimensionless");
+	        }
 	        return new Dimensionless(d, DimensionlessUnit.SI);
 	    }
 	    catch (Exception exception)

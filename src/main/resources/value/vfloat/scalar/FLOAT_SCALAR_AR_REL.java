@@ -193,8 +193,7 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
             float f = numberParser.parseFloat(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeRelUnit% unit = %TypeRelUnit%.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeRel%", unitString);
             return new Float%TypeRel%(f, unit);
 	    }
 	    catch (Exception exception)
@@ -218,11 +217,8 @@ public class Float%TypeRel% extends FloatScalarRelWithAbs<%TypeAbsUnit%, Float%T
         Throw.whenNull(unitString, "Error parsing Float%TypeRel%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing Float%TypeRel%: empty unitString");
         %TypeRelUnit% unit = %TypeRelUnit%.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new Float%TypeRel%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing Float%TypeRel% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing Float%TypeRel% with unit %s", unitString);
+        return new Float%TypeRel%(value, unit);
     }
 
 

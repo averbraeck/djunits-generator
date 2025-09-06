@@ -184,8 +184,7 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
             float f = numberParser.parseFloat(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeAbs%", unitString);
             return new Float%TypeAbs%(f, unit);
 	    }
 	    catch (Exception exception)
@@ -209,11 +208,8 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
         Throw.whenNull(unitString, "Error parsing Float%TypeAbs%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing Float%TypeAbs%: empty unitString");
         %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new Float%TypeAbs%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing Float%TypeAbs% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing Float%TypeAbs% with unit %s", unitString);
+        return new Float%TypeAbs%(value, unit);
     }
 
 

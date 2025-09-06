@@ -173,10 +173,7 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
             double d = numberParser.parseDouble(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-            {
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
-            }
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeAbs%", unitString);
             return new %TypeAbs%(d, unit);
 	    }
 	    catch (Exception exception)
@@ -200,11 +197,8 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
         Throw.whenNull(unitString, "Error parsing %TypeAbs%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing %TypeAbs%: empty unitString");
         %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new %TypeAbs%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing %TypeAbs% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing %TypeAbs% with unit %s", unitString);
+        return new %TypeAbs%(value, unit);
     }
 
     

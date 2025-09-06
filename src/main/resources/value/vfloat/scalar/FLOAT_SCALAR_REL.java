@@ -192,8 +192,7 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
             float f = numberParser.parseFloat(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %Type%", unitString);
             return new Float%Type%(f, unit);
 	    }
 	    catch (Exception exception)
@@ -217,11 +216,8 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
         Throw.whenNull(unitString, "Error parsing Float%Type%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing Float%Type%: empty unitString");
         %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new Float%Type%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing Float%Type% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing Float%Type% with unit %s", unitString);
+        return new Float%Type%(value, unit);
     }
 ##ENDIF
 
@@ -245,7 +241,9 @@ public class Float%Type% extends FloatScalarRel<%Type%Unit, Float%Type%> %DIMLES
 	        float f = numberParser.parseFloat(text);
 	        String unitString = text.substring(numberParser.getTrailingPosition()).trim();
 	        if (unitString.length() != 0)
+	        {
 	            throw new IllegalArgumentException("Unit " + unitString + " not found for Dimensionless");
+	        }
 	        return new FloatDimensionless(f, DimensionlessUnit.SI);
 	    }
 	    catch (Exception exception)

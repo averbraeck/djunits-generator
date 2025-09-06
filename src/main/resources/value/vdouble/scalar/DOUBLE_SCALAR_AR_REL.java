@@ -183,10 +183,7 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
             double d = numberParser.parseDouble(text);
             String unitString = text.substring(numberParser.getTrailingPosition()).trim();
             %TypeRelUnit% unit = %TypeRelUnit%.BASE.getUnitByAbbreviation(unitString);
-            if (unit == null)
-            {
-                throw new IllegalArgumentException("Unit " + unitString + " not found");
-            }
+            Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeRel%", unitString);
             return new %TypeRel%(d, unit);
 	    }
 	    catch (Exception exception)
@@ -210,11 +207,8 @@ public class %TypeRel% extends DoubleScalarRelWithAbs<%TypeAbsUnit%, %TypeAbs%, 
         Throw.whenNull(unitString, "Error parsing %TypeRel%: unitString is null");
         Throw.when(unitString.length() == 0, IllegalArgumentException.class, "Error parsing %TypeRel%: empty unitString");
         %TypeRelUnit% unit = %TypeRelUnit%.BASE.getUnitByAbbreviation(unitString);
-        if (unit != null)
-        {
-            return new %TypeRel%(value, unit);
-        }
-        throw new IllegalArgumentException("Error parsing %TypeRel% with unit " + unitString);
+        Throw.when(unit == null, IllegalArgumentException.class, "Error parsing %TypeRel% with unit %s", unitString);
+        return new %TypeRel%(value, unit);
     }
 
 
