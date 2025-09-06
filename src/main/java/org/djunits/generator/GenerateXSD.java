@@ -43,7 +43,7 @@ public class GenerateXSD
     {
         try
         {
-            File in = new File(absoluteRootPath + "../../djunits/src/main/resources/localeunit.properties");
+            File in = new File(absoluteRootPath + "../../djunits/src/main/resources/locale/unit_en.properties");
             if (!in.exists())
             {
                 throw new RuntimeException("cannot find file " + in.getPath());
