@@ -13,7 +13,7 @@ import org.djunits.unit.util.UNITS;
 
 /**
  * Generator for the locale properties file.
- * @author <a href="https://www.tudelft.nl/p.knoppers">Peter Knoppers</a>
+ * @author Peter Knoppers
  */
 public class GenerateUSLocale
 {
