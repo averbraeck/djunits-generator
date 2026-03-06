@@ -19,13 +19,11 @@ import org.djutils.exceptions.Throw;
  * double Time with TimeUnit.BASE as its unit, the largest value where the ms precision is reached is 2^51 = 2.3E15, which is
  * around 71000 years. This is sufficient to store a date in the 21st Century with a BASE or an Epoch offset precise to a
  * microsecond.
- * </p>
 ##ENDIF
  * <p>
  * Copyright (c) 2013-2026 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. <br>
  * All rights reserved. <br>
  * BSD-style license. See <a href="https://djunits.org/docs/license.html">DJUNITS License</a>.
- * </p>
  * @author Alexander Verbraeck
  * @author Peter Knoppers
  */
@@ -177,13 +175,13 @@ public class %TypeAbs% extends DoubleScalarAbs<%TypeAbsUnit%, %TypeAbs%, %TypeRe
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
             Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeAbs%", unitString);
             return new %TypeAbs%(d, unit);
-	    }
-	    catch (Exception exception)
-	    {
-	        throw new IllegalArgumentException(
-	                "Error parsing %TypeAbs% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
-	                exception);
-	    }
+        }
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing %TypeAbs% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
     }
 
     /**

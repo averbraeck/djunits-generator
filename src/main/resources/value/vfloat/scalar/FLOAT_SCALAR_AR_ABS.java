@@ -20,13 +20,11 @@ import org.djutils.exceptions.Throw;
  * Epoch values that are in the order of magnitude of 2E12 ms! So feeding System.TimeInMillis() to a FloatTime with
  * TimeUnit.BASE as its unit is not having the required precision. At best, a FloatTime can store TimeUnit.BASE or
  * TimeUnit.EPOCH values with real calendar values with a precision of several minutes.
- * </p>
 ##ENDIF
  * <p>
  * Copyright (c) 2013-2026 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. <br>
  * All rights reserved. <br>
  * BSD-style license. See <a href="https://djunits.org/docs/license.html">DJUNITS License</a>.
- * </p>
  * @author Alexander Verbraeck
  * @author Peter Knoppers
  */
@@ -188,13 +186,13 @@ public class Float%TypeAbs% extends FloatScalarAbs<%TypeAbsUnit%, Float%TypeAbs%
             %TypeAbsUnit% unit = %TypeAbsUnit%.BASE.getUnitByAbbreviation(unitString);
             Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %TypeAbs%", unitString);
             return new Float%TypeAbs%(f, unit);
-	    }
-	    catch (Exception exception)
-	    {
-	        throw new IllegalArgumentException(
-	                "Error parsing Float%TypeAbs% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
-	                exception);
-	    }
+        }
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing Float%TypeAbs% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
     }
 
     /**

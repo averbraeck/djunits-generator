@@ -18,7 +18,6 @@ import org.djutils.exceptions.Throw;
  * <p>
  * Copyright (c) 2013-2026 Delft University of Technology, PO Box 5, 2600 AA, Delft, the Netherlands. All rights reserved. <br>
  * BSD-style license. See <a href="https://djunits.org/docs/license.html">DJUNITS License</a>.
- * </p>
  * @author Alexander Verbraeck
  * @author Peter Knoppers
  */
@@ -183,13 +182,13 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
             %Type%Unit unit = %Type%Unit.BASE.getUnitByAbbreviation(unitString);
             Throw.when(unit == null, IllegalArgumentException.class, "Unit %s not found for quantity %Type%", unitString);
             return new %Type%(d, unit);
-	    }
-	    catch (Exception exception)
-	    {
-	        throw new IllegalArgumentException(
-	                "Error parsing %Type% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
-	                exception);
-	    }
+        }
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing %Type% from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
     }
 
     /**
@@ -211,77 +210,77 @@ public class %Type% extends DoubleScalarRel<%Type%Unit, %Type%> %DIMLESS%
 ##ENDIF
 
 ##IF Dimensionless
-	/**
-	 * Returns a Dimensionless representation of a textual representation of a value with a unit. The String representation that
-	 * can be parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are
-	 * allowed, but not required, between the value and the unit.
-	 * @param text the textual representation to parse into a Dimensionless
-	 * @return the Scalar representation of the value in its unit
-	 * @throws IllegalArgumentException when the text cannot be parsed
-	 * @throws NullPointerException when the text argument is null
-	 */
-	public static Dimensionless valueOf(final String text)
-	{
-	    Throw.whenNull(text, "Error parsing Dimensionless: text to parse is null");
-	    Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing Dimensionless: empty text to parse");
-	    try
-	    {
-	        NumberParser numberParser = new NumberParser().lenient().trailing();
-	        double d = numberParser.parseDouble(text);
-	        String unitString = text.substring(numberParser.getTrailingPosition()).trim();
-	        Throw.when(unitString.length() != 0, IllegalArgumentException.class, "Dimensionless should not have unit %s", unitString);
-	        return new Dimensionless(d, DimensionlessUnit.SI);
-	    }
-	    catch (Exception exception)
-	    {
-	        throw new IllegalArgumentException(
-	                "Error parsing Dimensionless from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
-	                exception);
-	    }
-	}
-	
-	/**
-	 * Returns a Dimensionless based on a value and the textual representation of the unit, which can be localized.
-	 * @param value the value to use
-	 * @param unitString the textual representation of the unit
-	 * @return the Scalar representation of the value in its unit
-	 * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
-	 * @throws NullPointerException when the unitString argument is null
-	 */
-	public static Dimensionless of(final double value, final String unitString)
-	{
-	    Throw.whenNull(unitString, "Error parsing Dimensionless: unitString is null");
+    /**
+     * Returns a Dimensionless representation of a textual representation of a value with a unit. The String representation that
+     * can be parsed is the double value in the unit, followed by a localized or English abbreviation of the unit. Spaces are
+     * allowed, but not required, between the value and the unit.
+     * @param text the textual representation to parse into a Dimensionless
+     * @return the Scalar representation of the value in its unit
+     * @throws IllegalArgumentException when the text cannot be parsed
+     * @throws NullPointerException when the text argument is null
+     */
+    public static Dimensionless valueOf(final String text)
+    {
+        Throw.whenNull(text, "Error parsing Dimensionless: text to parse is null");
+        Throw.when(text.length() == 0, IllegalArgumentException.class, "Error parsing Dimensionless: empty text to parse");
+        try
+        {
+            NumberParser numberParser = new NumberParser().lenient().trailing();
+            double d = numberParser.parseDouble(text);
+            String unitString = text.substring(numberParser.getTrailingPosition()).trim();
+            Throw.when(unitString.length() != 0, IllegalArgumentException.class, "Dimensionless should not have unit %s", unitString);
+            return new Dimensionless(d, DimensionlessUnit.SI);
+        }
+        catch (Exception exception)
+        {
+            throw new IllegalArgumentException(
+                    "Error parsing Dimensionless from " + text + " using Locale " + Locale.getDefault(Locale.Category.FORMAT),
+                    exception);
+        }
+    }
+    
+    /**
+     * Returns a Dimensionless based on a value and the textual representation of the unit, which can be localized.
+     * @param value the value to use
+     * @param unitString the textual representation of the unit
+     * @return the Scalar representation of the value in its unit
+     * @throws IllegalArgumentException when the unit cannot be parsed or is incorrect
+     * @throws NullPointerException when the unitString argument is null
+     */
+    public static Dimensionless of(final double value, final String unitString)
+    {
+        Throw.whenNull(unitString, "Error parsing Dimensionless: unitString is null");
         Throw.when(unitString.trim().length() != 0, IllegalArgumentException.class,
                 "Error parsing Dimensionless: non-empty unitString");
-	    DimensionlessUnit unit = DimensionlessUnit.SI;
-	    return new Dimensionless(value, unit);
-	}
+        DimensionlessUnit unit = DimensionlessUnit.SI;
+        return new Dimensionless(value, unit);
+    }
 ##ENDIF
 
 ##IF Mass
-	@Override
-	public String toStringSIPrefixed(final int smallestPower, final int biggestPower)
-	{
-	    if (!Double.isFinite(this.si))
-	    {
-	        return toString(getDisplayUnit().getStandardUnit());
-	    }
-	    // PK: I can't think of an easier way to figure out what the exponent will be; rounding of the mantissa to the available
-	    // width makes this hard; This feels like an expensive way.
-	    String check = String.format(this.si >= 0 ? "%10.8E" : "%10.7E", this.si);
-	    int exponent = Integer.parseInt(check.substring(check.indexOf("E") + 1));
-	    if (exponent < -27 || exponent < smallestPower || exponent > 21 + 2 || exponent > biggestPower)
-	    {
-	        // Out of SI prefix range; do not scale.
-	        return String.format(this.si >= 0 ? "%10.4E" : "%10.3E", this.si) + " "
-	                + getDisplayUnit().getStandardUnit().getId();
-	    }
-	    Integer roundedExponent = (int) Math.ceil((exponent - 2.0) / 3) * 3 + 3;
-	    // System.out.print(String.format("exponent=%d; roundedExponent=%d ", exponent, roundedExponent));
-	    String key = SIPrefixes.FACTORS.get(roundedExponent).getDefaultTextualPrefix() + "g";
-	    MassUnit displayUnit = getDisplayUnit().getQuantity().getUnitByAbbreviation(key);
-	    return toString(displayUnit);
-	}
+    @Override
+    public String toStringSIPrefixed(final int smallestPower, final int biggestPower)
+    {
+        if (!Double.isFinite(this.si))
+        {
+            return toString(getDisplayUnit().getStandardUnit());
+        }
+        // PK: I can't think of an easier way to figure out what the exponent will be; rounding of the mantissa to the available
+        // width makes this hard; This feels like an expensive way.
+        String check = String.format(this.si >= 0 ? "%10.8E" : "%10.7E", this.si);
+        int exponent = Integer.parseInt(check.substring(check.indexOf("E") + 1));
+        if (exponent < -27 || exponent < smallestPower || exponent > 21 + 2 || exponent > biggestPower)
+        {
+            // Out of SI prefix range; do not scale.
+            return String.format(this.si >= 0 ? "%10.4E" : "%10.3E", this.si) + " "
+                    + getDisplayUnit().getStandardUnit().getId();
+        }
+        Integer roundedExponent = (int) Math.ceil((exponent - 2.0) / 3) * 3 + 3;
+        // System.out.print(String.format("exponent=%d; roundedExponent=%d ", exponent, roundedExponent));
+        String key = SIPrefixes.FACTORS.get(roundedExponent).getDefaultTextualPrefix() + "g";
+        MassUnit displayUnit = getDisplayUnit().getQuantity().getUnitByAbbreviation(key);
+        return toString(displayUnit);
+    }
 ##ENDIF
     
 %FORMULAS%%Type%%
