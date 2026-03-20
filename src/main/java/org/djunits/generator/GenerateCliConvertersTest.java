@@ -1,209 +1,430 @@
 package org.djunits.generator;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.net.JarURLConnection;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Enumeration;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+
+import org.djunits.unit.UnitInterface;
+import org.djunits.unit.Units;
 
 /**
- * GenerateCliConverters.java. <br>
+ * Generator for {@code org.djutils.cli.TestCliUnitConverters}.
  * <p>
- * Copyright (c) 2003-2018 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved.<br>
- * BSD-style license. See <a href="https://djunits.org/docs/license.html">DJUNITS License</a>.
- * @author Alexander Verbraeck
+ * This tool force-loads all quantity classes under {@code org.djunits.quantity} to trigger lazy registration in {@link Units},
+ * then emits a JUnit test that: (1) declares one {@code @Option} field per quantity with a sensible default value string, and
+ * (2) verifies default parsing and an override parsing against {@code T.valueOf(String)} by comparing SI values with a small
+ * tolerance.
+ * </p>
+ * <p>
+ * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
+ * </p>
  */
-public class GenerateCliConvertersTest
+public final class GenerateCliConvertersTest
 {
-    /** */
-    private static List<TestRecord> testRecords = new ArrayList<>();
+    /** Package that contains the quantity classes to discover. */
+    private static final String QUANTITY_PACKAGE = "org.djunits.quantity";
 
-    static
+    /** Resource path of the quantity package (slash-separated). */
+    private static final String QUANTITY_PATH = QUANTITY_PACKAGE.replace('.', '/');
+
+    /** Tolerance used in generated tests for SI value comparisons. */
+    private static final double EPS = 1e-12;
+
+    /** Prevent instantiation of utility class. */
+    private GenerateCliConvertersTest()
     {
-        // @formatter:off
-        testRecords.add(new TestRecord("AbsoluteTemperature", 200.0, "AbsoluteTemperatureUnit.KELVIN", "200.0K", 
-                100.0, "AbsoluteTemperatureUnit.DEGREE_CELSIUS", "100.0C"));
-        testRecords.add(new TestRecord("AbsorbedDose", 200.0, "AbsorbedDoseUnit.GRAY", "200Gy", 
-                100.0, "AbsorbedDoseUnit.ERG_PER_GRAM", "100.0erg/g"));
-        testRecords.add(new TestRecord("Acceleration", 2.0, "AccelerationUnit.METER_PER_SECOND_2", "2.0m/s^2", 
-                1.0, "AccelerationUnit.KM_PER_HOUR_2", "1.0km/h^2"));
-        testRecords.add(new TestRecord("AmountOfSubstance", 200.0, "AmountOfSubstanceUnit.MOLE", "200.0mol",
-                10.0, "AmountOfSubstanceUnit.MILLIMOLE", "10mmol"));
-        testRecords.add(new TestRecord("Angle", 2.0, "AngleUnit.RADIAN", "2.0rad", 
-                10.0, "AngleUnit.DEGREE", "10.0deg"));
-        testRecords.add(new TestRecord("AngularAcceleration", 2.0, "AngularAccelerationUnit.RADIAN_PER_SECOND_SQUARED", "2.0rad/s2", 
-                10.0, "AngularAccelerationUnit.CENTESIMAL_ARCSECOND_PER_SECOND_SQUARED", "10.0c\\\"/sec2"));
-        testRecords.add(new TestRecord("AngularVelocity", 2.0, "AngularVelocityUnit.RADIAN_PER_SECOND", "2.0rad/s", 
-                10.0, "AngularVelocityUnit.CENTESIMAL_ARCSECOND_PER_SECOND", "10.0c\\\"/sec"));
-        testRecords.add(new TestRecord("Area", 2.0, "AreaUnit.SQUARE_METER", "2.0m^2", 
-                1.0, "AreaUnit.ACRE", "1.0ac"));
-        testRecords.add(new TestRecord("CatalyticActivity", 2.0, "CatalyticActivityUnit.KATAL", "2.0kat",
-                1.0, "CatalyticActivityUnit.MILLIKATAL", "1.0mkat"));
-        testRecords.add(new TestRecord("Density", 2.0, "DensityUnit.KG_PER_METER_3", "2.0kg/m^3", 
-                1.0, "DensityUnit.GRAM_PER_CENTIMETER_3", "1.0g/cm^3"));
-        testRecords.add(new TestRecord("Dimensionless", 2.0, "DimensionlessUnit.SI", "2.0", 
-                1.0, "DimensionlessUnit.SI", "1.0"));
-        testRecords.add(new TestRecord("Direction", 2.0, "DirectionUnit.EAST_RADIAN", "2.0rad(E)", 
-                1.0, "DirectionUnit.NORTH_DEGREE", "1.0deg(N)"));
-        testRecords.add(new TestRecord("Duration", 2.0, "DurationUnit.SECOND", "2.0s", 
-                1.0, "DurationUnit.DAY", "1.0day"));
-        testRecords.add(new TestRecord("ElectricalCapacitance", 2.0, "ElectricalCapacitanceUnit.FARAD", "2.0F", 
-                1.0, "ElectricalCapacitanceUnit.MICROFARAD", "1.0uF"));
-        testRecords.add(new TestRecord("ElectricalCharge", 2.0, "ElectricalChargeUnit.COULOMB", "2.0C", 
-                1.0, "ElectricalChargeUnit.MILLIAMPERE_HOUR", "1.0mAh"));
-        testRecords.add(new TestRecord("ElectricalConductance", 2.0, "ElectricalConductanceUnit.SIEMENS", "2.0S", 
-                1.0, "ElectricalConductanceUnit.MILLISIEMENS", "1.0mS"));
-        testRecords.add(new TestRecord("ElectricalCurrent", 2.0, "ElectricalCurrentUnit.AMPERE", "2.0A", 
-                1.0, "ElectricalCurrentUnit.STATAMPERE", "1.0statA"));
-        testRecords.add(new TestRecord("ElectricalInductance", 2.0, "ElectricalInductanceUnit.HENRY", "2.0H", 
-                1.0, "ElectricalInductanceUnit.MILLIHENRY", "1.0mH"));
-        testRecords.add(new TestRecord("ElectricalPotential", 2.0, "ElectricalPotentialUnit.VOLT", "2.0V", 
-                1.0, "ElectricalPotentialUnit.ABVOLT", "1.0abV"));
-        testRecords.add(new TestRecord("ElectricalResistance", 2.0, "ElectricalResistanceUnit.OHM", "2.0ohm", 
-                1.0, "ElectricalResistanceUnit.STATOHM", "1.0stohm"));
-        testRecords.add(new TestRecord("Energy", 2.0, "EnergyUnit.JOULE", "2.0J", 
-                1.0, "EnergyUnit.KILOWATT_HOUR", "1.0kWh"));
-        testRecords.add(new TestRecord("EquivalentDose", 2.0, "EquivalentDoseUnit.SIEVERT", "2.0Sv", 
-                1.0, "EquivalentDoseUnit.REM", "1.0rem"));
-        testRecords.add(new TestRecord("FlowMass", 2.0, "FlowMassUnit.KILOGRAM_PER_SECOND", "2.0kg/s", 
-                1.0, "FlowMassUnit.POUND_PER_SECOND", "1.0lb/s"));
-        testRecords.add(new TestRecord("FlowVolume", 2.0, "FlowVolumeUnit.CUBIC_METER_PER_SECOND", "2.0m^3/s", 
-                1.0, "FlowVolumeUnit.GALLON_US_PER_DAY", "1.0gal(US)/day"));
-        testRecords.add(new TestRecord("Force", 2.0, "ForceUnit.NEWTON", "2.0N", 
-                1.0, "ForceUnit.KILOGRAM_FORCE", "1.0kgf"));
-        testRecords.add(new TestRecord("Frequency", 2.0, "FrequencyUnit.PER_SECOND", "2.0/s", 
-                1.0, "FrequencyUnit.KILOHERTZ", "1.0kHz"));
-        testRecords.add(new TestRecord("Illuminance", 2.0, "IlluminanceUnit.LUX", "2.0lx", 
-                1.0, "IlluminanceUnit.NOX", "1.0nx"));
-        testRecords.add(new TestRecord("Length", 2.0, "LengthUnit.METER", "2.0m", 
-                1.0, "LengthUnit.INCH", "1.0in"));
-        testRecords.add(new TestRecord("LinearDensity", 2.0, "LinearDensityUnit.PER_METER", "2.0/m", 
-                1.0, "LinearDensityUnit.PER_YARD", "1.0/yd"));
-        testRecords.add(new TestRecord("LuminousFlux", 2.0, "LuminousFluxUnit.LUMEN", "2.0lm", 
-                1.0, "LuminousFluxUnit.LUMEN", "1.0srcd"));
-        testRecords.add(new TestRecord("LuminousIntensity", 2.0, "LuminousIntensityUnit.CANDELA", "2.0cd", 
-                1.0, "LuminousIntensityUnit.SI", "1.0cd"));
-        testRecords.add(new TestRecord("MagneticFlux", 2.0, "MagneticFluxUnit.WEBER", "2.0Wb", 
-                1.0, "MagneticFluxUnit.MAXWELL", "1.0Mx"));
-        testRecords.add(new TestRecord("MagneticFluxDensity", 2.0, "MagneticFluxDensityUnit.TESLA", "2.0T", 
-                1.0, "MagneticFluxDensityUnit.GAUSS", "1.0G"));
-        testRecords.add(new TestRecord("Mass", 2.0, "MassUnit.KILOGRAM", "2.0kg", 
-                1.0, "MassUnit.GIGAELECTRONVOLT", "1.0GeV"));
-        testRecords.add(new TestRecord("Momentum", 2.0, "MomentumUnit.SI", "2.0kgm/s", 
-                1.0, "MomentumUnit.KILOGRAM_METER_PER_SECOND", "1.0kgm/sec"));
-        testRecords.add(new TestRecord("Position", 2.0, "PositionUnit.ASTRONOMICAL_UNIT", "2.0AU", 
-                1.0, "PositionUnit.DECIMETER", "1.0dm"));
-        testRecords.add(new TestRecord("Power", 2.0, "PowerUnit.WATT", "2.0W", 
-                1.0, "PowerUnit.FOOT_POUND_FORCE_PER_HOUR", "1.0ft.lbf/h"));
-        testRecords.add(new TestRecord("Pressure", 2.0, "PressureUnit.PASCAL", "2.0Pa", 
-                1.0, "PressureUnit.MILLIMETER_MERCURY", "1.0mmHg"));
-        testRecords.add(new TestRecord("RadioActivity", 2.0, "RadioActivityUnit.BECQUEREL", "2.0Bq", 
-                1.0, "RadioActivityUnit.CURIE", "1.0Ci"));
-        testRecords.add(new TestRecord("SolidAngle", 2.0, "SolidAngleUnit.STERADIAN", "2.0sr", 
-                1.0, "SolidAngleUnit.SQUARE_DEGREE", "1.0sq.deg"));
-        testRecords.add(new TestRecord("Speed", 2.0, "SpeedUnit.METER_PER_SECOND", "2.0m/s", 
-                1.0, "SpeedUnit.MILE_PER_HOUR", "1.0mi/h"));
-        testRecords.add(new TestRecord("Temperature", 2.0, "TemperatureUnit.KELVIN", "2.0K", 
-                1.0, "TemperatureUnit.DEGREE_CELSIUS", "1.0degC"));
-        testRecords.add(new TestRecord("Time", 2.0, "TimeUnit.BASE_HOUR", "2.0h", 
-                1.0, "TimeUnit.EPOCH_DAY", "1.0day"));
-        testRecords.add(new TestRecord("Torque", 2.0, "TorqueUnit.NEWTON_METER", "2.0N.m", 
-                1.0, "TorqueUnit.POUND_FOOT", "1.0lbf.ft"));
-        testRecords.add(new TestRecord("Volume", 2.0, "VolumeUnit.CUBIC_METER", "2.0m^3", 
-                1.0, "VolumeUnit.LITER", "1.0L"));
-        // @formatter:on
+        // utility class
     }
 
     /**
-     * @param args blank
-     * @throws IOException on i/o error
-     * @throws URISyntaxException on i/o error
+     * Main entry point. Discovers quantities, builds test records, and emits a full JUnit test class to STDOUT.
+     * @param args the command line arguments (unused).
+     * @throws IOException if an I/O error occurs while scanning the classpath.
+     * @throws URISyntaxException if a URL cannot be converted to a URI while scanning the classpath.
      */
-    public static void main(String[] args) throws IOException, URISyntaxException
+    public static void main(final String[] args) throws IOException, URISyntaxException
     {
-        /*-
-         * Create this:
-            @Option(names = {"--acceleration"}, description = "Acceleration", defaultValue = "10.0m/s^2")
-            protected Acceleration acceleration;
-         */
-
-        for (TestRecord r : testRecords)
+        // 1) Ensure the Units registry is complete: class initialization registers units lazily.
+        int loaded = forceLoadAllQuantities();
+        if (loaded == 0)
         {
-            // @formatter:off
-            System.out.println("    /** */\n" + 
-                "    @Option(names = {\"--" + r.type.toLowerCase() + "\"}, description = \"" + r.type + "\", defaultValue = \"" + r.value1 + "\")\n" + 
-                "    protected " + r.type + " " + r.type.toLowerCase() + ";\n"); 
-            // @formatter:on
+            System.err.println("WARNING: No quantity classes loaded from " + QUANTITY_PACKAGE);
         }
 
-        System.out.println("\n\n");
+        // 2) Build quantity -> abbreviations map from Units registry.
+        Map<String, TreeSet<String>> quantityToAbbrs = registryByQuantity();
 
-        /*-
-         Create this:
-            args = new String[] {};
-            options = new Options();
-            CliUtil.execute(options, args);
-            assertEquals(new Acceleration(10.0, AccelerationUnit.METER_PER_SECOND_2), options.acceleration);
-            args = new String[] {"--acceleration", "30.0km/h^2"};
-            CliUtil.execute(options, args);
-            assertEquals(new Acceleration(30.0, AccelerationUnit.KM_PER_HOUR_2), options.acceleration);
-         */
+        // 3) Build a stable list of quantities and create test records with default/override values.
+        List<String> quantities = new ArrayList<>(quantityToAbbrs.keySet());
+        Collections.sort(quantities, String.CASE_INSENSITIVE_ORDER.thenComparing(String::compareTo));
 
-        for (TestRecord r : testRecords)
+        List<Record> records = new ArrayList<>();
+        for (String q : quantities)
         {
-            // @formatter:off
-            System.out.println("args = new String[] {};");
-            System.out.println("options = new Options();");
-            System.out.println("CliUtil.execute(options, args);");
-            System.out.println("assertEquals(new " + r.type + "(" + r.amount1 + ", " + r.unit1 + "), options." + r.type.toLowerCase() + ");"); 
-            System.out.println("args = new String[] {\"--" + r.type.toLowerCase() + "\", \"" + r.value2 + "\"};"); 
-            System.out.println("CliUtil.execute(options, args);"); 
-            System.out.println("assertEquals(new " + r.type + "(" + r.amount2 + ", " + r.unit2 + "), options." + r.type.toLowerCase() + ");\n"); 
-            // @formatter:on
+            TreeSet<String> abbrs = quantityToAbbrs.get(q);
+            String base = chooseDefaultAbbr(abbrs); // may be ""
+            String alt = chooseAlternateAbbr(abbrs, base);
+
+            String defaultValue = base.isEmpty() ? "2.0" : "2.0" + base;
+            String overrideValue = alt.isEmpty() ? "1.0" : "1.0" + alt;
+
+            records.add(new Record(q, defaultValue, overrideValue));
+        }
+
+        // 4) Emit the JUnit test source with full Javadoc.
+        emitTest(records);
+    }
+
+    /**
+     * Force-load all top-level classes in the quantity package to trigger static registration of units.
+     * @return the number of successfully loaded classes.
+     * @throws UncheckedIOException if an error occurs during classpath scanning.
+     */
+    private static int forceLoadAllQuantities()
+    {
+        int count = 0;
+        try
+        {
+            ClassLoader cl = Thread.currentThread().getContextClassLoader();
+            if (cl == null)
+            {
+                cl = GenerateCliConvertersTest.class.getClassLoader();
+            }
+
+            Enumeration<URL> urls = cl.getResources(QUANTITY_PATH);
+            while (urls.hasMoreElements())
+            {
+                URL url = urls.nextElement();
+                String protocol = url.getProtocol();
+
+                if ("file".equals(protocol))
+                {
+                    var dir = new java.io.File(url.toURI());
+                    var files = dir.listFiles((
+                            d, n
+                    ) -> n.endsWith(".class") && isTopLevelClass(n));
+                    if (files != null)
+                    {
+                        for (var f : files)
+                        {
+                            String simple = f.getName().substring(0, f.getName().length() - ".class".length());
+                            count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                        }
+                    }
+                }
+                else if ("jar".equals(protocol))
+                {
+                    JarURLConnection conn = (JarURLConnection) url.openConnection();
+                    try (JarFile jar = conn.getJarFile())
+                    {
+                        String prefix = QUANTITY_PATH + "/";
+                        Enumeration<JarEntry> entries = jar.entries();
+                        while (entries.hasMoreElements())
+                        {
+                            JarEntry je = entries.nextElement();
+                            String name = je.getName();
+                            if (!name.startsWith(prefix) || !name.endsWith(".class"))
+                            {
+                                continue;
+                            }
+                            String rest = name.substring(prefix.length());
+                            if (rest.contains("/"))
+                            {
+                                continue; // no subpackages
+                            }
+                            if (!isTopLevelClass(rest))
+                            {
+                                continue;
+                            }
+
+                            String simple = rest.substring(0, rest.length() - ".class".length());
+                            count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            throw new UncheckedIOException(new IOException("Error scanning " + QUANTITY_PACKAGE, e));
+        }
+        return count;
+    }
+
+    /**
+     * Check whether the given class file name refers to a top-level class (not an inner class / metadata).
+     * @param classFileName the class file name to check.
+     * @return {@code true} if the class file name represents a top-level Java class; {@code false} otherwise.
+     */
+    private static boolean isTopLevelClass(final String classFileName)
+    {
+        return !classFileName.contains("$") && !"package-info.class".equals(classFileName)
+                && !"module-info.class".equals(classFileName);
+    }
+
+    /**
+     * Attempt to load and initialize the class with the provided name using the supplied class loader.
+     * @param fqcn the fully qualified class name to load.
+     * @param cl the class loader to use.
+     * @return {@code 1} if class loading and initialization succeeded; {@code 0} otherwise.
+     */
+    private static int tryLoad(final String fqcn, final ClassLoader cl)
+    {
+        try
+        {
+            Class.forName(fqcn, true, cl); // initialize => triggers static unit registration in Units (lazy).
+            return 1;
+        }
+        catch (Throwable t)
+        {
+            System.err.println("WARN: could not load " + fqcn + ": " + t.getClass().getSimpleName() + " - " + t.getMessage());
+            return 0;
         }
     }
 
-    /** */
-    private static class TestRecord
+    /**
+     * Build a map from simple quantity name to its registered textual unit abbreviations using {@link Units#registeredUnits()}.
+     * <p>
+     * Note that the DJUNITS registry is populated lazily during class initialization; ensure classes are loaded beforehand.
+     * </p>
+     * @return a map from quantity simple name to a sorted set of unique textual abbreviations (case-distinct ordering).
+     */
+    private static Map<String, TreeSet<String>> registryByQuantity()
     {
-        /** */
-        protected String type;
+        Map<String, TreeSet<String>> out = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
-        /** */
-        protected double amount1;
+        // Comparator: sort case-insensitively but keep case for uniqueness (mm vs Mm).
+        Comparator<String> orderButCaseDistinct = (
+                a, b
+        ) ->
+        {
+            int ci = String.CASE_INSENSITIVE_ORDER.compare(a, b);
+            return (ci != 0) ? ci : a.compareTo(b);
+        };
 
-        /** */
-        protected String unit1;
+        // authoritative, lazy registry.
+        Map<String, Map<String, UnitInterface<?, ?>>> all = Units.registeredUnits(); 
 
-        /** */
-        protected String value1;
+        for (var e : all.entrySet())
+        {
+            String key = e.getKey(); // e.g., "Length$Unit" or "Length.Unit"
+            String quantity = baseQuantityName(key);
+            var set = out.computeIfAbsent(quantity, k -> new TreeSet<>(orderButCaseDistinct));
+            set.addAll(e.getValue().keySet());
+        }
+        return out;
+    }
 
-        /** */
-        protected double amount2;
+    /**
+     * Obtain the simple quantity name (e.g., {@code "Length"}) from a Units registry key like {@code "Length$Unit"} or
+     * {@code "Length.Unit"}.
+     * @param registryKey the key from the Units registry.
+     * @return the base quantity name without the nested class suffix.
+     */
+    private static String baseQuantityName(final String registryKey)
+    {
+        int i = registryKey.indexOf('$');
+        if (i >= 0)
+        {
+            return registryKey.substring(0, i);
+        }
+        int j = registryKey.indexOf('.');
+        return (j >= 0) ? registryKey.substring(0, j) : registryKey;
+    }
 
-        /** */
-        protected String unit2;
+    /**
+     * Choose a default unit abbreviation for a quantity. Prefers the first non-empty abbreviation; falls back to the empty
+     * string if needed (e.g., dimensionless).
+     * @param abbrs the set of available abbreviations for the quantity.
+     * @return the chosen default abbreviation, possibly {@code ""}.
+     */
+    private static String chooseDefaultAbbr(final TreeSet<String> abbrs)
+    {
+        for (String s : abbrs)
+        {
+            if (s != null && !s.isEmpty())
+            {
+                return s;
+            }
+        }
+        return "";
+    }
 
-        /** */
-        protected String value2;
+    /**
+     * Choose an alternate unit abbreviation distinct from the default. Prefers a non-empty abbreviation; may fall back to empty
+     * if appropriate; otherwise returns the base abbreviation.
+     * @param abbrs the set of available abbreviations for the quantity.
+     * @param base the base abbreviation already chosen.
+     * @return a distinct alternate abbreviation if available; otherwise the base abbreviation.
+     */
+    private static String chooseAlternateAbbr(final TreeSet<String> abbrs, final String base)
+    {
+        for (String s : abbrs)
+        {
+            if (s == null || s.isEmpty())
+            {
+                continue;
+            }
+            if (!s.equals(base))
+            {
+                return s;
+            }
+        }
+        if (!base.isEmpty() && abbrs.contains(""))
+        {
+            return "";
+        }
+        return base;
+    }
+
+    /**
+     * Emit the complete source of {@code org.djutils.cli.TestCliUnitConverters} to STDOUT with full Javadoc and SI-based
+     * assertions.
+     * @param records the list of test records per quantity with default and override values.
+     */
+    private static void emitTest(final List<Record> records)
+    {
+        String genTime = Instant.now().toString();
+
+        System.out.println("package org.djutils.cli;");
+        System.out.println();
+        System.out.println("import static org.junit.jupiter.api.Assertions.assertEquals;");
+        System.out.println("import java.util.Locale;");
+
+        // Import quantities used as types and for expected parsing.
+        LinkedHashSet<String> imports = new LinkedHashSet<>();
+        for (Record r : records)
+        {
+            imports.add("import " + QUANTITY_PACKAGE + "." + r.type + ";");
+        }
+        imports.stream().sorted().forEach(System.out::println);
+
+        System.out.println("import org.junit.jupiter.api.Test;");
+        System.out.println("import picocli.CommandLine.Command;");
+        System.out.println("import picocli.CommandLine.Option;");
+        System.out.println();
+        System.out.println("/**");
+        System.out.println(" * JUnit test for the generated DJUNITS CLI converters.");
+        System.out.println(" * <p>");
+        System.out.println(" * This test is generated at " + genTime + " by " + GenerateCliConvertersTest.class.getName()
+                + " and validates that");
+        System.out.println(
+                " * each {@code @Option} field parses its default and an explicit override by comparing SI values with a small tolerance.");
+        System.out.println(" * </p>");
+        System.out.println(" */");
+        System.out.println("@SuppressWarnings(\"checkstyle:visibilitymodifier\")");
+        System.out.println("public class TestCliUnitConverters");
+        System.out.println("{");
+        System.out.println("  /** Numerical tolerance used for SI value comparisons. */");
+        System.out.println("  private static final double EPS = " + EPS + ";");
+        System.out.println();
+        System.out.println("  /**");
+        System.out.println("   * Picocli options holder for all quantities under test.");
+        System.out.println("   */");
+        System.out.println(
+                "  @Command(description = \"Test program for CLI\", name = \"Program\", mixinStandardHelpOptions = true, version = \"1.0\")");
+        System.out.println("  public static class Options");
+        System.out.println("  {");
+
+        // Emit @Option fields with Javadoc.
+        for (Record r : records)
+        {
+            String optionName = r.type.toLowerCase(Locale.ROOT);
+            System.out.println("    /** Option for " + r.type + " with a default value string. */");
+            System.out.println("    @Option(names = {\"--" + optionName + "\"}, description = \"" + r.type
+                    + "\", defaultValue = \"" + escapeJava(r.defaultValue) + "\")");
+            System.out.println("    protected " + r.type + " " + optionName + ";");
+        }
+
+        System.out.println("  }");
+        System.out.println();
+        System.out.println("  /**");
+        System.out.println("   * Tests CLI parsing for all quantities: default values and explicit overrides.");
+        System.out.println("   *");
+        System.out.println("   * @throws Exception if CLI execution or parsing fails for any quantity.");
+        System.out.println("   */");
+        System.out.println("  @Test");
+        System.out.println("  public void testCli() throws Exception");
+        System.out.println("  {");
+        System.out.println("    Locale.setDefault(Locale.US);");
+        System.out.println("    String[] args;");
+        System.out.println("    Options options;");
+
+        for (Record r : records)
+        {
+            String lname = r.type.toLowerCase(Locale.ROOT);
+
+            // Default case
+            System.out.println("    // " + r.type + " default");
+            System.out.println("    args = new String[] {};");
+            System.out.println("    options = new Options();");
+            System.out.println("    CliUtil.execute(options, args);");
+            System.out.println("    assertEquals(" + r.type + ".valueOf(\"" + escapeJava(r.defaultValue) + "\").si(), options."
+                    + lname + ".si(), EPS);");
+
+            // Override case
+            System.out.println("    // " + r.type + " override");
+            System.out.println("    args = new String[] {\"--" + lname + "\", \"" + escapeJava(r.overrideValue) + "\"};");
+            System.out.println("    CliUtil.execute(options, args);");
+            System.out.println("    assertEquals(" + r.type + ".valueOf(\"" + escapeJava(r.overrideValue) + "\").si(), options."
+                    + lname + ".si(), EPS);");
+            System.out.println();
+        }
+
+        System.out.println("  }");
+        System.out.println("}");
+    }
+
+    /**
+     * Escape a Java string literal minimally (quotes and backslashes).
+     * @param s the input string to escape.
+     * @return the escaped string suitable for inclusion in a Java string literal.
+     */
+    private static String escapeJava(final String s)
+    {
+        return s.replace("\\", "\\\\").replace("\"", "\\\"");
+    }
+
+    /**
+     * Immutable record describing the default and override value strings used to test a quantity.
+     */
+    private static final class Record
+    {
+        /** Simple quantity name (e.g., {@code Length}). */
+        final String type;
+
+        /** Default value string (e.g., {@code "2.0m"}). */
+        final String defaultValue;
+
+        /** Override value string (e.g., {@code "1.0km"}). */
+        final String overrideValue;
 
         /**
-         * @param type type, e.g. "Length"
-         * @param amount1 initial amount, e.g. 10.0
-         * @param unit1 initial unit, e.g. LengthUnit.METER
-         * @param value1 initial String value, e.g. "10.0m"
-         * @param amount2 changed amount, e.g. 5.0
-         * @param unit2 changed unit, e.g. LengthUnit.KILOMETER
-         * @param value2 changed String amount, e.g. 5.0km
+         * Constructs a record with default and override values for one quantity.
+         * @param type the simple quantity name.
+         * @param defaultValue the default value string, including unit if any.
+         * @param overrideValue the override value string, including unit if any.
          */
-        public TestRecord(String type, double amount1, String unit1, String value1, double amount2, String unit2, String value2)
+        Record(final String type, final String defaultValue, final String overrideValue)
         {
             this.type = type;
-            this.amount1 = amount1;
-            this.unit1 = unit1;
-            this.value1 = value1;
-            this.amount2 = amount2;
-            this.unit2 = unit2;
-            this.value2 = value2;
+            this.defaultValue = defaultValue;
+            this.overrideValue = overrideValue;
         }
     }
 }
