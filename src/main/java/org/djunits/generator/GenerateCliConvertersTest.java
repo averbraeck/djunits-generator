@@ -33,6 +33,11 @@ import org.djunits.unit.Units;
  * <p>
  * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
  * </p>
+ * Copyright (c) 2014-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved. See
+ * for project information <a href="https://djutils.org" target="_blank"> https://djutils.org</a>. The DJUTILS project is
+ * distributed under a three-clause BSD-style license, which can be found at
+ * <a href="https://djutils.org/docs/license.html" target="_blank"> https://djutils.org/docs/license.html</a>. <br>
+ * @author <a href="https://www.tudelft.nl/averbraeck">Alexander Verbraeck</a>
  */
 public final class GenerateCliConvertersTest
 {
@@ -218,7 +223,7 @@ public final class GenerateCliConvertersTest
         };
 
         // authoritative, lazy registry.
-        Map<String, Map<String, UnitInterface<?, ?>>> all = Units.registeredUnits(); 
+        Map<String, Map<String, UnitInterface<?, ?>>> all = Units.registeredUnits();
 
         for (var e : all.entrySet())
         {
