@@ -27,18 +27,14 @@ import org.djunits.unit.Units;
  * <p>
  * Discovery is based on {@link Units#registeredUnits()} (Option B). Because Units registers lazily, we first force-load all
  * classes in {@code org.djunits.quantity} so their static initializers run and register all units.
- * </p>
  * <p>
  * Numeric patterns accept integers, decimals (with or without leading/trailing digits), and scientific notation; and we allow
  * optional spaces between number and unit (matching quantity parsers).
- * </p>
  * <p>
  * Output path: {@code <project-root>/generated-code/resources/djunits.xsd}.
- * </p>
  * <p>
  * Copyright (c) 2003-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved.
  * BSD-style license. See https://djunits.org/docs/license.html.
- * </p>
  * @author Alexander Verbraeck
  */
 public class GenerateXsd

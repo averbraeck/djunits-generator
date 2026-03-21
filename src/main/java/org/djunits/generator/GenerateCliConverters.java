@@ -22,10 +22,9 @@ import java.util.jar.JarFile;
  * register all units lazily in {@link org.djunits.unit.Units}, and emits a CLI converter class that registers a Picocli
  * {@code ITypeConverter} for each quantity. The generated converters delegate to {@code T.valueOf(String)} for robust parsing
  * (consistent with the quantity API).
- * </p>
  * <p>
  * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
- * </p>
+ * <p>
  * Copyright (c) 2014-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved. See
  * for project information <a href="https://djutils.org" target="_blank"> https://djutils.org</a>. The DJUTILS project is
  * distributed under a three-clause BSD-style license, which can be found at

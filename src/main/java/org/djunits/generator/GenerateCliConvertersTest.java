@@ -29,10 +29,9 @@ import org.djunits.unit.Units;
  * then emits a JUnit test that: (1) declares one {@code @Option} field per quantity with a sensible default value string, and
  * (2) verifies default parsing and an override parsing against {@code T.valueOf(String)} by comparing SI values with a small
  * tolerance.
- * </p>
  * <p>
  * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
- * </p>
+ * <p>
  * Copyright (c) 2014-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved. See
  * for project information <a href="https://djutils.org" target="_blank"> https://djutils.org</a>. The DJUTILS project is
  * distributed under a three-clause BSD-style license, which can be found at
@@ -206,7 +205,6 @@ public final class GenerateCliConvertersTest
      * Build a map from simple quantity name to its registered textual unit abbreviations using {@link Units#registeredUnits()}.
      * <p>
      * Note that the DJUNITS registry is populated lazily during class initialization; ensure classes are loaded beforehand.
-     * </p>
      * @return a map from quantity simple name to a sorted set of unique textual abbreviations (case-distinct ordering).
      */
     private static Map<String, TreeSet<String>> registryByQuantity()
