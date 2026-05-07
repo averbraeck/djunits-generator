@@ -19,7 +19,7 @@ import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.djunits.unit.UnitInterface;
+import org.djunits.unit.Unit;
 import org.djunits.unit.Units;
 
 /**
@@ -33,10 +33,10 @@ import org.djunits.unit.Units;
  * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
  * <p>
  * Copyright (c) 2014-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved. See
- * for project information <a href="https://djutils.org" target="_blank"> https://djutils.org</a>. The DJUTILS project is
+ * for project information <a href="https://djunits.org" target="_blank"> https://djunits.org</a>. The DJUNITS project is
  * distributed under a three-clause BSD-style license, which can be found at
- * <a href="https://djutils.org/docs/license.html" target="_blank"> https://djutils.org/docs/license.html</a>. <br>
- * @author <a href="https://www.tudelft.nl/averbraeck">Alexander Verbraeck</a>
+ * <a href="https://djunits.org/docs/license.html" target="_blank"> https://djunits.org/docs/license.html</a>. <br>
+ * @author Alexander Verbraeck
  */
 public final class GenerateCliConvertersTest
 {
@@ -127,7 +127,10 @@ public final class GenerateCliConvertersTest
                         for (var f : files)
                         {
                             String simple = f.getName().substring(0, f.getName().length() - ".class".length());
-                            count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                            if (!shouldSkip(simple))
+                            {
+                                count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                            }
                         }
                     }
                 }
@@ -157,7 +160,10 @@ public final class GenerateCliConvertersTest
                             }
 
                             String simple = rest.substring(0, rest.length() - ".class".length());
-                            count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                            if (!shouldSkip(simple))
+                            {
+                                count += tryLoad(QUANTITY_PACKAGE + "." + simple, cl);
+                            }
                         }
                     }
                 }
@@ -179,6 +185,22 @@ public final class GenerateCliConvertersTest
     {
         return !classFileName.contains("$") && !"package-info.class".equals(classFileName)
                 && !"module-info.class".equals(classFileName);
+    }
+
+    /**
+     * Predicate to skip certain class names from the quantity package if needed.
+     * @param simpleName the simple class name to evaluate.
+     * @return {@code true} if the class should be skipped; {@code false} otherwise.
+     */
+    private static boolean shouldSkip(final String simpleName)
+    {
+        // Skip the absolute quantities for now, until a solution for the reference has been found
+        // Temperature works, since it has an implicit reference
+        if (simpleName.equals("Direction") || simpleName.equals("Position") || simpleName.equals("Time"))
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -221,7 +243,7 @@ public final class GenerateCliConvertersTest
         };
 
         // authoritative, lazy registry.
-        Map<String, Map<String, UnitInterface<?, ?>>> all = Units.registeredUnits();
+        Map<String, Map<String, Unit<?, ?>>> all = Units.registeredUnits();
 
         for (var e : all.entrySet())
         {
@@ -241,6 +263,10 @@ public final class GenerateCliConvertersTest
      */
     private static String baseQuantityName(final String registryKey)
     {
+        if (registryKey.equals("Unitless"))
+        {
+            return "Dimensionless";
+        }
         int i = registryKey.indexOf('$');
         if (i >= 0)
         {
