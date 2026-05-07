@@ -26,11 +26,10 @@ import java.util.jar.JarFile;
  * The generated source includes Checkstyle-compliant Javadoc for all classes, fields, and methods.
  * <p>
  * Copyright (c) 2014-2026 Delft University of Technology, Jaffalaan 5, 2628 BX Delft, the Netherlands. All rights reserved. See
- * for project information <a href="https://djutils.org" target="_blank"> https://djutils.org</a>. The DJUTILS project is
+ * for project information <a href="https://djunits.org" target="_blank"> https://djunits.org</a>. The DJUNITS project is
  * distributed under a three-clause BSD-style license, which can be found at
- * <a href="https://djutils.org/docs/license.html" target="_blank"> https://djutils.org/docs/license.html</a>.
- * <br>
- * @author <a href="https://www.tudelft.nl/averbraeck">Alexander Verbraeck</a>
+ * <a href="https://djunits.org/docs/license.html" target="_blank"> https://djunits.org/docs/license.html</a>. <br>
+ * @author Alexander Verbraeck
  */
 public final class GenerateCliConverters
 {
@@ -163,7 +162,12 @@ public final class GenerateCliConverters
      */
     private static boolean shouldSkip(final String simpleName)
     {
-        // Keep everything by default.
+        // Skip the absolute quantities for now, until a solution for the reference has been found
+        // Temperature works, since it has an implicit reference
+        if (simpleName.equals("Direction") || simpleName.equals("Position") || simpleName.equals("Time"))
+        {
+            return true;
+        }
         return false;
     }
 
