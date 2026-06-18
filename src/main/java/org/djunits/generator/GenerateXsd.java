@@ -18,7 +18,7 @@ import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.djunits.unit.Unit;
+import org.djunits.unit.UnitInterface;
 import org.djunits.unit.Units;
 
 /**
@@ -81,7 +81,7 @@ public class GenerateXsd
             System.out.println("Loaded quantity classes: " + loaded);
 
             // 2) Now pull the registry: quantityKey -> (unitAbbr -> unit)
-            Map<String, Map<String, Unit<?, ?>>> all = Units.registeredUnits(); // lazy map, now filled after loading
+            Map<String, Map<String, UnitInterface<?>>> all = Units.registeredUnits(); // lazy map, now filled after loading
             if (all.isEmpty())
             {
                 System.err.println("WARNING: Units.registeredUnits() is empty after force-loading. "

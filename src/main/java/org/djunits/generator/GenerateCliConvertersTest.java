@@ -19,7 +19,7 @@ import java.util.TreeSet;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.djunits.unit.Unit;
+import org.djunits.unit.UnitInterface;
 import org.djunits.unit.Units;
 
 /**
@@ -243,7 +243,7 @@ public final class GenerateCliConvertersTest
         };
 
         // authoritative, lazy registry.
-        Map<String, Map<String, Unit<?, ?>>> all = Units.registeredUnits();
+        Map<String, Map<String, UnitInterface<?>>> all = Units.registeredUnits();
 
         for (var e : all.entrySet())
         {
